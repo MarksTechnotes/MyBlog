@@ -2,10 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Mark’s Tech Notes</title>
-    <link>http://localhost:1313/MyBlog/categories/</link>
+    <link>https://markstechnotes.github.io/MyBlog/categories/</link>
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle Cloud</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/oracle-cloud/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/oracle-cloud/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

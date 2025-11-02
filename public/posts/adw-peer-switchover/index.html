@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported? | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
+  <meta property="og:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-02T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Autonomous Database">
+    <meta property="article:tag" content="ADW">
+    <meta property="article:tag" content="ZDM">
+    <meta property="article:tag" content="Data Guard">
+    <meta property="article:tag" content="Migration">
+
+  <meta itemprop="name" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
+  <meta itemprop="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+  <meta itemprop="datePublished" content="2025-11-02T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-02T00:00:00+00:00">
+  <meta itemprop="wordCount" content="336">
+  <meta itemprop="keywords" content="Oracle,Autonomous Database,ADW,ZDM,Data Guard,Migration">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
+  <meta name="twitter:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-02T00:00:00Z">November 2, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When planning a migration from <strong>Autonomous Data Warehouse (ADW) Shared</strong> to <strong>ADW Dedicated</strong>, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+<p>Let’s break down what that would involve and what Oracle actually supports.</p>
+<hr>
+<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
+<p>The idea typically goes like this:</p>
+<ol>
+<li>Set up a <strong>standby (peer) database</strong> on <strong>Exadata Dedicated (19c)</strong>.</li>
+<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
+<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
+</ol>
+<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
+<hr>
+<h3 id="is-this-supported">Is This Supported?</h3>
+<p><strong>No</strong>, it is not supported.</p>
+<p>You <strong>cannot</strong> set up a peer or standby database for an <strong>Autonomous Data Warehouse Shared (ADW-S)</strong> instance on an <strong>ADW Dedicated (ADW-D)</strong> instance.<br>
+<strong>Cross-type Data Guard configurations</strong> — between Shared and Dedicated — are <strong>not supported</strong>.</p>
+<p>This restriction exists because the <strong>infrastructure and management models</strong> of the two environments are fundamentally different. Autonomous Shared and Dedicated operate on separate control planes, with distinct automation and resource management layers.  As a result, Oracle does not allow <strong>mixing the two</strong> for replication, standby, or peer configurations.</p>
+<hr>
+<h3 id="recommended-migration-path">Recommended Migration Path</h3>
+<p>For migrations between ADW Shared and Dedicated environments, Oracle recommends using <strong>Zero Downtime Migration (ZDM)</strong>.</p>
+<p><strong>ZDM</strong> provides a controlled, Oracle-supported workflow for:</p>
+<ul>
+<li>Moving data and metadata</li>
+<li>Validating the migration</li>
+<li>Managing the cutover with minimal downtime</li>
+<li>Maintaining compatibility with future upgrades (e.g., <strong>19c → 23ai</strong>)</li>
+</ul>
+<p>This is the approach used in production-grade migrations today and aligns with Oracle’s official guidance.</p>
+<hr>
+<h3 id="summary">Summary</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Approach</th>
+          <th>Supported</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Data Guard Role Switchover (ADW-S → ADW-D)</td>
+          <td>❌ No</td>
+          <td>Cross-type configurations unsupported</td>
+      </tr>
+      <tr>
+          <td>Zero Downtime Migration (ZDM)</td>
+          <td>✅ Yes</td>
+          <td>Oracle-recommended for Shared → Dedicated migrations</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="final-thoughts">Final Thoughts</h3>
+<p>While a Data Guard–style switchover might seem appealing conceptually, it’s simply not feasible across Autonomous Shared and Dedicated boundaries.<br>
+<strong>ZDM</strong> remains the correct and supported way to move from <strong>ADW Shared</strong> to <strong>ADW Dedicated</strong>, ensuring both data integrity and compliance with Oracle’s operational model.</p>
+<hr>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/adw/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ADW</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/zdm/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ZDM</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/data-guard/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Data Guard</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/migration/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Migration</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
