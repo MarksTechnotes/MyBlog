@@ -1,0 +1,4 @@
+baseURL = "https://markstechnotes.github.io/"
+languageCode = "en-us"
+title = "Mark’s Tech Notes"
+theme = "ananke"
