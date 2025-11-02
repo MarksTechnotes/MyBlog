@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Smart Scan Demo on Exadata Cloud Service (ExaCS) | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.
+Here’s a simple demonstration that shows how Smart Scan behaves in practice.
+Setup
+Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:
+sqlplus sys/&lt;password&gt;@&lt;exadata-scan-host&gt;:1521/&lt;db_service&gt; as sysdba
+Replace , , and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/posts/first-post/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/posts/first-post/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Smart Scan Demo on Exadata Cloud Service (ExaCS)">
+  <meta property="og:description" content="One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.
+Here’s a simple demonstration that shows how Smart Scan behaves in practice.
+Setup Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:
+sqlplus sys/&lt;password&gt;@&lt;exadata-scan-host&gt;:1521/&lt;db_service&gt; as sysdba Replace , , and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-02T17:11:40-06:00">
+    <meta property="article:modified_time" content="2025-11-02T17:11:40-06:00">
+
+  <meta itemprop="name" content="Smart Scan Demo on Exadata Cloud Service (ExaCS)">
+  <meta itemprop="description" content="One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.
+Here’s a simple demonstration that shows how Smart Scan behaves in practice.
+Setup Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:
+sqlplus sys/&lt;password&gt;@&lt;exadata-scan-host&gt;:1521/&lt;db_service&gt; as sysdba Replace , , and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.">
+  <meta itemprop="datePublished" content="2025-11-02T17:11:40-06:00">
+  <meta itemprop="dateModified" content="2025-11-02T17:11:40-06:00">
+  <meta itemprop="wordCount" content="370">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Smart Scan Demo on Exadata Cloud Service (ExaCS)">
+  <meta name="twitter:description" content="One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.
+Here’s a simple demonstration that shows how Smart Scan behaves in practice.
+Setup Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:
+sqlplus sys/&lt;password&gt;@&lt;exadata-scan-host&gt;:1521/&lt;db_service&gt; as sysdba Replace , , and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Smart Scan Demo on Exadata Cloud Service (ExaCS)</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-02T17:11:40-06:00">November 2, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.</p>
+<p>Here’s a simple demonstration that shows how Smart Scan behaves in practice.</p>
+<h2 id="setup">Setup</h2>
+<p>Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>sqlplus sys<span style="color:#f92672">/&lt;</span>password<span style="color:#f92672">&gt;@&lt;</span>exadata<span style="color:#f92672">-</span>scan<span style="color:#f92672">-</span><span style="color:#66d9ef">host</span><span style="color:#f92672">&gt;</span>:<span style="color:#ae81ff">1521</span><span style="color:#f92672">/&lt;</span>db_service<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">as</span> sysdba
+</span></span></code></pre></div><p>Replace <!-- raw HTML omitted -->, <!-- raw HTML omitted -->, and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.</p>
+<p>Check that initial baseline statistics (from v$sysstat and v$mystat) show almost no I/O activity:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>physical <span style="color:#66d9ef">read</span> total bytes                       <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0019</span> MB
+</span></span><span style="display:flex;"><span>cell physical IO interconnect bytes             <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">0019</span> MB
+</span></span></code></pre></div><h2 id="test-1--smart-scan-disabled">Test 1 — Smart Scan Disabled</h2>
+<p>Smart Scan can be turned off explicitly using the optimizer parameter CELL_OFFLOAD_PROCESSING = FALSE:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#75715e">/*+ OPT_PARAM(&#39;cell_offload_processing&#39;, &#39;false&#39;) */</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span>   soe.order_items <span style="color:#66d9ef">WHERE</span>  unit_price <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1500</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Elapsed time: <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">99</span> seconds
+</span></span><span style="display:flex;"><span>Physical <span style="color:#66d9ef">reads</span>: <span style="color:#f92672">~</span><span style="color:#ae81ff">208</span> MB
+</span></span><span style="display:flex;"><span>Cell interconnect bytes: <span style="color:#f92672">~</span><span style="color:#ae81ff">208</span> MB
+</span></span><span style="display:flex;"><span>Offload I<span style="color:#f92672">/</span>O: <span style="color:#66d9ef">none</span>
+</span></span></code></pre></div><p>This confirms that the query ran without offload; all data was returned from storage to the database node for filtering.</p>
+<h2 id="test-2--smart-scan-enabled">Test 2 — Smart Scan Enabled</h2>
+<p>After reconnecting to clear statistics:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">COUNT</span>(<span style="color:#f92672">*</span>) <span style="color:#66d9ef">FROM</span> soe.order_items <span style="color:#66d9ef">WHERE</span> unit_price <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1500</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Elapsed time: <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">13</span> seconds
+</span></span><span style="display:flex;"><span>Physical <span style="color:#66d9ef">reads</span>: <span style="color:#f92672">~</span><span style="color:#ae81ff">208</span> MB
+</span></span><span style="display:flex;"><span>Cell interconnect bytes: <span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">30</span> MB
+</span></span><span style="display:flex;"><span>Offload bytes: <span style="color:#f92672">~</span><span style="color:#ae81ff">208</span> MB eligible <span style="color:#66d9ef">for</span> Smart I<span style="color:#f92672">/</span>O
+</span></span></code></pre></div><p>The results speak for themselves — with Smart Scan, the interconnect traffic dropped from 208 MB to just 0.3 MB, and query elapsed time improved nearly 8×.</p>
+<h2 id="why-its-faster">Why It’s Faster</h2>
+<p>With Smart Scan enabled:</p>
+<ul>
+<li>Predicate evaluation (unit_price &lt; 1500) happens in the storage cells, not the database node.</li>
+<li>Only the qualifying rows are sent over the interconnect.</li>
+<li>The buffer cache is bypassed, using PGA memory directly, which is still faster overall.</li>
+</ul>
+<p>The EXPLAIN PLAN confirms the offload operation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">|*</span>  <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span>  <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">ACCESS</span> <span style="color:#66d9ef">STORAGE</span> <span style="color:#66d9ef">FULL</span> <span style="color:#f92672">|</span> ORDER_ITEMS <span style="color:#f92672">|</span>
+</span></span></code></pre></div><h2 id="takeaway">Takeaway</h2>
+<p>Smart Scan isn’t just a theoretical feature — it’s a tangible performance multiplier. By pushing predicate filtering and column projection down to the storage layer, Exadata reduces data transfer dramatically and speeds up analytics at scale.</p>
+<p>Once you see the delta in I/O bytes and timing, you realize why Smart Scan is one of the defining capabilities of Exadata.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
