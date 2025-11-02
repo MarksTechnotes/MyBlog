@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/MyBlog/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
     <lastmod>2025-11-02T17:11:40-06:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/MyBlog/posts/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
     <lastmod>2025-11-02T17:11:40-06:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/MyBlog/posts/first-post/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/first-post/</loc>
     <lastmod>2025-11-02T17:11:40-06:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/MyBlog/categories/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/MyBlog/tags/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
   </url>
 </urlset>
