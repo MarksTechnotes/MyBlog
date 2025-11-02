@@ -6,6 +6,49 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADW</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/adw/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/adw/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Guard</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/data-guard/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/data-guard/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Migration</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/migration/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/migration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZDM</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/zdm/</link>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/zdm/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
