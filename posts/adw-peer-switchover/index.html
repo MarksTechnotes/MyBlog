@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
   <meta itemprop="datePublished" content="2025-11-02T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-02T00:00:00+00:00">
-  <meta itemprop="wordCount" content="336">
+  <meta itemprop="wordCount" content="337">
   <meta itemprop="keywords" content="Oracle,Autonomous Database,ADW,ZDM,Data Guard,Migration">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
@@ -114,13 +114,13 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When planning a migration from <strong>Autonomous Data Warehouse (ADW) Shared</strong> to <strong>ADW Dedicated</strong>, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When planning a migration from Autonomous Data Warehouse (ADW) Shared to ADW Dedicated, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
 <p>Let’s break down what that would involve and what Oracle actually supports.</p>
 <hr>
 <h3 id="the-proposed-scenario">The Proposed Scenario</h3>
 <p>The idea typically goes like this:</p>
 <ol>
-<li>Set up a <strong>standby (peer) database</strong> on <strong>Exadata Dedicated (19c)</strong>.</li>
+<li>Set up a standby (peer) database on ADW Dedicated.</li>
 <li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
 <li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
 </ol>
@@ -128,9 +128,9 @@
 <hr>
 <h3 id="is-this-supported">Is This Supported?</h3>
 <p><strong>No</strong>, it is not supported.</p>
-<p>You <strong>cannot</strong> set up a peer or standby database for an <strong>Autonomous Data Warehouse Shared (ADW-S)</strong> instance on an <strong>ADW Dedicated (ADW-D)</strong> instance.<br>
-<strong>Cross-type Data Guard configurations</strong> — between Shared and Dedicated — are <strong>not supported</strong>.</p>
-<p>This restriction exists because the <strong>infrastructure and management models</strong> of the two environments are fundamentally different. Autonomous Shared and Dedicated operate on separate control planes, with distinct automation and resource management layers.  As a result, Oracle does not allow <strong>mixing the two</strong> for replication, standby, or peer configurations.</p>
+<p>You cannot set up a peer or standby database for an Autonomous Data Warehouse Shared (ADW-S) instance on an ADW Dedicated (ADW-D) instance or vice versa.<br>
+<strong>Cross-type Data Guard configurations</strong> — between Shared and Dedicated — are not supported.</p>
+<p>This restriction exists because the infrastructure and management models of the two environments are fundamentally different. Autonomous Shared and Dedicated operate on separate control planes, with distinct automation and resource management layers.  As a result, Oracle does not allow mixing the two for replication, standby, or peer configurations.</p>
 <hr>
 <h3 id="recommended-migration-path">Recommended Migration Path</h3>
 <p>For migrations between ADW Shared and Dedicated environments, Oracle recommends using <strong>Zero Downtime Migration (ZDM)</strong>.</p>
@@ -167,8 +167,7 @@
 </table>
 <hr>
 <h3 id="final-thoughts">Final Thoughts</h3>
-<p>While a Data Guard–style switchover might seem appealing conceptually, it’s simply not feasible across Autonomous Shared and Dedicated boundaries.<br>
-<strong>ZDM</strong> remains the correct and supported way to move from <strong>ADW Shared</strong> to <strong>ADW Dedicated</strong>, ensuring both data integrity and compliance with Oracle’s operational model.</p>
+<p>While a Data Guard–style switchover might seem appealing conceptually, it’s simply not feasible across Autonomous Shared and Dedicated boundaries.<strong>ZDM</strong> remains the correct and supported way to move from ADW Shared to ADW Dedicated, ensuring both data integrity and compliance with Oracle’s operational model.</p>
 <hr>
 <ul class="pa0">
   
