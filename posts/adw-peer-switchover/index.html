@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported? | Mark’s Tech Notes</title>
+    <title>Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported? | Mark’s Tech Notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+    <meta name="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Serverless to Dedicated is supported, and the recommended migration path.">
     <meta name="generator" content="Hugo 0.152.2">
     
     
@@ -37,8 +37,8 @@
 
     <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
-  <meta property="og:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+  <meta property="og:title" content="Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?">
+  <meta property="og:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Serverless to Dedicated is supported, and the recommended migration path.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -51,15 +51,15 @@
     <meta property="article:tag" content="Data Guard">
     <meta property="article:tag" content="Migration">
 
-  <meta itemprop="name" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
-  <meta itemprop="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+  <meta itemprop="name" content="Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?">
+  <meta itemprop="description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Serverless to Dedicated is supported, and the recommended migration path.">
   <meta itemprop="datePublished" content="2025-11-02T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-02T00:00:00+00:00">
-  <meta itemprop="wordCount" content="337">
+  <meta itemprop="wordCount" content="335">
   <meta itemprop="keywords" content="Oracle,Autonomous Database,ADW,ZDM,Data Guard,Migration">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?">
-  <meta name="twitter:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Shared to Dedicated is supported, and the recommended migration path.">
+  <meta name="twitter:title" content="Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?">
+  <meta name="twitter:description" content="Clarifying whether a Data Guard–based role switchover from Autonomous Data Warehouse Serverless to Dedicated is supported, and the recommended migration path.">
 
       
     
@@ -104,7 +104,7 @@
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?</h1>
+<h1 class="f1 athelas mt3 mb1">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</h1>
       
       
       
@@ -114,13 +114,13 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When planning a migration from Autonomous Data Warehouse (ADW) Shared to ADW Dedicated, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>When planning a migration from <strong>Autonomous Data Warehouse (ADW) Serverless</strong> to <strong>ADW Dedicated</strong>, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
 <p>Let’s break down what that would involve and what Oracle actually supports.</p>
 <hr>
 <h3 id="the-proposed-scenario">The Proposed Scenario</h3>
 <p>The idea typically goes like this:</p>
 <ol>
-<li>Set up a standby (peer) database on ADW Dedicated.</li>
+<li>Set up a <strong>standby (peer) database</strong> on <strong>Exadata Dedicated (19c)</strong>.</li>
 <li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
 <li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
 </ol>
@@ -128,12 +128,12 @@
 <hr>
 <h3 id="is-this-supported">Is This Supported?</h3>
 <p><strong>No</strong>, it is not supported.</p>
-<p>You cannot set up a peer or standby database for an Autonomous Data Warehouse Shared (ADW-S) instance on an ADW Dedicated (ADW-D) instance or vice versa.<br>
-<strong>Cross-type Data Guard configurations</strong> — between Shared and Dedicated — are not supported.</p>
-<p>This restriction exists because the infrastructure and management models of the two environments are fundamentally different. Autonomous Shared and Dedicated operate on separate control planes, with distinct automation and resource management layers.  As a result, Oracle does not allow mixing the two for replication, standby, or peer configurations.</p>
+<p>You <strong>cannot</strong> set up a peer or standby database for an <strong>Autonomous Data Warehouse  (ADW-S)</strong> instance on an <strong>ADW Dedicated (ADW-D)</strong> instance.<br>
+<strong>Cross-type Data Guard configurations</strong> — between Serverless and Dedicated — are <strong>not supported</strong>.</p>
+<p>This restriction exists because the <strong>infrastructure and management models</strong> of the two environments are fundamentally different. Autonomous Serverless and Dedicated operate on separate control planes, with distinct automation and resource management layers.  As a result, Oracle does not allow <strong>mixing the two</strong> for replication, standby, or peer configurations.</p>
 <hr>
 <h3 id="recommended-migration-path">Recommended Migration Path</h3>
-<p>For migrations between ADW Shared and Dedicated environments, Oracle recommends using <strong>Zero Downtime Migration (ZDM)</strong>.</p>
+<p>For migrations between ADW Serverless and Dedicated environments, Oracle recommends using <strong>Zero Downtime Migration (ZDM)</strong>.</p>
 <p><strong>ZDM</strong> provides a controlled, Oracle-supported workflow for:</p>
 <ul>
 <li>Moving data and metadata</li>
@@ -161,13 +161,14 @@
       <tr>
           <td>Zero Downtime Migration (ZDM)</td>
           <td>✅ Yes</td>
-          <td>Oracle-recommended for Shared → Dedicated migrations</td>
+          <td>Oracle-recommended for Serverless → Dedicated migrations</td>
       </tr>
   </tbody>
 </table>
 <hr>
 <h3 id="final-thoughts">Final Thoughts</h3>
-<p>While a Data Guard–style switchover might seem appealing conceptually, it’s simply not feasible across Autonomous Shared and Dedicated boundaries.<strong>ZDM</strong> remains the correct and supported way to move from ADW Shared to ADW Dedicated, ensuring both data integrity and compliance with Oracle’s operational model.</p>
+<p>While a Data Guard–style switchover might seem appealing conceptually, it’s simply not feasible across Autonomous Serverless and Dedicated boundaries.<br>
+<strong>ZDM</strong> remains the correct and supported way to move from <strong>ADW Serverless</strong> to <strong>ADW Dedicated</strong>, ensuring both data integrity and compliance with Oracle’s operational model.</p>
 <hr>
 <ul class="pa0">
   
