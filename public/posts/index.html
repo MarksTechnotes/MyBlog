@@ -145,6 +145,43 @@
 
         </div>
       
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/exacs-bastion/" class="link black dim">
+        Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="1-prerequisites">1. Prerequisites</h3>
+<ul>
+<li>SSH key (<code>id_rsa</code>) configured.</li>
+<li>Bastion session (SSH Port forwarding) details ready.</li>
+<li>SQL Developer installed.</li>
+</ul>
+<p>Reference: Bastion Concepts (<a href="https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm">https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm</a>)</p>
+<hr>
+<h3 id="2-port-forwarding-command">2. Port Forwarding Command</h3>
+<p>Forward local port 1521 to the ExaCS VM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p <span style="color:#ae81ff">22</span> &lt;BASTION_SESSION_OCID&gt;
+</span></span></code></pre></div><h3 id="explanation">Explanation</h3>
+<ul>
+<li><code>-v</code> → verbose mode (for debugging)</li>
+<li><code>-i id_rsa</code> → use your SSH key</li>
+<li><code>-N</code> → no remote shell command, just forward ports</li>
+<li><code>-L 1521:&lt;EXACS_VM_IP&gt;:1521</code> → forward local port 1521 to the VM’s 1521 port</li>
+<li><code>-p 22</code> → SSH port for the Bastion</li>
+</ul>
+<p>Keep this terminal session open while connecting from SQL Developer.</p>
+    </div>
+    <a href="/MyBlog/posts/exacs-bastion/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
     </section></article>
 
     </main>
