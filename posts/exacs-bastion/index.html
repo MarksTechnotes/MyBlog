@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="1. Prerequisites
+
+SSH key (id_rsa) configured.
+Bastion session (SSH Port forwarding) details ready.
+SQL Developer installed.
+
+Reference: Bastion Concepts (https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)
+
+2. Port Forwarding Command
+Forward local port 1521 to the ExaCS VM:
+ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_OCID&gt;
+Explanation
+
+-v → verbose mode (for debugging)
+-i id_rsa → use your SSH key
+-N → no remote shell command, just forward ports
+-L 1521:&lt;EXACS_VM_IP&gt;:1521 → forward local port 1521 to the VM’s 1521 port
+-p 22 → SSH port for the Bastion
+
+Keep this terminal session open while connecting from SQL Developer.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop">
+  <meta property="og:description" content="1. Prerequisites SSH key (id_rsa) configured. Bastion session (SSH Port forwarding) details ready. SQL Developer installed. Reference: Bastion Concepts (https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)
+2. Port Forwarding Command Forward local port 1521 to the ExaCS VM:
+ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_OCID&gt; Explanation -v → verbose mode (for debugging) -i id_rsa → use your SSH key -N → no remote shell command, just forward ports -L 1521:&lt;EXACS_VM_IP&gt;:1521 → forward local port 1521 to the VM’s 1521 port -p 22 → SSH port for the Bastion Keep this terminal session open while connecting from SQL Developer.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-02T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ExaCS">
+    <meta property="article:tag" content="SQL Developer">
+    <meta property="article:tag" content="Bastion">
+    <meta property="article:tag" content="Port Forwarding">
+
+  <meta itemprop="name" content="Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop">
+  <meta itemprop="description" content="1. Prerequisites SSH key (id_rsa) configured. Bastion session (SSH Port forwarding) details ready. SQL Developer installed. Reference: Bastion Concepts (https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)
+2. Port Forwarding Command Forward local port 1521 to the ExaCS VM:
+ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_OCID&gt; Explanation -v → verbose mode (for debugging) -i id_rsa → use your SSH key -N → no remote shell command, just forward ports -L 1521:&lt;EXACS_VM_IP&gt;:1521 → forward local port 1521 to the VM’s 1521 port -p 22 → SSH port for the Bastion Keep this terminal session open while connecting from SQL Developer.">
+  <meta itemprop="datePublished" content="2025-11-02T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-02T00:00:00+00:00">
+  <meta itemprop="wordCount" content="163">
+  <meta itemprop="keywords" content="Oracle,ExaCS,SQL Developer,Bastion,Port Forwarding">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop">
+  <meta name="twitter:description" content="1. Prerequisites SSH key (id_rsa) configured. Bastion session (SSH Port forwarding) details ready. SQL Developer installed. Reference: Bastion Concepts (https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)
+2. Port Forwarding Command Forward local port 1521 to the ExaCS VM:
+ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_OCID&gt; Explanation -v → verbose mode (for debugging) -i id_rsa → use your SSH key -N → no remote shell command, just forward ports -L 1521:&lt;EXACS_VM_IP&gt;:1521 → forward local port 1521 to the VM’s 1521 port -p 22 → SSH port for the Bastion Keep this terminal session open while connecting from SQL Developer.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-02T00:00:00Z">November 2, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h3 id="1-prerequisites">1. Prerequisites</h3>
+<ul>
+<li>SSH key (<code>id_rsa</code>) configured.</li>
+<li>Bastion session (SSH Port forwarding) details ready.</li>
+<li>SQL Developer installed.</li>
+</ul>
+<p>Reference: Bastion Concepts (<a href="https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm">https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm</a>)</p>
+<hr>
+<h3 id="2-port-forwarding-command">2. Port Forwarding Command</h3>
+<p>Forward local port 1521 to the ExaCS VM:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p <span style="color:#ae81ff">22</span> &lt;BASTION_SESSION_OCID&gt;
+</span></span></code></pre></div><h3 id="explanation">Explanation</h3>
+<ul>
+<li><code>-v</code> → verbose mode (for debugging)</li>
+<li><code>-i id_rsa</code> → use your SSH key</li>
+<li><code>-N</code> → no remote shell command, just forward ports</li>
+<li><code>-L 1521:&lt;EXACS_VM_IP&gt;:1521</code> → forward local port 1521 to the VM’s 1521 port</li>
+<li><code>-p 22</code> → SSH port for the Bastion</li>
+</ul>
+<p>Keep this terminal session open while connecting from SQL Developer.</p>
+<hr>
+<h3 id="3-connect-using-sql-developer">3. Connect Using SQL Developer</h3>
+<ol>
+<li>Open <strong>SQL Developer</strong> on your laptop.</li>
+<li>Create a New Connection with the following details:</li>
+</ol>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Hostname / IP</td>
+          <td>localhost</td>
+      </tr>
+      <tr>
+          <td>Port</td>
+          <td>1521</td>
+      </tr>
+      <tr>
+          <td>Service Name</td>
+          <td><code>&lt;EXACS_SERVICE_NAME&gt;</code></td>
+      </tr>
+      <tr>
+          <td>Username / Password</td>
+          <td>Your ExaCS credentials</td>
+      </tr>
+  </tbody>
+</table>
+<ol start="3">
+<li>Test the connection and save.</li>
+</ol>
+<h3 id="4-tips">4. Tips</h3>
+<ul>
+<li>Keep the <strong>Bastion session</strong> active while using SQL Developer.</li>
+<li>Use <code>-v</code> for debugging connection issues.</li>
+<li>Optionally, create a script or SSH config for repeated use.</li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/exacs/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ExaCS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/sql-developer/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">SQL Developer</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/bastion/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Bastion</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/port-forwarding/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Port Forwarding</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

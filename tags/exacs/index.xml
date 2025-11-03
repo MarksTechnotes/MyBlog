@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Oracle on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-    <description>Recent content in Oracle on Mark’s Tech Notes</description>
+    <title>ExaCS on Mark’s Tech Notes</title>
+    <link>https://markstechnotes.github.io/MyBlog/tags/exacs/</link>
+    <description>Recent content in ExaCS on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/</link>
-      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/</guid>
-      <description>&lt;p&gt;When planning a migration from Autonomous Data Warehouse (ADW) Shared to ADW Dedicated, one question that often comes up is whether you can use a &lt;strong&gt;peer or standby database&lt;/strong&gt; setup — similar to a traditional &lt;strong&gt;Data Guard switchover&lt;/strong&gt; — to transition environments.&lt;/p&gt;&#xA;&lt;p&gt;Let’s break down what that would involve and what Oracle actually supports.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-proposed-scenario&#34;&gt;The Proposed Scenario&lt;/h3&gt;&#xA;&lt;p&gt;The idea typically goes like this:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Set up a standby (peer) database on ADW Dedicated.&lt;/li&gt;&#xA;&lt;li&gt;Perform a &lt;strong&gt;role switchover&lt;/strong&gt;, making the Dedicated database the new primary.&lt;/li&gt;&#xA;&lt;li&gt;Later, upgrade to &lt;strong&gt;23ai&lt;/strong&gt; as part of the post-migration plan.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This approach essentially models a &lt;strong&gt;Data Guard–based migration&lt;/strong&gt;, using role switchovers to minimize downtime.&lt;/p&gt;</description>
-    </item>
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/exacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/</link>
