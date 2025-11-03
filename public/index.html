@@ -144,17 +144,17 @@
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/adw-peer-switchover/" class="color-inherit dim link">
-            Is Peer Database Role Switchover (ADW Shared → ADW Dedicated) supported?
+            Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>When planning a migration from Autonomous Data Warehouse (ADW) Shared to ADW Dedicated, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+          <p>When planning a migration from <strong>Autonomous Data Warehouse (ADW) Serverless</strong> to <strong>ADW Dedicated</strong>, one question that often comes up is whether you can use a <strong>peer or standby database</strong> setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
 <p>Let’s break down what that would involve and what Oracle actually supports.</p>
 <hr>
 <h3 id="the-proposed-scenario">The Proposed Scenario</h3>
 <p>The idea typically goes like this:</p>
 <ol>
-<li>Set up a standby (peer) database on ADW Dedicated.</li>
+<li>Set up a <strong>standby (peer) database</strong> on <strong>Exadata Dedicated (19c)</strong>.</li>
 <li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
 <li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
 </ol>
