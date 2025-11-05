@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DBCA</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/dbca/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/dbca/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GNOME</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/gnome/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/gnome/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/linux/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OCI</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oci/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oci/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SSH</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/ssh/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/ssh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>VNC</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/vnc/</link>
+      <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/vnc/</guid>
+      <description></description>
+    </item>
     <item>
       <title>ADW</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/adw/</link>
@@ -48,13 +97,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/migration/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/migration/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oracle</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
       <description></description>
     </item>
     <item>
