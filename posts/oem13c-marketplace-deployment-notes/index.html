@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Personal deployment notes on setting up Oracle Enterprise Manager 13c using the Marketplace image on Oracle Cloud Infrastructure.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment">
+  <meta property="og:description" content="Personal deployment notes on setting up Oracle Enterprise Manager 13c using the Marketplace image on Oracle Cloud Infrastructure.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-09T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="OEM">
+    <meta property="article:tag" content="OCI">
+    <meta property="article:tag" content="Cloud">
+    <meta property="article:tag" content="Marketplace">
+
+  <meta itemprop="name" content="Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment">
+  <meta itemprop="description" content="Personal deployment notes on setting up Oracle Enterprise Manager 13c using the Marketplace image on Oracle Cloud Infrastructure.">
+  <meta itemprop="datePublished" content="2025-11-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="295">
+  <meta itemprop="keywords" content="Oracle,OEM,OCI,Cloud,Marketplace">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment">
+  <meta name="twitter:description" content="Personal deployment notes on setting up Oracle Enterprise Manager 13c using the Marketplace image on Oracle Cloud Infrastructure.">
+
+      
+    
+	
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-09T00:00:00Z">November 9, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>I recently deployed <strong>Oracle Enterprise Manager (OEM) 13c</strong> on <strong>Oracle Cloud Infrastructure (OCI)</strong> using the <strong>OEM Marketplace image</strong>.<br>
+This post captures the key steps and observations from that quick deployment.</p>
+<hr>
+<h3 id="oem-marketplace-image"><strong>OEM Marketplace Image</strong></h3>
+<p>The OEM Marketplace image used was available here:<br>
+👉 <a href="https://cloudmarketplace.oracle.com/marketplace/en_US/listing/104183179">OEM 13c Marketplace Image</a></p>
+<p>The Marketplace option made setup straightforward — a single-instance OMS installation without manual configuration steps.</p>
+<hr>
+<h3 id="deployment-setup"><strong>Deployment Setup</strong></h3>
+<ul>
+<li>Chose the <strong>Simple</strong> deployment size which provides a single node deployment with an Oracle single instance database as a repository</li>
+<li>Used an <strong>existing VCN and public subnet</strong> to avoid creating a bastion host.</li>
+<li>Selected a <strong>Standard2 VM shape</strong> due to <strong>quota restrictions</strong> in my tenancy.</li>
+<li>Chose to deploy in a <strong>public subnet</strong> so I could access the OEM console directly from my laptop browser.</li>
+</ul>
+<p>To resolve an <strong>invalid SSH key</strong> error during provisioning, I generated a new PEM-format key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh-keygen -t rsa -m PEM
+</span></span></code></pre></div><h3 id="installation-observations">Installation Observations</h3>
+<ul>
+<li><strong>Total installation time:</strong> ~25 minutes</li>
+</ul>
+<p>The setup completed successfully and provided post-install details, including:</p>
+<p><strong>Post-Installation Details</strong></p>
+<ul>
+<li><strong>EM URL:</strong> <code>https://&lt;public_ip&gt;:7799/em</code></li>
+<li><strong>WebLogic URL:</strong> <code>https://&lt;public_ip&gt;:7101/console</code></li>
+<li><strong>EM Middleware Home:</strong> <code>/u01/app/oracle/em/middleware_135</code></li>
+<li><strong>EM Agent Home:</strong> <code>/u01/emagent/agent_13.5.0.0.0</code></li>
+<li><strong>Oracle Database SID:</strong> <code>emrep</code></li>
+<li><strong>DB Connect String:</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>(DESCRIPTION=
+</span></span><span style="display:flex;"><span>    (ADDRESS_LIST=
+</span></span><span style="display:flex;"><span>        (ADDRESS=(PROTOCOL=TCP)(HOST=oms1)(PORT=1521))
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    (CONNECT_DATA=
+</span></span><span style="display:flex;"><span>        (SERVICE_NAME=empdb)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h3 id="accessing-oem">Accessing OEM</h3>
+<p>After the installation finished, I accessed the OEM console directly from my laptop browser:</p>
+<ul>
+<li>URL: <code>https://&lt;public_ip&gt;:7799/em</code></li>
+<li>Login: <code>sysman/&lt;your password&gt;</code></li>
+</ul>
+<p>WebLogic Console access was also verified:</p>
+<ul>
+<li>URL: <code>https://&lt;public_ip&gt;:7101/console</code></li>
+<li>Login: <code>weblogic /&lt;your password&gt;</code></li>
+</ul>
+<p>Since the VM was deployed in a <strong>public subnet</strong>, I could reach <strong>Oracle Enterprise Manager (OEM)</strong>  — direct browser access worked perfectly.</p>
+<hr>
+<h3 id="summary">Summary</h3>
+<p>This was a quick and successful deployment of <strong>OEM 13c on OCI</strong> using an OEM Marketplace image.<br>
+The Marketplace installer handled most of the configuration automatically, and direct browser access made the setup clean and simple.</p>
+<p><strong>Total time from launch to login:</strong> under 30 minutes.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oem/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">OEM</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oci/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">OCI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/cloud/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Cloud</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/marketplace/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Marketplace</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

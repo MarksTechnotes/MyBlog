@@ -3,13 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/cloud/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/cloud/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/marketplace/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oci/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oem/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
+    <lastmod>2025-11-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/dbca/</loc>
     <lastmod>2025-11-03T00:00:00+00:00</lastmod>
@@ -20,25 +47,10 @@
     <loc>https://markstechnotes.github.io/MyBlog/tags/linux/</loc>
     <lastmod>2025-11-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/oci/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</loc>
     <lastmod>2025-11-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/ssh/</loc>
-    <lastmod>2025-11-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
     <lastmod>2025-11-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/vnc/</loc>

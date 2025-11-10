@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2025-11-03T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-11-03T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-11-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-09T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -115,6 +115,44 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="color-inherit dim link">
+            Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>I recently deployed <strong>Oracle Enterprise Manager (OEM) 13c</strong> on <strong>Oracle Cloud Infrastructure (OCI)</strong> using the <strong>OEM Marketplace image</strong>.<br>
+This post captures the key steps and observations from that quick deployment.</p>
+<hr>
+<h3 id="oem-marketplace-image"><strong>OEM Marketplace Image</strong></h3>
+<p>The OEM Marketplace image used was available here:<br>
+👉 <a href="https://cloudmarketplace.oracle.com/marketplace/en_US/listing/104183179">OEM 13c Marketplace Image</a></p>
+<p>The Marketplace option made setup straightforward — a single-instance OMS installation without manual configuration steps.</p>
+<hr>
+<h3 id="deployment-setup"><strong>Deployment Setup</strong></h3>
+<ul>
+<li>Chose the <strong>Simple</strong> deployment size which provides a single node deployment with an Oracle single instance database as a repository</li>
+<li>Used an <strong>existing VCN and public subnet</strong> to avoid creating a bastion host.</li>
+<li>Selected a <strong>Standard2 VM shape</strong> due to <strong>quota restrictions</strong> in my tenancy.</li>
+<li>Chose to deploy in a <strong>public subnet</strong> so I could access the OEM console directly from my laptop browser.</li>
+</ul>
+<p>To resolve an <strong>invalid SSH key</strong> error during provisioning, I generated a new PEM-format key:</p>
+        </div>
+        <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="color-inherit dim link">
             Running DBCA in GUI Mode on an OCI Linux VM
             </a>
@@ -170,45 +208,18 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/adw-peer-switchover/" class="color-inherit dim link">
-            Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
-<p>Let’s break down what that would involve and what Oracle actually supports.</p>
-<hr>
-<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
-<p>The idea typically goes like this:</p>
-<ol>
-<li>Set up a <strong>standby (peer) database</strong> on Exadata Dedicated.</li>
-<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
-<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
-</ol>
-<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
-        </div>
-        <a href="/MyBlog/posts/adw-peer-switchover/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
+                Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/exacs-bastion/" class="link black dim">
