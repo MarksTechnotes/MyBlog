@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/</link>
+      <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/</guid>
+      <description>&lt;p&gt;I recently deployed &lt;strong&gt;Oracle Enterprise Manager (OEM) 13c&lt;/strong&gt; on &lt;strong&gt;Oracle Cloud Infrastructure (OCI)&lt;/strong&gt; using the &lt;strong&gt;OEM Marketplace image&lt;/strong&gt;.&lt;br&gt;&#xA;This post captures the key steps and observations from that quick deployment.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;oem-marketplace-image&#34;&gt;&lt;strong&gt;OEM Marketplace Image&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;p&gt;The OEM Marketplace image used was available here:&lt;br&gt;&#xA;👉 &lt;a href=&#34;https://cloudmarketplace.oracle.com/marketplace/en_US/listing/104183179&#34;&gt;OEM 13c Marketplace Image&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The Marketplace option made setup straightforward — a single-instance OMS installation without manual configuration steps.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;deployment-setup&#34;&gt;&lt;strong&gt;Deployment Setup&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Chose the &lt;strong&gt;Simple&lt;/strong&gt; deployment size which provides a single node deployment with an Oracle single instance database as a repository&lt;/li&gt;&#xA;&lt;li&gt;Used an &lt;strong&gt;existing VCN and public subnet&lt;/strong&gt; to avoid creating a bastion host.&lt;/li&gt;&#xA;&lt;li&gt;Selected a &lt;strong&gt;Standard2 VM shape&lt;/strong&gt; due to &lt;strong&gt;quota restrictions&lt;/strong&gt; in my tenancy.&lt;/li&gt;&#xA;&lt;li&gt;Chose to deploy in a &lt;strong&gt;public subnet&lt;/strong&gt; so I could access the OEM console directly from my laptop browser.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;To resolve an &lt;strong&gt;invalid SSH key&lt;/strong&gt; error during provisioning, I generated a new PEM-format key:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Running DBCA in GUI Mode on an OCI Linux VM</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</link>
