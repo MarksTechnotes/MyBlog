@@ -154,8 +154,8 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 <li>A <strong>GNOME desktop environment</strong> is installed on the OCI VM. GUI applications like DBCA require a desktop environment to display.</li>
 <li>A <strong>VNC server</strong> (e.g., <code>tigervnc-server</code>) is installed and running on the OCI VM.</li>
 <li>A <strong>VNC client</strong> (such as RealVNC, TightVNC, or TigerVNC Viewer) is installed on your local desktop or laptop.</li>
-<li>If you’re connecting directly over the network, open port <strong>5901</strong> (for display <code>:1</code>) in your OCI security list and VM firewall.</li>
-<li>If you use <strong>SSH tunneling</strong> to access VNC, you <strong>do not need to open any VNC ports</strong> externally — the tunnel handles secure forwarding.</li>
+<li>If you use <strong>SSH tunneling</strong> to access VNC, you <strong>do NOT need to open any VNC ports on the VM</strong> externally — the tunnel handles secure forwarding and all traffic is handled through the SSH port 22.</li>
+<li>If you’re connecting directly over the network <strong>without using SSH tunneling</strong>, open port <strong>5901</strong> (for display <code>:1</code>) in your OCI security list and VM firewall. This is <strong>NOT</strong> recommended because the traffic between your laptop and the VM is <strong>unencrypted</strong>.</li>
 </ul>
 <p>Example of an SSH tunnel for VNC:</p>
     </div>
@@ -255,8 +255,8 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 <li>A <strong>GNOME desktop environment</strong> is installed on the OCI VM. GUI applications like DBCA require a desktop environment to display.</li>
 <li>A <strong>VNC server</strong> (e.g., <code>tigervnc-server</code>) is installed and running on the OCI VM.</li>
 <li>A <strong>VNC client</strong> (such as RealVNC, TightVNC, or TigerVNC Viewer) is installed on your local desktop or laptop.</li>
-<li>If you’re connecting directly over the network, open port <strong>5901</strong> (for display <code>:1</code>) in your OCI security list and VM firewall.</li>
-<li>If you use <strong>SSH tunneling</strong> to access VNC, you <strong>do not need to open any VNC ports</strong> externally — the tunnel handles secure forwarding.</li>
+<li>If you use <strong>SSH tunneling</strong> to access VNC, you <strong>do NOT need to open any VNC ports on the VM</strong> externally — the tunnel handles secure forwarding and all traffic is handled through the SSH port 22.</li>
+<li>If you’re connecting directly over the network <strong>without using SSH tunneling</strong>, open port <strong>5901</strong> (for display <code>:1</code>) in your OCI security list and VM firewall. This is <strong>NOT</strong> recommended because the traffic between your laptop and the VM is <strong>unencrypted</strong>.</li>
 </ul>
 <p>Example of an SSH tunnel for VNC:</p>
     </div>

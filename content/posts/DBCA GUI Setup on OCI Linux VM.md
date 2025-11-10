@@ -18,8 +18,8 @@ Before testing DBCA in GUI mode, ensure the following:
 - A **GNOME desktop environment** is installed on the OCI VM. GUI applications like DBCA require a desktop environment to display.  
 - A **VNC server** (e.g., `tigervnc-server`) is installed and running on the OCI VM.  
 - A **VNC client** (such as RealVNC, TightVNC, or TigerVNC Viewer) is installed on your local desktop or laptop.  
-- If you’re connecting directly over the network, open port **5901** (for display `:1`) in your OCI security list and VM firewall.  
-- If you use **SSH tunneling** to access VNC, you **do not need to open any VNC ports** externally — the tunnel handles secure forwarding.
+- If you use **SSH tunneling** to access VNC, you **do NOT need to open any VNC ports on the VM** externally — the tunnel handles secure forwarding and all traffic is handled through the SSH port 22.
+- If you’re connecting directly over the network **without using SSH tunneling**, open port **5901** (for display `:1`) in your OCI security list and VM firewall. This is **NOT** recommended because the traffic between your laptop and the VM is **unencrypted**.
 
 Example of an SSH tunnel for VNC:
 
