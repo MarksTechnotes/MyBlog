@@ -74,6 +74,25 @@ Since the VM was deployed in a **public subnet**, I could reach **Oracle Enterpr
 
 ---
 
+### Optional: Access the OEM Database from SQL Developer on your laptop
+
+You can connect to the **OEM database (empdb)** from your laptop using **SSH tunneling**:
+
+```bash
+ssh -L 1521:localhost:1521 opc@<VM_PUBLIC_IP> -i <PRIVATE_KEY>
+```
+Then, in SQL Developer, create a new connection:
+
+| Field           | Value                     |
+|-----------------|---------------------------|
+| Username / Role | `SYS` as `SYSDBA`         |
+| Password        | `<YOUR_DB_PASSWORD>`       |
+| Hostname / IP   | `localhost`               |
+| Port            | `1521`                    |
+| Service Name    | `empdb`     |
+
+Keep the SSH tunnel session open while connecting from SQL Developer.
+
 ### Summary
 
 This was a quick and successful deployment of **OEM 13c on OCI** using an OEM Marketplace image.  

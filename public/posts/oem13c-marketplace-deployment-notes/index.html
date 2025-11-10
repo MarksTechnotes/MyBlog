@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Personal deployment notes on setting up Oracle Enterprise Manager 13c using the Marketplace image on Oracle Cloud Infrastructure.">
   <meta itemprop="datePublished" content="2025-11-09T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="295">
+  <meta itemprop="wordCount" content="364">
   <meta itemprop="keywords" content="Oracle,OEM,OCI,Cloud,Marketplace">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment">
@@ -165,6 +165,41 @@ This post captures the key steps and observations from that quick deployment.</p
 </ul>
 <p>Since the VM was deployed in a <strong>public subnet</strong>, I could reach <strong>Oracle Enterprise Manager (OEM)</strong>  — direct browser access worked perfectly.</p>
 <hr>
+<h3 id="optional-access-the-oem-database-from-sql-developer-on-your-laptop">Optional: Access the OEM Database from SQL Developer on your laptop</h3>
+<p>You can connect to the <strong>OEM database (empdb)</strong> from your laptop using <strong>SSH tunneling</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L 1521:localhost:1521 opc@&lt;VM_PUBLIC_IP&gt; -i &lt;PRIVATE_KEY&gt;
+</span></span></code></pre></div><p>Then, in SQL Developer, create a new connection:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Username / Role</td>
+          <td><code>SYS</code> as <code>SYSDBA</code></td>
+      </tr>
+      <tr>
+          <td>Password</td>
+          <td><code>&lt;YOUR_DB_PASSWORD&gt;</code></td>
+      </tr>
+      <tr>
+          <td>Hostname / IP</td>
+          <td><code>localhost</code></td>
+      </tr>
+      <tr>
+          <td>Port</td>
+          <td><code>1521</code></td>
+      </tr>
+      <tr>
+          <td>Service Name</td>
+          <td><code>empdb</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Keep the SSH tunnel session open while connecting from SQL Developer.</p>
 <h3 id="summary">Summary</h3>
 <p>This was a quick and successful deployment of <strong>OEM 13c on OCI</strong> using an OEM Marketplace image.<br>
 The Marketplace installer handled most of the configuration automatically, and direct browser access made the setup clean and simple.</p>
