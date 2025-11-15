@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Pump</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/data-pump/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/data-pump/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Migration</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/migration/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/migration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/performance/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/performance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cloud</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/cloud/</link>
@@ -34,13 +69,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/oem/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/oem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oracle</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-      <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
       <description></description>
     </item>
     <item>
@@ -86,13 +114,6 @@
       <description></description>
     </item>
     <item>
-      <title>Autonomous Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
-      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Bastion</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/bastion/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
@@ -111,13 +132,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/exacs/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/exacs/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Migration</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/migration/</link>
-      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/migration/</guid>
       <description></description>
     </item>
     <item>
