@@ -7,7 +7,7 @@ tags: ["Oracle", "Autonomous Database", "Data Pump", "Migration", "Performance"]
 categories: ["Database", "Cloud"]
 ---
 
-Many DBAs prefer using **Oracle Data Pump** when migrating data into **Autonomous Database (ADB)**, largely because the tool is familiar and reliable. However, Data Pump imports can become **slow and resource-intensive**, especially when migrating databases larger than **100 GB**.
+Many DBAs prefer using **Oracle Data Pump** when migrating data into **Autonomous Database (ADB)**, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than **100 GB**. In one customer case I was involved in, a **650 GB import** into ADB took **18 hours** to complete - clearly a pain point.
 
 Over several customer engagements, I’ve found that a few simple adjustments can dramatically reduce import times and make the overall migration process smoother.
 

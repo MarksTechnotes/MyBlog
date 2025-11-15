@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Practical guidelines to improve performance and reduce runtime when importing large databases into Oracle Autonomous Database using Data Pump.">
   <meta itemprop="datePublished" content="2025-11-14T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-14T00:00:00+00:00">
-  <meta itemprop="wordCount" content="297">
+  <meta itemprop="wordCount" content="321">
   <meta itemprop="keywords" content="Oracle,Autonomous Database,Data Pump,Migration,Performance">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)">
@@ -113,7 +113,7 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become <strong>slow and resource-intensive</strong>, especially when migrating databases larger than <strong>100 GB</strong>.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than <strong>100 GB</strong>. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
 <p>Over several customer engagements, I’ve found that a few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
 <hr>
 <h2 id="1-use-the-parallel-parameter-wisely">1. Use the <code>parallel</code> parameter wisely</h2>
