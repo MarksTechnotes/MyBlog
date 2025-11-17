@@ -14,7 +14,7 @@ A few simple adjustments can dramatically reduce import times and make the overa
 ---
 ## 1. Temporarily Increase OCPUs for the duration of the import
 
-For large imports, consider temporarily scaling up OCPUs on your ADB instance:
+The ATP-S instance being used by the customer was configured with just 1 OCPU. While enough for the daily workload requirements it was slowing down the import. For large imports, consider temporarily scaling up OCPUs on your ADB instance:
 
 1. Manually increase OCPUs before starting the import  
 2. Run the Data Pump job  
