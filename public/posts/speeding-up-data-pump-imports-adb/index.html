@@ -130,51 +130,51 @@
 <table>
   <thead>
       <tr>
-          <th>OCPUs (Base)</th>
-          <th>Recommended PARALLEL</th>
-          <th>Notes / Guidelines</th>
+          <th style="text-align: left">OCPUs (Base)</th>
+          <th style="text-align: left">Recommended PARALLEL</th>
+          <th style="text-align: left">Notes / Guidelines</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>1</td>
-          <td>1</td>
-          <td>Single worker; no parallelism.</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">1</td>
+          <td style="text-align: left">Single worker; no parallelism.</td>
       </tr>
       <tr>
-          <td>2</td>
-          <td>2</td>
-          <td>Safe for small imports.</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">2</td>
+          <td style="text-align: left">Safe for small imports.</td>
       </tr>
       <tr>
-          <td>4</td>
-          <td>4</td>
-          <td>Fully utilize CPU; start point for moderate imports.</td>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">4</td>
+          <td style="text-align: left">Fully utilize CPU; start point for moderate imports.</td>
       </tr>
       <tr>
-          <td>8</td>
-          <td>8</td>
-          <td>Standard for large imports; matches CPU count.</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">8</td>
+          <td style="text-align: left">Standard for large imports; matches CPU count.</td>
       </tr>
       <tr>
-          <td>16</td>
-          <td>16</td>
-          <td>Good for very large datasets; monitor PGA and I/O.</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">16</td>
+          <td style="text-align: left">Good for very large datasets; monitor PGA and I/O.</td>
       </tr>
       <tr>
-          <td>32</td>
-          <td>32</td>
-          <td>Only if the import is truly CPU-bound; ensure TEMP/I/O can handle it.</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">32</td>
+          <td style="text-align: left">Only if the import is truly CPU-bound; ensure TEMP/I/O can handle it.</td>
       </tr>
       <tr>
-          <td>Optional Slight Increase</td>
-          <td>1.25×–1.5× OCPUs</td>
-          <td>Only if CPU utilization is low and I/O is light; monitor closely.</td>
+          <td style="text-align: left">Optional Slight Increase</td>
+          <td style="text-align: left">1.25×–1.5× OCPUs</td>
+          <td style="text-align: left">Only if CPU utilization is low and I/O is light; monitor closely.</td>
       </tr>
       <tr>
-          <td>Avoid</td>
-          <td>2× or more OCPUs</td>
-          <td>Likely to oversubscribe CPU and PGA, causing slower throughput or failures.</td>
+          <td style="text-align: left">Avoid</td>
+          <td style="text-align: left">2× or more OCPUs</td>
+          <td style="text-align: left">Likely to oversubscribe CPU and PGA, causing slower throughput or failures.</td>
       </tr>
   </tbody>
 </table>

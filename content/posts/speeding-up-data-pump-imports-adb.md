@@ -28,7 +28,7 @@ Since ADB scales compute independently and charges by the hour, this approach is
 ### ATP-S Data Pump Import Parallel Cheat Sheet
 
 | OCPUs (Base)       | Recommended PARALLEL       | Notes / Guidelines |
-|-------------------|---------------------------|------------------|
+|:-------------------|:---------------------------|:------------------|
 | 1                 | 1                         | Single worker; no parallelism. |
 | 2                 | 2                         | Safe for small imports. |
 | 4                 | 4                         | Fully utilize CPU; start point for moderate imports. |
