@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Practical guidelines to improve performance and reduce runtime when importing large databases into Oracle Autonomous Database using Data Pump.">
   <meta itemprop="datePublished" content="2025-11-14T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-14T00:00:00+00:00">
-  <meta itemprop="wordCount" content="321">
+  <meta itemprop="wordCount" content="421">
   <meta itemprop="keywords" content="Oracle,Autonomous Database,Data Pump,Migration,Performance">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)">
@@ -114,14 +114,77 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than <strong>100 GB</strong>. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
-<p>Over several customer engagements, I’ve found that a few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
+<p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
 <hr>
-<h2 id="1-use-the-parallel-parameter-wisely">1. Use the <code>parallel</code> parameter wisely</h2>
-<p>A good starting point is:</p>
-<p><code>parallel</code> = 2 × (number of OCPUs)</p>
-<p>Setting <code>parallel</code> too high often leads to <strong>resource contention</strong>, which can slow the import down instead of speeding it up. Moderate parallelism strikes the right balance between performance and stability.</p>
+<h2 id="1-temporarily-increase-ocpus-for-the-duration-of-the-import">1. Temporarily Increase OCPUs for the duration of the import</h2>
+<p>For large imports, consider temporarily scaling up OCPUs on your ADB instance:</p>
+<ol>
+<li>Manually increase OCPUs before starting the import</li>
+<li>Run the Data Pump job</li>
+<li>Scale back down when finished</li>
+</ol>
+<p>Since ADB scales compute independently and charges by the hour, this approach is cost-effective and significantly boosts performance.</p>
 <hr>
-<h2 id="2-use-the-autonomous-database-high-service">2. Use the Autonomous Database <code>HIGH</code> Service</h2>
+<h2 id="2-use-the-parallel-parameter-wisely">2. Use the <code>parallel</code> parameter wisely</h2>
+<h3 id="atp-s-data-pump-import-parallel-cheat-sheet">ATP-S Data Pump Import Parallel Cheat Sheet</h3>
+<table>
+  <thead>
+      <tr>
+          <th>OCPUs (Base)</th>
+          <th>Recommended PARALLEL</th>
+          <th>Notes / Guidelines</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>Single worker; no parallelism.</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>2</td>
+          <td>Safe for small imports.</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>4</td>
+          <td>Fully utilize CPU; start point for moderate imports.</td>
+      </tr>
+      <tr>
+          <td>8</td>
+          <td>8</td>
+          <td>Standard for large imports; matches CPU count.</td>
+      </tr>
+      <tr>
+          <td>16</td>
+          <td>16</td>
+          <td>Good for very large datasets; monitor PGA and I/O.</td>
+      </tr>
+      <tr>
+          <td>32</td>
+          <td>32</td>
+          <td>Only if the import is truly CPU-bound; ensure TEMP/I/O can handle it.</td>
+      </tr>
+      <tr>
+          <td>Optional Slight Increase</td>
+          <td>1.25×–1.5× OCPUs</td>
+          <td>Only if CPU utilization is low and I/O is light; monitor closely.</td>
+      </tr>
+      <tr>
+          <td>Avoid</td>
+          <td>2× or more OCPUs</td>
+          <td>Likely to oversubscribe CPU and PGA, causing slower throughput or failures.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Monitor during import:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>   <span style="color:#66d9ef">SELECT</span> session_id, program, service_name, degree
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">FROM</span> v$session
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">WHERE</span> program <span style="color:#66d9ef">LIKE</span> <span style="color:#e6db74">&#39;%impdp%&#39;</span>;
+</span></span></code></pre></div><p>Setting <code>parallel</code> too high often leads to <strong>resource contention</strong>, which can slow the import down instead of speeding it up. Moderate parallelism strikes the right balance between performance and stability.</p>
+<hr>
+<h2 id="3-use-the-autonomous-database-high-service">3. Use the Autonomous Database <code>HIGH</code> Service</h2>
 <p>For large import operations, always connect using the <code>HIGH</code> service.</p>
 <p>Benefits include:</p>
 <ul>
@@ -131,15 +194,6 @@
 <li>Better throughput for bulk data operations</li>
 </ul>
 <p>This makes it ideal for Data Pump imports where speed matters.</p>
-<hr>
-<h2 id="3-temporarily-increase-ocpus">3. Temporarily Increase OCPUs</h2>
-<p>For large imports, consider temporarily scaling up OCPUs on your ADB instance:</p>
-<ol>
-<li>Manually increase OCPUs before starting the import</li>
-<li>Run the Data Pump job</li>
-<li>Scale back down when finished</li>
-</ol>
-<p>Since ADB scales compute independently and charges by the hour, this approach is cost-effective and significantly boosts performance.</p>
 <hr>
 <h2 id="4-import-only-user-managed-schemas">4. Import Only User-Managed Schemas</h2>
 <p>Instead of importing the entire database, restrict imports to <strong>application schemas</strong> and other user-managed objects.</p>
@@ -152,13 +206,9 @@
 <p>A targeted schema-level import is cleaner and much faster.</p>
 <hr>
 <h2 id="final-thoughts">Final Thoughts</h2>
-<p>While this list is not exhaustive, customers who follow these guidelines consistently experience:</p>
-<ul>
-<li>Faster Data Pump imports</li>
-<li>Shorter migration windows</li>
-<li>Less stress during the migration process</li>
-</ul>
-<p>Since Data Pump is often the slowest phase of an ADB migration, small performance improvements here can make a big impact.</p>
+<p>While this list is not exhaustive, customers who follow these guidelines consistently experience:
+faster Data Pump imports with shorter migration windows.
+Since Data Pump Import is often the slowest phase of an ADB migration, small performance improvements here can make a big impact.</p>
 <ul class="pa0">
   
    <li class="list di">
