@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Practical guidelines to improve performance and reduce runtime when importing large databases into Oracle Autonomous Database using Data Pump.">
   <meta itemprop="datePublished" content="2025-11-14T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-14T00:00:00+00:00">
-  <meta itemprop="wordCount" content="448">
+  <meta itemprop="wordCount" content="455">
   <meta itemprop="keywords" content="Oracle,Autonomous Database,Data Pump,Migration,Performance">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)">
@@ -113,13 +113,13 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than <strong>100 GB</strong>. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than a few 100 GB. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
 <p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
 <hr>
 <h2 id="1-temporarily-increase-ocpus-for-the-duration-of-the-import">1. Temporarily Increase OCPUs for the duration of the import</h2>
 <p>The ATP-S instance being used by the customer was configured with just 1 OCPU. While enough for the daily workload requirements it was slowing down the import. For large imports, consider temporarily scaling up OCPUs on your ADB instance:</p>
 <ol>
-<li>Manually increase OCPUs before starting the import</li>
+<li>Manually increase OCPUs before starting the import even if Auto-Scaling is enabled</li>
 <li>Run the Data Pump job</li>
 <li>Scale back down when finished</li>
 </ol>
