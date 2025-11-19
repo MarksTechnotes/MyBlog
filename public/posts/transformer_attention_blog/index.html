@@ -55,7 +55,7 @@
   <meta itemprop="description" content="A clear and intuitive guide to Transformer architecture, covering attention mechanisms, Q/K/V projections, multi-head attention, feed-forward networks, residuals, layer normalization, and sinusoidal positional encoding.">
   <meta itemprop="datePublished" content="2025-11-19T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-19T00:00:00+00:00">
-  <meta itemprop="wordCount" content="833">
+  <meta itemprop="wordCount" content="928">
   <meta itemprop="keywords" content="Transformers,Attention,Machine Learning,Deep Learning,NLP,GPT,BERT">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks">
@@ -267,7 +267,25 @@ Without a mask, the decoder would “cheat” by looking at future tokens.</p>
 <p>Example: predicting “world” in “Hello world”: the model must not see “world” when trying to predict it.</p>
 <p>Masking ensures autoregressive generation is learned correctly.</p>
 <hr>
-<h2 id="10-summary-how-a-transformer-layer-works">10. Summary: How a Transformer Layer Works</h2>
+<h2 id="10-simultaneous-weight-updates">10. Simultaneous Weight Updates</h2>
+<p>All weight matrices in a Transformer layer — $W_Q, W_K, W_V, W1, W2$ — are updated simultaneously during training via gradient descent.</p>
+<p><strong>Forward pass:</strong> compute attention context vectors and FFN outputs. <br>
+<strong>Loss computation:</strong> compare predictions with true labels.  <br>
+<strong>Backpropagation:</strong> compute gradients w.r.t all parameters.</p>
+<div style="text-align: left;"> 
+<p>$$
+\frac{\partial L}{\partial W_Q}, \quad
+\frac{\partial L}{\partial W_K}, \quad
+\frac{\partial L}{\partial W_V}, \quad
+\frac{\partial L}{\partial W_1}, \quad
+\frac{\partial L}{\partial W_2}
+$$</p>
+</div>  
+<p><strong>Optimizer step:</strong> update $W_Q, W_K, W_V, W1, W2$ (and biases) together.</p>
+<p><strong>Intuition:</strong></p>
+<p>$W_Q/W_K/W_V$ = learn how tokens communicate <br>
+$W1/W2$ = learn how tokens transform themselves independently</p>
+<h2 id="11-summary-how-a-transformer-layer-works">11. Summary: How a Transformer Layer Works</h2>
 <p>For each layer:</p>
 <ol>
 <li><strong>(Decoder only) Masked self-attention</strong></li>

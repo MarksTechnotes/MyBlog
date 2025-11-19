@@ -207,7 +207,34 @@ Masking ensures autoregressive generation is learned correctly.
 
 ---
 
-## 10. Summary: How a Transformer Layer Works
+## 10. Simultaneous Weight Updates
+
+All weight matrices in a Transformer layer — $W_Q, W_K, W_V, W1, W2$ — are updated simultaneously during training via gradient descent.
+
+**Forward pass:** compute attention context vectors and FFN outputs.    
+**Loss computation:** compare predictions with true labels.     
+**Backpropagation:** compute gradients w.r.t all parameters. 
+<div style="text-align: left;"> 
+
+$$
+\frac{\partial L}{\partial W_Q}, \quad
+\frac{\partial L}{\partial W_K}, \quad
+\frac{\partial L}{\partial W_V}, \quad
+\frac{\partial L}{\partial W_1}, \quad
+\frac{\partial L}{\partial W_2}
+$$  
+
+</div>  
+
+**Optimizer step:** update $W_Q, W_K, W_V, W1, W2$ (and biases) together.    
+
+**Intuition:**
+
+$W_Q/W_K/W_V$ = learn how tokens communicate    
+$W1/W2$ = learn how tokens transform themselves independently
+
+
+## 11. Summary: How a Transformer Layer Works
 
 For each layer:
 
