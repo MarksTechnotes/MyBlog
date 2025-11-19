@@ -2,3 +2,7 @@ baseURL = "https://markstechnotes.github.io/MyBlog/"
 languageCode = "en-us"
 title = "Mark’s Tech Notes"
 theme = "ananke"
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
