@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2025-11-14T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-11-14T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-11-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-19T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -115,6 +115,30 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/transformer_attention_blog/" class="color-inherit dim link">
+            Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>Transformers have become the foundation of modern language models like GPT, PaLM, and LLaMA. But their internal workings — attention heads, Q/K/V projections, sinusoidal positional encodings, feed-forward networks — can feel overwhelming. Ironically or probably aptly, I used ChatGPT which is based on the Transformers architecture to help explain to me the concepts and it did a great job.<br>
+This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.</p>
+        </div>
+        <a href="/MyBlog/posts/transformer_attention_blog/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="color-inherit dim link">
             Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)
             </a>
@@ -169,41 +193,6 @@ This post captures the key steps and observations from that quick deployment.</p
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="color-inherit dim link">
-            Running DBCA in GUI Mode on an OCI Linux VM
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>When working with Oracle databases on OCI Linux VMs, you may want to run <strong>Database Configuration Assistant (DBCA)</strong> in GUI mode instead of command-line mode.<br>
-This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC session</strong>, and optionally <strong>SSH tunneling</strong> for secure access.</p>
-<hr>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>Before testing DBCA in GUI mode, ensure the following:</p>
-<ul>
-<li>A <strong>GNOME desktop environment</strong> is installed on the OCI VM. GUI applications like DBCA require a desktop environment to display.</li>
-<li>A <strong>VNC server</strong> (e.g., <code>tigervnc-server</code>) is installed and running on the OCI VM.</li>
-<li>A <strong>VNC client</strong> (such as RealVNC, TightVNC, or TigerVNC Viewer) is installed on your local desktop or laptop.</li>
-<li>If you use <strong>SSH tunneling</strong> to access VNC, you <strong>do NOT need to open any VNC ports on the VM</strong> externally — the tunnel handles secure forwarding and all traffic is handled through the SSH port 22.</li>
-<li>If you’re connecting directly over the network <strong>without using SSH tunneling</strong>, open port <strong>5901</strong> (for display <code>:1</code>) in your OCI security list and VM firewall. This is <strong>NOT</strong> recommended because the traffic between your laptop and the VM is <strong>unencrypted</strong>.</li>
-</ul>
-<p>Example of an SSH tunnel for VNC:</p>
-        </div>
-        <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
@@ -212,8 +201,8 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/first-post/" class="link black dim">
-                Smart Scan Demo on Exadata Cloud Service (ExaCS)
+              <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="link black dim">
+                Running DBCA in GUI Mode on an OCI Linux VM
               </a>
             </h2>
           
@@ -226,6 +215,12 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/exacs-bastion/" class="link black dim">
                 Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/first-blog-post/" class="link black dim">
+                Smart Scan Demo on Exadata Cloud Service (ExaCS)
               </a>
             </h2>
           
