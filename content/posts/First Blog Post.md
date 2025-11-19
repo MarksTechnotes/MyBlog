@@ -1,8 +1,10 @@
-+++
-date = '2025-11-02T17:11:40-06:00'
-draft = false
-title = 'Smart Scan Demo on Exadata Cloud Service (ExaCS)'
-+++
+---
+title: "Smart Scan Demo on Exadata Cloud Service (ExaCS)"
+date: 2025-11-02
+draft: false
+tags: ["Oracle", "ExaCS", "Smart Scan", "Exadata"]
+categories: ["Cloud", "Database"]
+---
 
 
 One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.
