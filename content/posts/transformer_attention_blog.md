@@ -228,6 +228,13 @@ $$
 
 **Optimizer step:** update $W_Q, W_K, W_V, W1, W2$ (and biases) together.    
 
+$W_Q \leftarrow W_Q - \eta \frac{\partial L}{\partial W_Q}$,  
+$W_K \leftarrow W_K - \eta \frac{\partial L}{\partial W_K}$,  
+$W_V \leftarrow W_V - \eta \frac{\partial L}{\partial W_V}$,  
+$W_1 \leftarrow W_1 - \eta \frac{\partial L}{\partial W_1}$,  
+$W_2 \leftarrow W_2 - \eta \frac{\partial L}{\partial W_2}$.
+
+
 **Intuition:**
 
 $W_Q/W_K/W_V$ = learn how tokens communicate    

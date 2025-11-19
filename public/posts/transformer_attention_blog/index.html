@@ -55,7 +55,7 @@
   <meta itemprop="description" content="A clear and intuitive guide to Transformer architecture, covering attention mechanisms, Q/K/V projections, multi-head attention, feed-forward networks, residuals, layer normalization, and sinusoidal positional encoding.">
   <meta itemprop="datePublished" content="2025-11-19T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-19T00:00:00+00:00">
-  <meta itemprop="wordCount" content="928">
+  <meta itemprop="wordCount" content="968">
   <meta itemprop="keywords" content="Transformers,Attention,Machine Learning,Deep Learning,NLP,GPT,BERT">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks">
@@ -282,6 +282,11 @@ Without a mask, the decoder would “cheat” by looking at future tokens.</p>
 $$</p>
 </div>  
 <p><strong>Optimizer step:</strong> update $W_Q, W_K, W_V, W1, W2$ (and biases) together.</p>
+<p>$W_Q \leftarrow W_Q - \eta \frac{\partial L}{\partial W_Q}$,<br>
+$W_K \leftarrow W_K - \eta \frac{\partial L}{\partial W_K}$,<br>
+$W_V \leftarrow W_V - \eta \frac{\partial L}{\partial W_V}$,<br>
+$W_1 \leftarrow W_1 - \eta \frac{\partial L}{\partial W_1}$,<br>
+$W_2 \leftarrow W_2 - \eta \frac{\partial L}{\partial W_2}$.</p>
 <p><strong>Intuition:</strong></p>
 <p>$W_Q/W_K/W_V$ = learn how tokens communicate <br>
 $W1/W2$ = learn how tokens transform themselves independently</p>
