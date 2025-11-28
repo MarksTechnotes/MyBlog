@@ -31,26 +31,26 @@
 
     
     
-      <link href="/MyBlog/categories/machine-learning/index.xml" rel="alternate" type="application/rss+xml" title="Mark’s Tech Notes" />
-      <link href="/MyBlog/categories/machine-learning/index.xml" rel="feed" type="application/rss+xml" title="Mark’s Tech Notes" />
+      <link href="/MyBlog/tags/python/index.xml" rel="alternate" type="application/rss+xml" title="Mark’s Tech Notes" />
+      <link href="/MyBlog/tags/python/index.xml" rel="feed" type="application/rss+xml" title="Mark’s Tech Notes" />
       
     
 
     
-      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/categories/machine-learning/">
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/tags/python/">
     
 
-    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/categories/machine-learning/">
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/tags/python/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Machine Learning">
+  <meta property="og:title" content="Python">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Machine Learning">
+  <meta itemprop="name" content="Python">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Machine Learning">
+  <meta name="twitter:title" content="Python">
 
       
     
@@ -91,7 +91,7 @@
 
       <div class="tc-l pv3 ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Machine Learning
+          Python
         </h1>
         
       </div>
@@ -103,7 +103,7 @@
       
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “Machine Learning”</p>
+      <p>Below you will find pages that utilize the taxonomy term “Python”</p>
     </div>
   </article>
   <div class="mw8 center">
@@ -114,26 +114,44 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="link black dim">
-        Generating and Storing Vector Embeddings in ATP-S 26ai
+      <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/" class="link black dim">
+        How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.</p>
-<p>In <strong>Part 1 of this series</strong>, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.</p>
-<p>This includes:</p>
-<ul>
-<li>Loading a Kaggle dataset</li>
-<li>Creating relational and vector tables</li>
-<li>Concatenating review text into a single embedding input</li>
-<li>Generating embeddings externally using Hugging Face</li>
-<li>Loading embeddings back into Oracle for vector search</li>
-</ul>
+      <p>In the previous post, we prepared <strong>PRODUCT_METADATA</strong> and <strong>PRODUCT_VECTORS</strong> tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.</p>
+<p>In this post, we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using <strong>DB links</strong> and <strong>materialized views</strong>.</p>
 <hr>
-<h2 id="1-dataset-and-initial-setup">1. Dataset and Initial Setup</h2>
-<p>Download the Amazon product review dataset (CSV) from Kaggle. <a href="https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda">https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda</a>. This dataset contains product information, reviews, metadata, and descriptions.</p>
+<h2 id="1-hybrid-search-setup">1. Hybrid Search Setup</h2>
+<p>We want to query relational data in <strong>19c</strong> while performing vector search in <strong>26ai</strong>:</p>
     </div>
-    <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/" class="link black dim">
+        How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h3 id="a-practical-guide-for-hybrid-workloads">A Practical Guide for Hybrid Workloads</h3>
+<p>Modernizing applications doesn&rsquo;t always require a full database
+migration. If you&rsquo;re running Oracle Database 19c today, you can adopt
+Oracle 26ai&rsquo;s powerful vector capabilities without moving all your
+relational data.<br>
+This post shows how to extend your 19c environment with vector search in
+26ai using <strong>database links (DB Links)</strong> and <strong>materialized views
+(MVs)</strong> in a &ldquo;hybrid architecture&rdquo; that adds AI features with minimal
+disruption.</p>
+    </div>
+    <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -167,25 +185,6 @@
 <p>We will be querying two tables:</p>
     </div>
     <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/transformer_attention_blog/" class="link black dim">
-        Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Transformers have become the foundation of modern language models like GPT, PaLM, and LLaMA. But their internal workings — attention heads, Q/K/V projections, sinusoidal positional encodings, feed-forward networks — can feel overwhelming. Ironically or probably aptly, I used ChatGPT which is based on the Transformers architecture to help explain to me the concepts and it did a great job.<br>
-This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.</p>
-    </div>
-    <a href="/MyBlog/posts/transformer_attention_blog/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 

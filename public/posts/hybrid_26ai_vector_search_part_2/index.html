@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta property="og:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ATP-S">
+    <meta property="article:tag" content="26ai">
+    <meta property="article:tag" content="Vector Search">
+    <meta property="article:tag" content="Python">
+
+  <meta itemprop="name" content="Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta itemprop="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
+  <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="400">
+  <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Python">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta name="twitter:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-28T00:00:00Z">November 28, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
+<p>In Part 1, we prepared an Oracle ATP-S 26ai environment by:</p>
+<ul>
+<li>Loading Amazon product data</li>
+<li>Creating relational and vector tables</li>
+<li>Generating embeddings using Hugging Face</li>
+<li>Storing them in <code>PRODUCT_VECTORS</code></li>
+</ul>
+<p>Now in Part 2, we’ll run a customer-style search query by combining:</p>
+<ul>
+<li>a vector similarity search, and</li>
+<li>relational filters from <code>PRODUCT_METADATA</code></li>
+</ul>
+<p>We’ll embed a customer query in Python, submit it to Oracle, and return the closest-matching products.</p>
+<h2 id="1-tables-recap">1. Tables Recap</h2>
+<p>We will be querying two tables:</p>
+<ul>
+<li><code>PRODUCT_METADATA</code> — contains relational product + review information.</li>
+<li><code>PRODUCT_VECTORS</code> — stores the 768-dimensional embeddings:</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>VECTOR_ID</td>
+          <td>Unique ID (e.g., REVIEW_ID or PRODUCT_ID or SYS_GUID())</td>
+      </tr>
+      <tr>
+          <td>PRODUCT_ID</td>
+          <td>Foreign key to metadata</td>
+      </tr>
+      <tr>
+          <td>REVIEW_ID</td>
+          <td>Optional, if embedding per review</td>
+      </tr>
+      <tr>
+          <td>VECTOR_SOURCE</td>
+          <td>Source of text (e.g., concatenated columns)</td>
+      </tr>
+      <tr>
+          <td>EMBEDDING_VECTOR</td>
+          <td>768-dimensional vector</td>
+      </tr>
+      <tr>
+          <td>CREATED_AT</td>
+          <td>Timestamp</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Goal:</strong></p>
+<ul>
+<li>Embed a customer query</li>
+<li>Compare it to <code>EMBEDDING_VECTOR</code></li>
+<li>Return top matches joined with metadata</li>
+</ul>
+<h2 id="2-generate-a-customer-query-embedding-in-python">2. Generate a Customer Query Embedding in Python</h2>
+<p>Use the same Hugging Face model as in Part 1.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#34;all-mpnet-base-v2&#34;</span>)
+</span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lightweight laptop for programming with long battery life&#34;</span>
+</span></span><span style="display:flex;"><span>query_embedding <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>encode(query)<span style="color:#f92672">.</span>tolist()
+</span></span></code></pre></div><p>Consistency between document embeddings and query embeddings is essential.</p>
+<h2 id="3-connect-to-oracle-from-python">3. Connect to Oracle from Python</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> oracledb
+</span></span><span style="display:flex;"><span>connection <span style="color:#f92672">=</span> oracledb<span style="color:#f92672">.</span>connect(
+</span></span><span style="display:flex;"><span>    user<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;ADB_USER&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    password<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;ADB_PASSWORD&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>    dsn<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;ADB_DSN&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>cursor <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span>cursor()
+</span></span></code></pre></div><h2 id="4-how-query_embeddingspy-enables-semantic-search">4. How <code>query_embeddings.py</code> Enables Semantic Search</h2>
+<p>The script converts a customer query into a <strong>vector</strong>, which is sent to Oracle, converted using <code>TO_VECTOR()</code>, and compared against stored embeddings using <code>VECTOR_DISTANCE()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) <span style="color:#66d9ef">AS</span> similarity
+</span></span></code></pre></div><p>Joining with <code>PRODUCT_METADATA</code> allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.</p>
+<p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py</a></p>
+<h2 id="5-perform-hybrid-vector--relational-search">5. Perform Hybrid Vector + Relational Search</h2>
+<p>You can optionally filter by category, price, or rating:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> pm.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Laptops&#39;</span> <span style="color:#66d9ef">AND</span> pm.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><p>Hybrid search leverages both:</p>
+<ul>
+<li><strong>Vectors</strong> → semantic relevance</li>
+<li><strong>SQL</strong> → structured filtering</li>
+</ul>
+<h2 id="6-supporting-19c--26ai-hybrid-deployments">6. Supporting 19c + 26ai Hybrid Deployments</h2>
+<p>For existing Oracle 19c customers:</p>
+<ul>
+<li>Transactional data stays in 19c</li>
+<li>Vector tables reside in 26ai</li>
+<li>Link the two with <strong>database links</strong></li>
+<li>Optionally replicate reference tables via <strong>materialized views</strong></li>
+</ul>
+<p>This pattern allows adoption of vector search without migrating core systems.</p>
+<h2 id="7-example-end-to-end-flow">7. Example End-to-End Flow</h2>
+<ol>
+<li>Customer enters a search query</li>
+<li>Python generates an embedding</li>
+<li>Python sends embedding to Oracle</li>
+<li>Oracle performs vector similarity search</li>
+<li>Oracle joins semantic scores with relational data</li>
+<li>Results are returned to Python</li>
+</ol>
+<p>This completes the full hybrid search workflow.</p>
+<hr>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/atp-s/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ATP-S</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/26ai/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">26ai</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/vector-search/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Vector Search</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/python/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Python</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generating and Storing Vector Embeddings in ATP-S 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

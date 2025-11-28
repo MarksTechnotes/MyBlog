@@ -6,8 +6,36 @@
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/ai/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/cloud/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Deep Learning</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/deep-learning/</link>
@@ -16,31 +44,10 @@
       <description></description>
     </item>
     <item>
-      <title>Machine Learning</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</link>
-      <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Natural Language Processing</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/natural-language-processing/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/natural-language-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cloud</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/cloud/</link>
-      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/cloud/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
-      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
       <description></description>
     </item>
     <item>

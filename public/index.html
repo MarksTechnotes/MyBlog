@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2025-11-19T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-11-19T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,77 +126,84 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/transformer_attention_blog/" class="color-inherit dim link">
-            Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="color-inherit dim link">
+            Generating and Storing Vector Embeddings in ATP-S 26ai
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>Transformers have become the foundation of modern language models like GPT, PaLM, and LLaMA. But their internal workings — attention heads, Q/K/V projections, sinusoidal positional encodings, feed-forward networks — can feel overwhelming. Ironically or probably aptly, I used ChatGPT which is based on the Transformers architecture to help explain to me the concepts and it did a great job.<br>
-This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.</p>
-        </div>
-        <a href="/MyBlog/posts/transformer_attention_blog/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="color-inherit dim link">
-            Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than a few 100 GB. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
-<p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
-        </div>
-        <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="color-inherit dim link">
-            Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>I recently deployed <strong>Oracle Enterprise Manager (OEM) 13c</strong> on <strong>Oracle Cloud Infrastructure (OCI)</strong> using the <strong>OEM Marketplace image</strong>.<br>
-This post captures the key steps and observations from that quick deployment.</p>
-<hr>
-<h3 id="oem-marketplace-image"><strong>OEM Marketplace Image</strong></h3>
-<p>The OEM Marketplace image used was available here:<br>
-👉 <a href="https://cloudmarketplace.oracle.com/marketplace/en_US/listing/104183179">OEM 13c Marketplace Image</a></p>
-<p>The Marketplace option made setup straightforward — a single-instance OMS installation without manual configuration steps.</p>
-<hr>
-<h3 id="deployment-setup"><strong>Deployment Setup</strong></h3>
+          <p>Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.</p>
+<p>In <strong>Part 1 of this series</strong>, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.</p>
+<p>This includes:</p>
 <ul>
-<li>Chose the <strong>Simple</strong> deployment size which provides a single node deployment with an Oracle single instance database as a repository</li>
-<li>Used an <strong>existing VCN and public subnet</strong> to avoid creating a bastion host.</li>
-<li>Selected a <strong>Standard2 VM shape</strong> due to <strong>quota restrictions</strong> in my tenancy.</li>
-<li>Chose to deploy in a <strong>public subnet</strong> so I could access the OEM console directly from my laptop browser.</li>
+<li>Loading a Kaggle dataset</li>
+<li>Creating relational and vector tables</li>
+<li>Concatenating review text into a single embedding input</li>
+<li>Generating embeddings externally using Hugging Face</li>
+<li>Loading embeddings back into Oracle for vector search</li>
 </ul>
-<p>To resolve an <strong>invalid SSH key</strong> error during provisioning, I generated a new PEM-format key:</p>
+<hr>
+<h2 id="1-dataset-and-initial-setup">1. Dataset and Initial Setup</h2>
+<p>Download the Amazon product review dataset (CSV) from Kaggle. <a href="https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda">https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda</a>. This dataset contains product information, reviews, metadata, and descriptions.</p>
         </div>
-        <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/" class="color-inherit dim link">
+            How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p>In the previous post, we prepared <strong>PRODUCT_METADATA</strong> and <strong>PRODUCT_VECTORS</strong> tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.</p>
+<p>In this post, we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using <strong>DB links</strong> and <strong>materialized views</strong>.</p>
+<hr>
+<h2 id="1-hybrid-search-setup">1. Hybrid Search Setup</h2>
+<p>We want to query relational data in <strong>19c</strong> while performing vector search in <strong>26ai</strong>:</p>
+        </div>
+        <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/" class="color-inherit dim link">
+            How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h3 id="a-practical-guide-for-hybrid-workloads">A Practical Guide for Hybrid Workloads</h3>
+<p>Modernizing applications doesn&rsquo;t always require a full database
+migration. If you&rsquo;re running Oracle Database 19c today, you can adopt
+Oracle 26ai&rsquo;s powerful vector capabilities without moving all your
+relational data.<br>
+This post shows how to extend your 19c environment with vector search in
+26ai using <strong>database links (DB Links)</strong> and <strong>materialized views
+(MVs)</strong> in a &ldquo;hybrid architecture&rdquo; that adds AI features with minimal
+disruption.</p>
+        </div>
+        <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -212,26 +219,26 @@ This post captures the key steps and observations from that quick deployment.</p
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="link black dim">
-                Running DBCA in GUI Mode on an OCI Linux VM
+              <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/" class="link black dim">
+                Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
-                Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
+              <a href="/MyBlog/posts/transformer_attention_blog/" class="link black dim">
+                Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/exacs-bastion/" class="link black dim">
-                Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop
+              <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="link black dim">
+                Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)
               </a>
             </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/first-blog-post/" class="link black dim">
-                Smart Scan Demo on Exadata Cloud Service (ExaCS)
+              <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="link black dim">
+                Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment
               </a>
             </h2>
           

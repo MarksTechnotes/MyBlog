@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Generating and Storing Vector Embeddings in ATP-S 26ai | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta property="og:description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ATP-S">
+    <meta property="article:tag" content="26ai">
+    <meta property="article:tag" content="Vector Search">
+    <meta property="article:tag" content="Hugging Face">
+    <meta property="article:tag" content="Embeddings">
+
+  <meta itemprop="name" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta itemprop="description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
+  <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="534">
+  <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Hugging Face,Embeddings">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta name="twitter:description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Generating and Storing Vector Embeddings in ATP-S 26ai</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-28T00:00:00Z">November 28, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.</p>
+<p>In <strong>Part 1 of this series</strong>, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.</p>
+<p>This includes:</p>
+<ul>
+<li>Loading a Kaggle dataset</li>
+<li>Creating relational and vector tables</li>
+<li>Concatenating review text into a single embedding input</li>
+<li>Generating embeddings externally using Hugging Face</li>
+<li>Loading embeddings back into Oracle for vector search</li>
+</ul>
+<hr>
+<h2 id="1-dataset-and-initial-setup">1. Dataset and Initial Setup</h2>
+<p>Download the Amazon product review dataset (CSV) from Kaggle. <a href="https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda">https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda</a>. This dataset contains product information, reviews, metadata, and descriptions.</p>
+<p>Spin up a <strong>26ai ATP-S</strong> instance.<br>
+We’ll use the “Load Data” page from Oracle &ldquo;Database Actions&rdquo; available with ATP-S to import the CSV.</p>
+<hr>
+<h2 id="2-load-the-amazon-csv-into-oracle">2. Load the Amazon CSV Into Oracle</h2>
+<p>Using <strong>Load Data</strong>, upload the CSV file. Oracle automatically:</p>
+<ul>
+<li>Creates the table</li>
+<li>Generates DDL</li>
+<li>Loads the data</li>
+</ul>
+<p>The resulting table (called <code>AMAZON</code>) looks like this:</p>
+<pre tabindex="0"><code>Name                Null? Type             
+------------------- ----- ---------------- 
+PRODUCT_ID                VARCHAR2(64)     
+PRODUCT_NAME              VARCHAR2(4000)   
+CATEGORY                  VARCHAR2(256)    
+DISCOUNTED_PRICE          VARCHAR2(64)     
+ACTUAL_PRICE              VARCHAR2(64)     
+DISCOUNT_PERCENTAGE       VARCHAR2(64)     
+RATING                    NUMBER           
+RATING_COUNT              VARCHAR2(64)     
+ABOUT_PRODUCT             VARCHAR2(4000)   
+USER_ID                   VARCHAR2(4000)   
+USER_NAME                 VARCHAR2(4000)   
+REVIEW_ID                 VARCHAR2(256)    
+REVIEW_TITLE              VARCHAR2(4000)   
+REVIEW_CONTENT            VARCHAR2(32767)  
+IMG_LINK                  VARCHAR2(256)    
+PRODUCT_LINK              VARCHAR2(4000)   
+</code></pre><hr>
+<h2 id="3-create-product_metadata">3. Create PRODUCT_METADATA</h2>
+<p>We create a clean copy of the base table for easier relational joins:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> PRODUCT_METADATA <span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> AMAZON
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> PRODUCT_METADATA
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> AMAZON;
+</span></span></code></pre></div><p>Later, after fixing a bad row in the source CSV, this table was regenerated to maintain consistency.</p>
+<hr>
+<h2 id="4-create-product_vectors-vector-storage-table">4. Create PRODUCT_VECTORS (Vector Storage Table)</h2>
+<p>Oracle 26ai introduces the <code>VECTOR</code> datatype.<br>
+We create a table to hold embeddings generated externally:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> PRODUCT_VECTORS (
+</span></span><span style="display:flex;"><span>    VECTOR_ID        VARCHAR2(<span style="color:#ae81ff">256</span>) <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span>,
+</span></span><span style="display:flex;"><span>    PRODUCT_ID       VARCHAR2(<span style="color:#ae81ff">64</span>),
+</span></span><span style="display:flex;"><span>    REVIEW_ID        VARCHAR2(<span style="color:#ae81ff">256</span>),
+</span></span><span style="display:flex;"><span>    VECTOR_SOURCE    VARCHAR2(<span style="color:#ae81ff">50</span>),
+</span></span><span style="display:flex;"><span>    EMBEDDING_VECTOR VECTOR(<span style="color:#ae81ff">768</span>),
+</span></span><span style="display:flex;"><span>    CREATED_AT       <span style="color:#66d9ef">TIMESTAMP</span> <span style="color:#66d9ef">DEFAULT</span> SYSTIMESTAMP
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><p>The <code>VECTOR(768)</code> type matches the embedding size used by the model.</p>
+<hr>
+<h2 id="5-text-to-embed">5. Text to Embed</h2>
+<p>We want a single combined text field per review:</p>
+<pre tabindex="0"><code>PRODUCT_NAME || &#39; &#39; || ABOUT_PRODUCT || &#39; &#39; ||
+REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
+</code></pre><p>This gives a rich semantic representation for embedding generation.</p>
+<hr>
+<h2 id="6-generate-embeddings-using-hugging-face">6. Generate Embeddings Using Hugging Face</h2>
+<p>To avoid OpenAI rate limits, embeddings were generated on a laptop using the HuggingFace model:</p>
+<ul>
+<li><code>sentence-transformers/all-mpnet-base-v2</code></li>
+<li>768-dimensional embeddings</li>
+</ul>
+<p>A Python script (<code>generate_hf_embeddings.py</code>) produced a JSON file with:</p>
+<ul>
+<li>PRODUCT_ID</li>
+<li>REVIEW_ID</li>
+<li>..</li>
+<li>..</li>
+<li>EMBEDDING_TEXT</li>
+<li>EMBEDDING_VECTOR (768 floats)</li>
+</ul>
+<p>Example JSON entry:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;PRODUCT_ID&#34;</span>: <span style="color:#e6db74">&#34;12345&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;REVIEW_ID&#34;</span>: <span style="color:#e6db74">&#34;abcde&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">..</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">..</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;EMBEDDING_TEXT&#34;</span>: <span style="color:#e6db74">&#34;Concatenated text from Product Name, About Product, Review Name, Review Title&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;EMBEDDING_VECTOR&#34;</span>: [<span style="color:#ae81ff">0.0123</span>, <span style="color:#ae81ff">-0.984</span>, <span style="color:#960050;background-color:#1e0010">...</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The source code for <code>generate_hf_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/generate_hf_embeddings.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/generate_hf_embeddings.py</a></p>
+<hr>
+<h2 id="7-load-embeddings-into-oracle">7. Load Embeddings into Oracle</h2>
+<p>Upload the JSON embedding file into ATP-S using <strong>Load Data</strong>, creating a table like:</p>
+<p><code>AMAZON_WITH_EMBEDDINGS</code></p>
+<p>Populate <code>PRODUCT_VECTORS</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> PRODUCT_VECTORS (
+</span></span><span style="display:flex;"><span>    VECTOR_ID,
+</span></span><span style="display:flex;"><span>    PRODUCT_ID,
+</span></span><span style="display:flex;"><span>    REVIEW_ID,
+</span></span><span style="display:flex;"><span>    VECTOR_SOURCE,
+</span></span><span style="display:flex;"><span>    EMBEDDING_VECTOR
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span>
+</span></span><span style="display:flex;"><span>    SYS_GUID(),
+</span></span><span style="display:flex;"><span>    PRODUCT_ID,
+</span></span><span style="display:flex;"><span>    REVIEW_ID,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;CONCATENATED_CONTENT&#39;</span>,
+</span></span><span style="display:flex;"><span>    EMBEDDING_VECTOR
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> AMAZON_WITH_EMBEDDINGS
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> REVIEW_ID <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">COMMIT</span>;
+</span></span></code></pre></div><p>After running the full pipeline end-to-end, embeddings were generated for approximately <strong>300 rows</strong>.</p>
+<hr>
+<h2 id="8-whats-next">8. What’s Next?</h2>
+<p>Now that ATP-S contains both:</p>
+<ul>
+<li><strong>Relational data</strong> (<code>PRODUCT_METADATA</code>)</li>
+<li><strong>Vector embeddings</strong> (<code>PRODUCT_VECTORS</code>)</li>
+</ul>
+<p>We can support hybrid semantic search.</p>
+<p>In <strong>Part 2</strong>, we will:</p>
+<ul>
+<li>Create query embeddings in Python</li>
+<li>Connect to Oracle with <code>oracledb</code></li>
+<li>Execute <code>VECTOR_DISTANCE</code> searches</li>
+<li>Join results with relational metadata</li>
+<li>Return the top semantic matches for customer queries</li>
+</ul>
+<hr>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/atp-s/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ATP-S</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/26ai/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">26ai</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/vector-search/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Vector Search</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/hugging-face/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hugging Face</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/embeddings/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Embeddings</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

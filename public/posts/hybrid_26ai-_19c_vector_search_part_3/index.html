@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views">
+  <meta property="og:description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-28T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="26ai">
+    <meta property="article:tag" content="19c">
+    <meta property="article:tag" content="Vector Search">
+    <meta property="article:tag" content="Materialized Views">
+    <meta property="article:tag" content="Hybrid Search">
+
+  <meta itemprop="name" content="How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views">
+  <meta itemprop="description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
+  <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="390">
+  <meta itemprop="keywords" content="Oracle,26ai,19c,Vector Search,Materialized Views,Hybrid Search,Python">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views">
+  <meta name="twitter:description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-11-28T00:00:00Z">November 28, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>In the previous post, we prepared <strong>PRODUCT_METADATA</strong> and <strong>PRODUCT_VECTORS</strong> tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.</p>
+<p>In this post, we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using <strong>DB links</strong> and <strong>materialized views</strong>.</p>
+<hr>
+<h2 id="1-hybrid-search-setup">1. Hybrid Search Setup</h2>
+<p>We want to query relational data in <strong>19c</strong> while performing vector search in <strong>26ai</strong>:</p>
+<ul>
+<li><strong>PRODUCT_METADATA</strong> → resides in 19c ATP-S instance</li>
+<li><strong>PRODUCT_VECTORS</strong> → resides in 26ai ATP-S instance</li>
+</ul>
+<p>This allows customers to leverage vector search in 26ai <strong>without migrating existing relational data</strong> from 19c.</p>
+<hr>
+<h2 id="2-prepare-19c-relational-data">2. Prepare 19c Relational Data</h2>
+<ol>
+<li>Create a <strong>19c ATP-S instance</strong> (<code>reviews19c</code>).</li>
+<li>Use <strong>Load Data</strong> from Oracle Database Actions to import <code>amazon.csv</code> into the <code>PRODUCT_METADATA</code> table.</li>
+</ol>
+<hr>
+<h2 id="3-create-a-db-link-in-26ai-to-19c">3. Create a DB Link in 26ai to 19c</h2>
+<h3 id="step-1-create-credential">Step 1: Create Credential</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>  DBMS_CLOUD.CREATE_CREDENTIAL(
+</span></span><span style="display:flex;"><span>        credential_name <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;DB_LINK_CRED&#39;</span>,
+</span></span><span style="display:flex;"><span>        username <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;&lt;ADB_USER&gt;&#39;</span>,
+</span></span><span style="display:flex;"><span>        password <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;&lt;ADB_PASSWORD&gt;&#39;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="step-2-create-database-link">Step 2: Create Database Link</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>    DBMS_CLOUD_ADMIN.CREATE_DATABASE_LINK(
+</span></span><span style="display:flex;"><span>        db_link_name <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;REVIEWS19C_LINK&#39;</span>, 
+</span></span><span style="display:flex;"><span>        hostname <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;&lt;ADB_HOST&gt;&#39;</span>, 
+</span></span><span style="display:flex;"><span>        port <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;1521&#39;</span>,
+</span></span><span style="display:flex;"><span>        service_name <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;&lt;ADB_SERVICE&gt;&#39;</span>,
+</span></span><span style="display:flex;"><span>        credential_name <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;DB_LINK_CRED&#39;</span>,
+</span></span><span style="display:flex;"><span>        directory_name <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">NULL</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="step-3-test-the-link">Step 3: Test the Link</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> PRODUCT_METADATA<span style="color:#f92672">@</span>REVIEWS19C_LINK;
+</span></span></code></pre></div><hr>
+<h2 id="4-create-a-materialized-view-in-26ai">4. Create a Materialized View in 26ai</h2>
+<p>Materialized views allow <strong>26ai</strong> to access relational data from 19c efficiently:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> MATERIALIZED <span style="color:#66d9ef">VIEW</span> PRODUCT_METADATA_MV
+</span></span><span style="display:flex;"><span>BUILD <span style="color:#66d9ef">IMMEDIATE</span>
+</span></span><span style="display:flex;"><span>REFRESH COMPLETE
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ON</span> DEMAND
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">AS</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> PRODUCT_METADATA<span style="color:#f92672">@</span>REVIEWS19C_LINK;
+</span></span></code></pre></div><hr>
+<h2 id="5-query-using-python">5. Query Using Python</h2>
+<p>Once the materialized view is ready, update your <code>query_embeddings.py</code> code to reference <code>PRODUCT_METADATA_MV</code> instead of <code>PRODUCT_METADATA</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sql <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">WITH query AS (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  SELECT TO_VECTOR(&#39;</span><span style="color:#e6db74">{</span>vector_str<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;) AS q FROM dual
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">SELECT v.PRODUCT_ID,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       m.PRODUCT_NAME,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       v.REVIEW_ID,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">       VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) AS similarity
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">FROM PRODUCT_VECTORS v
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">JOIN PRODUCT_METADATA_MV m
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  ON v.PRODUCT_ID = m.PRODUCT_ID, query
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ORDER BY similarity ASC
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">FETCH FIRST 10 ROWS ONLY
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py</a></p>
+<p>This executes a <strong>hybrid semantic + relational search</strong>:</p>
+<ul>
+<li><code>PRODUCT_VECTORS</code> → provides vector similarity</li>
+<li><code>PRODUCT_METADATA_MV</code> → provides relational filters from 19c data</li>
+</ul>
+<hr>
+<h2 id="6-summary">6. Summary</h2>
+<p>By combining <strong>DB links</strong> and <strong>materialized views</strong>, you can:</p>
+<ul>
+<li>Keep your <strong>core relational data in 19c</strong></li>
+<li>Use <strong>Oracle 26ai vector search</strong> for semantic queries</li>
+<li>Avoid full migrations and risky cutovers</li>
+<li>Enable <strong>hybrid search</strong> combining vector similarity with relational filters</li>
+</ul>
+<p>This pattern is ideal for customers looking to adopt vector search capabilities <strong>incrementally</strong> without disrupting existing 19c deployments.</p>
+<hr>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/26ai/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">26ai</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/19c/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">19c</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/vector-search/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Vector Search</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/materialized-views/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Materialized Views</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/hybrid-search/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hybrid Search</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/python/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Python</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generating and Storing Vector Embeddings in ATP-S 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
