@@ -2,13 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/19c/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/26ai/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/ai/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/atp-s/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/cloud/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/embeddings/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/hugging-face/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/hybrid-search/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/materialized-views/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/python/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/vector-search/</loc>
+    <lastmod>2025-11-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/attention/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/bert/</loc>
-    <lastmod>2025-11-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/deep-learning/</loc>
@@ -23,13 +86,7 @@
     <loc>https://markstechnotes.github.io/MyBlog/tags/gpt/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</loc>
-    <lastmod>2025-11-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/machine-learning/</loc>
-    <lastmod>2025-11-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/natural-language-processing/</loc>
@@ -38,31 +95,16 @@
     <loc>https://markstechnotes.github.io/MyBlog/tags/nlp/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
-    <lastmod>2025-11-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
-    <lastmod>2025-11-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/transformers/</loc>
     <lastmod>2025-11-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
     <lastmod>2025-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/cloud/</loc>
-    <lastmod>2025-11-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/data-pump/</loc>
     <lastmod>2025-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
-    <lastmod>2025-11-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/migration/</loc>
-    <lastmod>2025-11-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
     <lastmod>2025-11-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/performance/</loc>
