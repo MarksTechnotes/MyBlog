@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="419">
+  <meta itemprop="wordCount" content="382">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
@@ -203,7 +203,7 @@
 <p>The script converts a customer query into a <strong>vector</strong>, which is sent to Oracle, converted using <code>TO_VECTOR()</code>, and compared against stored embeddings using <code>VECTOR_DISTANCE()</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) <span style="color:#66d9ef">AS</span> similarity
 </span></span></code></pre></div><p>Joining with <code>PRODUCT_METADATA</code> allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.</p>
-<p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py</a></p>
+<p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py"><strong>Vector Search Demo</strong></a></p>
 <h2 id="5-perform-hybrid-vector--relational-search">5. Perform Hybrid Vector + Relational Search</h2>
 <p>You can optionally filter by category, price, or rating:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> pm.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Laptops&#39;</span> <span style="color:#66d9ef">AND</span> pm.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
@@ -212,16 +212,7 @@
 <li><strong>Vectors</strong> → semantic relevance</li>
 <li><strong>SQL</strong> → structured filtering</li>
 </ul>
-<h2 id="6-supporting-19c--26ai-hybrid-deployments">6. Supporting 19c + 26ai Hybrid Deployments</h2>
-<p>For existing Oracle 19c customers:</p>
-<ul>
-<li>Transactional data stays in 19c</li>
-<li>Vector tables reside in 26ai</li>
-<li>Link the two with <strong>database links</strong></li>
-<li>Optionally replicate reference tables via <strong>materialized views</strong></li>
-</ul>
-<p>This pattern allows adoption of vector search without migrating core systems.</p>
-<h2 id="7-example-end-to-end-flow">7. Example End-to-End Flow</h2>
+<h2 id="6-example-end-to-end-flow">6. Example End-to-End Flow</h2>
 <ol>
 <li>Customer enters a search query</li>
 <li>Python generates an embedding</li>
@@ -230,9 +221,9 @@
 <li>Oracle joins semantic scores with relational data</li>
 <li>Results are returned to Python</li>
 </ol>
-<p>This completes the full hybrid search workflow. In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/"><strong>Part 3</strong></a> , we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database</p>
+<p>This completes the full hybrid relational and semantic search workflow in 26ai. In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/"><strong>Part 3</strong></a> , we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database</p>
 <hr>
-<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo"><strong>Vector Search Demo</strong></a></p>
 <ul class="pa0">
   
    <li class="list di">

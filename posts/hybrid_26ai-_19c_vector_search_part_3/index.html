@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="667">
+  <meta itemprop="wordCount" content="671">
   <meta itemprop="keywords" content="Oracle,26ai,19c,Vector Search,Materialized Views,Hybrid Search,Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views">
@@ -231,7 +231,7 @@ and connecting it to your 19c database.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ON</span> v.PRODUCT_ID <span style="color:#f92672">=</span> m.PRODUCT_ID, query
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> similarity <span style="color:#66d9ef">ASC</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">FIRST</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>
-</span></span></code></pre></div><p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py</a></p>
+</span></span></code></pre></div><p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py"><strong>Vector Search Demo</strong></a></p>
 <p>This executes a <strong>hybrid semantic + relational search</strong>:</p>
 <ul>
 <li><code>PRODUCT_VECTORS</code> → provides vector similarity</li>
@@ -259,7 +259,7 @@ applications <strong>without</strong> a disruptive migration by:</p>
 <p>This hybrid pattern gives you the best of both worlds: stability in 19c
 and modern AI capabilities in 26ai.</p>
 <hr>
-<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo"><strong>Vector Search Demo</strong></a></p>
 <ul class="pa0">
   
    <li class="list di">

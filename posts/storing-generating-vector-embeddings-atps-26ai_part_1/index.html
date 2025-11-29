@@ -55,7 +55,7 @@
   <meta itemprop="description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="577">
+  <meta itemprop="wordCount" content="594">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Hugging Face,Embeddings">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Generate and Store Vector Embeddings in ATP-S 26ai">
@@ -139,7 +139,7 @@
 <p>In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/"><strong>Part 2</strong></a> we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/"><strong>Part 3</strong></a> we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.</p>
 <hr>
 <h2 id="1-dataset-and-initial-setup">1. Dataset and Initial Setup</h2>
-<p>Download the Amazon product review dataset (CSV) from Kaggle. <a href="https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda">https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda</a>. This dataset contains product information, reviews, metadata, and descriptions.</p>
+<p>Download the Amazon product review dataset (CSV) from Kaggle at <a href="https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda">Amazon Sales Dataset</a>. This dataset contains product information, reviews, metadata, and descriptions.</p>
 <p>Spin up a <strong>26ai ATP-S</strong> instance.<br>
 We’ll use the “Load Data” page from Oracle &ldquo;Database Actions&rdquo; available with ATP-S to import the CSV.</p>
 <hr>
@@ -207,7 +207,7 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
 <li><code>sentence-transformers/all-mpnet-base-v2</code></li>
 <li>768-dimensional embeddings</li>
 </ul>
-<p>A Python script (<code>generate_hf_embeddings.py</code>) produced a JSON file with:</p>
+<p>A Python script <code>generate_hf_embeddings.py</code> produced a JSON file <code>amazon_with_embeddings.json</code> with:</p>
 <ul>
 <li>PRODUCT_ID</li>
 <li>REVIEW_ID</li>
@@ -216,7 +216,7 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
 <li>EMBEDDING_TEXT</li>
 <li>EMBEDDING_VECTOR (768 floats)</li>
 </ul>
-<p>Example JSON entry:</p>
+<p>Example entry in output JSON file:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;PRODUCT_ID&#34;</span>: <span style="color:#e6db74">&#34;12345&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;REVIEW_ID&#34;</span>: <span style="color:#e6db74">&#34;abcde&#34;</span>,
@@ -225,7 +225,7 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;EMBEDDING_TEXT&#34;</span>: <span style="color:#e6db74">&#34;Concatenated text from Product Name, About Product, Review Name, Review Title&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;EMBEDDING_VECTOR&#34;</span>: [<span style="color:#ae81ff">0.0123</span>, <span style="color:#ae81ff">-0.984</span>, <span style="color:#960050;background-color:#1e0010">...</span>]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The source code for <code>generate_hf_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/generate_hf_embeddings.py">https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/generate_hf_embeddings.py</a></p>
+</span></span></code></pre></div><p>The source code for <code>generate_hf_embeddings.py</code> and the resulting json file <code>amazon_with_embeddings.json</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo"><strong>Vector Search Demo</strong></a></p>
 <hr>
 <h2 id="7-load-embeddings-into-oracle">7. Load Embeddings into Oracle</h2>
 <p>Upload the JSON embedding file into ATP-S using <strong>Load Data</strong>, creating a table like:</p>
@@ -266,7 +266,7 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
 <li>Return the top semantic matches for customer queries</li>
 </ul>
 <hr>
-<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo">https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo</a></p>
+<p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo"><strong>Vector Search Demo</strong></a></p>
 <ul class="pa0">
   
    <li class="list di">
