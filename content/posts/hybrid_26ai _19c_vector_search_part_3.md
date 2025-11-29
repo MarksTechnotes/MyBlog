@@ -145,7 +145,7 @@ JOIN PRODUCT_METADATA_MV m
 ORDER BY similarity ASC
 FETCH FIRST 10 ROWS ONLY
 ```
-The source code for `query_embeddings.py` can be found at https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py
+The source code for `query_embeddings.py` can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py) 
 
 This executes a **hybrid semantic + relational search**:
 
@@ -178,4 +178,4 @@ This hybrid pattern gives you the best of both worlds: stability in 19c
 and modern AI capabilities in 26ai.
 
 ------------------------------------------------------------------------
-The complete source code can be found at https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo
+The complete source code can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo) 

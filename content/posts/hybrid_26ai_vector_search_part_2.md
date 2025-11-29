@@ -79,7 +79,7 @@ VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) AS similarity
 
 Joining with `PRODUCT_METADATA` allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.
 
-The source code for `query_embeddings.py` can be found at https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py
+The source code for `query_embeddings.py` can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py)   
 
 ## 5. Perform Hybrid Vector + Relational Search
 
@@ -93,18 +93,7 @@ Hybrid search leverages both:
 - **Vectors** → semantic relevance
 - **SQL** → structured filtering
 
-## 6. Supporting 19c + 26ai Hybrid Deployments
-
-For existing Oracle 19c customers:
-
-- Transactional data stays in 19c
-- Vector tables reside in 26ai
-- Link the two with **database links**
-- Optionally replicate reference tables via **materialized views**
-
-This pattern allows adoption of vector search without migrating core systems.
-
-## 7. Example End-to-End Flow
+## 6. Example End-to-End Flow
 
 1. Customer enters a search query
 2. Python generates an embedding
@@ -113,8 +102,8 @@ This pattern allows adoption of vector search without migrating core systems.
 5. Oracle joins semantic scores with relational data
 6. Results are returned to Python
 
-This completes the full hybrid search workflow. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
+This completes the full hybrid relational and semantic search workflow in 26ai. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
 
 ---
 
-The complete source code can be found at https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo
+The complete source code can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo)   

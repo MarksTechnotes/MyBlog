@@ -27,7 +27,7 @@ In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector
 
 ## 1. Dataset and Initial Setup
 
-Download the Amazon product review dataset (CSV) from Kaggle. https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda. This dataset contains product information, reviews, metadata, and descriptions.
+Download the Amazon product review dataset (CSV) from Kaggle at [Amazon Sales Dataset](https://www.kaggle.com/code/mehakiftikhar/amazon-sales-dataset-eda). This dataset contains product information, reviews, metadata, and descriptions.
 
 Spin up a **26ai ATP-S** instance.  
 We’ll use the “Load Data” page from Oracle "Database Actions" available with ATP-S to import the CSV.
@@ -126,7 +126,7 @@ To avoid OpenAI rate limits, embeddings were generated on a laptop using the Hug
 - `sentence-transformers/all-mpnet-base-v2`  
 - 768-dimensional embeddings  
 
-A Python script (`generate_hf_embeddings.py`) produced a JSON file with:
+A Python script `generate_hf_embeddings.py` produced a JSON file `amazon_with_embeddings.json` with:
 
 - PRODUCT_ID  
 - REVIEW_ID 
@@ -135,7 +135,7 @@ A Python script (`generate_hf_embeddings.py`) produced a JSON file with:
 - EMBEDDING_TEXT 
 - EMBEDDING_VECTOR (768 floats)
 
-Example JSON entry:
+Example entry in output JSON file:
 
 ```json
 {
@@ -147,7 +147,7 @@ Example JSON entry:
   "EMBEDDING_VECTOR": [0.0123, -0.984, ...]
 }
 ```
-The source code for `generate_hf_embeddings.py` can be found at https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/generate_hf_embeddings.py
+The source code for `generate_hf_embeddings.py` and the resulting json file `amazon_with_embeddings.json` can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo)
 
 ---
 
@@ -201,4 +201,5 @@ In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector
 - Return the top semantic matches for customer queries  
 
 ---
-The complete source code can be found at https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo
+
+The complete source code can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo)   
