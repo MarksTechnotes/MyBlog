@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="421">
+  <meta itemprop="wordCount" content="456">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
@@ -188,7 +188,7 @@
 <p>Use the same Hugging Face model as in Part 1.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
 </span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#34;all-mpnet-base-v2&#34;</span>)
-</span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;lightweight laptop for programming with long battery life&#34;</span>
+</span></span><span style="display:flex;"><span>query <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;55 inch HDTV with high resolution display&#34;</span>
 </span></span><span style="display:flex;"><span>query_embedding <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>encode(query)<span style="color:#f92672">.</span>tolist()
 </span></span></code></pre></div><p>Consistency between document embeddings and query embeddings is essential.</p>
 <h2 id="3-connect-to-oracle-from-python">3. Connect to Oracle from Python</h2>
@@ -215,9 +215,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> similarity <span style="color:#66d9ef">ASC</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">FIRST</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>
 </span></span></code></pre></div><p>Joining with <code>PRODUCT_METADATA</code> allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.</p>
-<p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py"><strong>Vector Search Demo</strong></a></p>
+<p>Since this is a small dataset with 300 rows the best result we could find is shown below</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;B092BJMT8Q&#39;</span>, <span style="color:#e6db74">&#39;Samsung 108 cm (43 inches) Crystal 4K Series Ultra HD Smart LED TV UA43AUE60AKLXL (Black)&#39;</span>, <span style="color:#e6db74">&#39;R3RUBB6REUGTT,R281851EB9L5G6,R4ATJJVUY9JO6,R18455FQDOCS3H,RLZ80A5MC1F5G,R2DYRNTDPPD8A5,R3IFT4P8VHQGL3,R1DSJOGV3DFZK2&#39;</span>, 0.39250724017620064<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py"><strong>Vector Search Demo</strong></a></p>
 <p>You can optionally filter by category, price, or rating:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> m.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Laptops&#39;</span> <span style="color:#66d9ef">AND</span> m.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> m.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;CATEGORY_NAME&gt;&#39;</span> <span style="color:#66d9ef">AND</span> m.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
 </span></span></code></pre></div><p>Hybrid search leverages both:</p>
 <ul>
 <li><strong>Vectors</strong> → semantic relevance</li>

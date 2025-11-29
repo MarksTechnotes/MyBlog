@@ -51,7 +51,7 @@ Use the same Hugging Face model as in Part 1.
 ```python
 from sentence_transformers import SentenceTransformer
 model = SentenceTransformer("all-mpnet-base-v2")
-query = "lightweight laptop for programming with long battery life"
+query = "55 inch HDTV with high resolution display"
 query_embedding = model.encode(query).tolist()
 ```
 
@@ -95,12 +95,18 @@ FETCH FIRST 10 ROWS ONLY
 
 Joining with `PRODUCT_METADATA` allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.
 
+Since this is a small dataset with 300 rows the best result we could find is shown below
+
+```bash
+('B092BJMT8Q', 'Samsung 108 cm (43 inches) Crystal 4K Series Ultra HD Smart LED TV UA43AUE60AKLXL (Black)', 'R3RUBB6REUGTT,R281851EB9L5G6,R4ATJJVUY9JO6,R18455FQDOCS3H,RLZ80A5MC1F5G,R2DYRNTDPPD8A5,R3IFT4P8VHQGL3,R1DSJOGV3DFZK2', 0.39250724017620064)
+```
+
 The source code for `query_embeddings.py` can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py)   
 
 You can optionally filter by category, price, or rating:
 
 ```sql
-WHERE m.CATEGORY = 'Laptops' AND m.RATING >= 4
+WHERE m.CATEGORY = '<CATEGORY_NAME>' AND m.RATING >= 4
 ```
 
 Hybrid search leverages both:
