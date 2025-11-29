@@ -3,7 +3,7 @@ title: "Generate and Store Vector Embeddings in ATP-S 26ai"
 date: 2025-11-28
 draft: false
 description: "How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic + relational search."
-tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Hugging Face", "Embeddings", "Autonomous"]
+tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Hugging Face", "Embeddings", "Autonomous Database"]
 categories: ["Database", "Machine Learning"]
 ---
 

@@ -3,7 +3,7 @@ title: "Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using
 date: 2025-11-28
 draft: false
 description: "Run hybrid semantic + relational search on Oracle ATP-S 26ai using Python and vector embeddings."
-tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Python", "Autonomous"]
+tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Python", "Autonomous Database"]
 categories: ["Database", "Machine Learning"]
 ---
 
