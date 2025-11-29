@@ -9,9 +9,9 @@ categories: ["Database", "Cloud", "AI"]
 
 ## Overview
 
-In the [previous post](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/), we prepared **PRODUCT_METADATA** and **PRODUCT_VECTORS** tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.
+In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/), we prepared **PRODUCT_METADATA** and **PRODUCT_VECTORS** tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.
 
-In this post, we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using **DB links** and **materialized views**.
+In this part, we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using **DB links** and **materialized views**.
 
 ### A Practical Guide for Hybrid Workloads
 

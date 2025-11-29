@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="668">
+  <meta itemprop="wordCount" content="667">
   <meta itemprop="keywords" content="Oracle,26ai,19c,Vector Search,Materialized Views,Hybrid Search,Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views">
@@ -126,8 +126,8 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
-<p>In the <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">previous post</a>, we prepared <strong>PRODUCT_METADATA</strong> and <strong>PRODUCT_VECTORS</strong> tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.</p>
-<p>In this post, we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using <strong>DB links</strong> and <strong>materialized views</strong>.</p>
+<p>In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/"><strong>Part 2</strong></a>, we prepared <strong>PRODUCT_METADATA</strong> and <strong>PRODUCT_VECTORS</strong> tables in Oracle 26ai, generated embeddings using Hugging Face, and demonstrated semantic search using Python.</p>
+<p>In this part, we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database, but vector search happens in 26ai. We achieve this using <strong>DB links</strong> and <strong>materialized views</strong>.</p>
 <h3 id="a-practical-guide-for-hybrid-workloads">A Practical Guide for Hybrid Workloads</h3>
 <p>Modernizing applications doesn&rsquo;t always require a full database
 migration. If you&rsquo;re running Oracle Database 19c today, you can adopt

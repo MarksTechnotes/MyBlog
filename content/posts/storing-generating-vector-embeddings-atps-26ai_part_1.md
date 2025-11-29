@@ -21,6 +21,8 @@ This includes:
 - Generating embeddings externally using Hugging Face  
 - Loading embeddings back into Oracle for vector search  
 
+In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/) we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/) we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.
+
 ---
 
 ## 1. Dataset and Initial Setup
