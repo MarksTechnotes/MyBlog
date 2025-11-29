@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Generating and Storing Vector Embeddings in ATP-S 26ai | Mark’s Tech Notes</title>
+    <title>Generate and Store Vector Embeddings in ATP-S 26ai | Mark’s Tech Notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
     <meta name="generator" content="Hugo 0.152.2">
@@ -37,7 +37,7 @@
 
     <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta property="og:title" content="Generate and Store Vector Embeddings in ATP-S 26ai">
   <meta property="og:description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -51,14 +51,14 @@
     <meta property="article:tag" content="Hugging Face">
     <meta property="article:tag" content="Embeddings">
 
-  <meta itemprop="name" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta itemprop="name" content="Generate and Store Vector Embeddings in ATP-S 26ai">
   <meta itemprop="description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="534">
+  <meta itemprop="wordCount" content="535">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Hugging Face,Embeddings">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Generating and Storing Vector Embeddings in ATP-S 26ai">
+  <meta name="twitter:title" content="Generate and Store Vector Embeddings in ATP-S 26ai">
   <meta name="twitter:description" content="How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic &#43; relational search.">
 
       
@@ -115,7 +115,7 @@
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Generating and Storing Vector Embeddings in ATP-S 26ai</h1>
+<h1 class="f1 athelas mt3 mb1">Generate and Store Vector Embeddings in ATP-S 26ai</h1>
       
       
       
@@ -125,7 +125,8 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
+<p>Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.</p>
 <p>In <strong>Part 1 of this series</strong>, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.</p>
 <p>This includes:</p>
 <ul>
@@ -255,7 +256,7 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
 <li><strong>Vector embeddings</strong> (<code>PRODUCT_VECTORS</code>)</li>
 </ul>
 <p>We can support hybrid semantic search.</p>
-<p>In <strong>Part 2</strong>, we will:</p>
+<p>In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/"><strong>Part 2</strong></a>, we will:</p>
 <ul>
 <li>Create query embeddings in Python</li>
 <li>Connect to Oracle with <code>oracledb</code></li>
@@ -308,15 +309,11 @@ REVIEW_TITLE || &#39; &#39; || REVIEW_CONTENT
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</a>
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/MyBlog/posts/using-26ai-with-19c-hybrid-vector-search_part_4/">How to Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views - Part 2</a>
+          <a href="/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/">Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</a>
         </li>
 	    
 	     <li  class="mb2">
