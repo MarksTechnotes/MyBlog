@@ -302,8 +302,8 @@ disruption.</p>
         
       
         <h2 class="f1">
-          <a href="/MyBlog/tags/autonomous/" class="link blue hover-black">
-            Tag: Autonomous
+          <a href="/MyBlog/tags/autonomous-database/" class="link blue hover-black">
+            Tag: Autonomous Database
           </a>
         </h2>
         
@@ -388,6 +388,49 @@ disruption.</p>
 <p>We will be querying two tables:</p>
     </div>
     <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="link black dim">
+        Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than a few 100 GB. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
+<p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
+    </div>
+    <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
+        Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+<p>Let’s break down what that would involve and what Oracle actually supports.</p>
+<hr>
+<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
+<p>The idea typically goes like this:</p>
+<ol>
+<li>Set up a <strong>standby (peer) database</strong> on Exadata Dedicated.</li>
+<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
+<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
+</ol>
+<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
+    </div>
+    <a href="/MyBlog/posts/adw-peer-switchover/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -1099,56 +1142,6 @@ This post which is a summary of the sessions I had with ChatGPT explains these c
 This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.</p>
     </div>
     <a href="/MyBlog/posts/transformer_attention_blog/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/tags/autonomous-database/" class="link blue hover-black">
-            Tag: Autonomous Database
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="link black dim">
-        Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Many DBAs prefer using <strong>Oracle Data Pump</strong> when migrating data into <strong>Autonomous Database (ADB)</strong>, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than a few 100 GB. In one customer case I was involved in, a <strong>650 GB import</strong> into ADB took <strong>18 hours</strong> to complete - clearly a pain point.</p>
-<p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
-    </div>
-    <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
-        Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
-<p>Let’s break down what that would involve and what Oracle actually supports.</p>
-<hr>
-<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
-<p>The idea typically goes like this:</p>
-<ol>
-<li>Set up a <strong>standby (peer) database</strong> on Exadata Dedicated.</li>
-<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
-<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
-</ol>
-<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
-    </div>
-    <a href="/MyBlog/posts/adw-peer-switchover/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
