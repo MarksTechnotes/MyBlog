@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugging Face on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/hugging-face/</link>
+    <link>http://localhost:1313/MyBlog/tags/hugging-face/</link>
     <description>Recent content in Hugging Face on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/tags/hugging-face/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generate and Store Vector Embeddings in ATP-S 26ai</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</link>
+      <link>http://localhost:1313/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.&lt;/p&gt;&#xA;&lt;p&gt;In &lt;strong&gt;Part 1 of this series&lt;/strong&gt;, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.&lt;/p&gt;&#xA;&lt;p&gt;This includes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Loading a Kaggle dataset&lt;/li&gt;&#xA;&lt;li&gt;Creating relational and vector tables&lt;/li&gt;&#xA;&lt;li&gt;Concatenating review text into a single embedding input&lt;/li&gt;&#xA;&lt;li&gt;Generating embeddings externally using Hugging Face&lt;/li&gt;&#xA;&lt;li&gt;Loading embeddings back into Oracle for vector search&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/&#34;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt; we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/&#34;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt; we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.&lt;/p&gt;&#xA;&lt;p&gt;In &lt;strong&gt;Part 1 of this series&lt;/strong&gt;, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.&lt;/p&gt;&#xA;&lt;p&gt;This includes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Loading a Kaggle dataset&lt;/li&gt;&#xA;&lt;li&gt;Creating relational and vector tables&lt;/li&gt;&#xA;&lt;li&gt;Concatenating review text into a single embedding input&lt;/li&gt;&#xA;&lt;li&gt;Generating embeddings externally using Hugging Face&lt;/li&gt;&#xA;&lt;li&gt;Loading embeddings back into Oracle for vector search&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/&#34;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt; we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/&#34;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt; we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

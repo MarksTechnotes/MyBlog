@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+  <head><script src="/MyBlog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MyBlog/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -30,12 +30,12 @@ Keep this terminal session open while connecting from SQL Developer.">
     
     
     
-      <meta name="robots" content="index, follow">
+      <meta name="robots" content="noindex, nofollow">
     
     
 
     
-<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.css" >
 
 
 
@@ -51,10 +51,10 @@ Keep this terminal session open while connecting from SQL Developer.">
     
 
     
-      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/">
+      <link rel="canonical" href="http://localhost:1313/MyBlog/posts/exacs-bastion/">
     
 
-    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/">
+    <meta property="og:url" content="http://localhost:1313/MyBlog/posts/exacs-bastion/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
   <meta property="og:title" content="Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop">
   <meta property="og:description" content="1. Prerequisites SSH key (id_rsa) configured. Bastion session (SSH Port forwarding) details ready. SQL Developer installed. Reference: Bastion Concepts (https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm)
@@ -85,8 +85,6 @@ ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_O
 2. Port Forwarding Command Forward local port 1521 to the ExaCS VM:
 ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_OCID&gt; Explanation -v → verbose mode (for debugging) -i id_rsa → use your SSH key -N → no remote shell command, just forward ports -L 1521:&lt;EXACS_VM_IP&gt;:1521 → forward local port 1521 to the VM’s 1521 port -p 22 → SSH port for the Bastion Keep this terminal session open while connecting from SQL Developer.">
 
-      
-    
 	
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -99,7 +97,7 @@ ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_O
             ]
         });"></script>
 
-  </head><body class="ma0 avenir bg-near-white production">
+  </head><body class="ma0 avenir bg-near-white development">
 
     
    
@@ -266,7 +264,7 @@ ssh -v -i id_rsa -N -L 1521:&lt;EXACS_VM_IP&gt;:1521 -p 22 &lt;BASTION_SESSION_O
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/MyBlog/" >
     &copy;  Mark’s Tech Notes 2025 
   </a>
     <div><div class="ananke-socials"></div>

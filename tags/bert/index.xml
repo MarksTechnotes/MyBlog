@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BERT on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/bert/</link>
+    <link>http://localhost:1313/MyBlog/tags/bert/</link>
     <description>Recent content in BERT on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/bert/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/tags/bert/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/transformer_attention_blog/</link>
+      <link>http://localhost:1313/MyBlog/posts/transformer_attention_blog/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/transformer_attention_blog/</guid>
+      <guid>http://localhost:1313/MyBlog/posts/transformer_attention_blog/</guid>
       <description>&lt;p&gt;Transformers have become the foundation of modern language models like GPT, PaLM, and LLaMA. But their internal workings — attention heads, Q/K/V projections, sinusoidal positional encodings, feed-forward networks — can feel overwhelming. Ironically or probably aptly, I used ChatGPT which is based on the Transformers architecture to help explain to me the concepts and it did a great job.&lt;br&gt;&#xA;This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.&lt;/p&gt;</description>
     </item>
   </channel>

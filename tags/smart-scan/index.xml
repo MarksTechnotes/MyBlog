@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Smart Scan on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/smart-scan/</link>
+    <link>http://localhost:1313/MyBlog/tags/smart-scan/</link>
     <description>Recent content in Smart Scan on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/smart-scan/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/tags/smart-scan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Smart Scan Demo on Exadata Cloud Service (ExaCS)</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/first-blog-post/</link>
+      <link>http://localhost:1313/MyBlog/posts/first-blog-post/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/first-blog-post/</guid>
+      <guid>http://localhost:1313/MyBlog/posts/first-blog-post/</guid>
       <description>&lt;p&gt;One of the key advantages of Oracle Exadata is Smart Scan — the ability to offload query processing from the database server to the storage cells, reducing data movement across the interconnect and improving performance dramatically.&lt;/p&gt;&#xA;&lt;p&gt;Here’s a simple demonstration that shows how Smart Scan behaves in practice.&lt;/p&gt;&#xA;&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;&#xA;&lt;p&gt;Connected to SQL*Plus on an Exadata Cloud Service VM as SYSDBA:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlplus sys&lt;span style=&#34;color:#f92672&#34;&gt;/&amp;lt;&lt;/span&gt;password&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;@&amp;lt;&lt;/span&gt;exadata&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;scan&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;host&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;:&lt;span style=&#34;color:#ae81ff&#34;&gt;1521&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&amp;lt;&lt;/span&gt;db_service&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; sysdba&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Replace &lt;password&gt;, &lt;exadata-scan-host&gt;, and &amp;lt;db_service&amp;gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.&lt;/p&gt;</description>
     </item>
   </channel>
