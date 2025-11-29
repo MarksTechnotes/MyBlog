@@ -3,7 +3,7 @@ title: "Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using 
 date: 2025-11-28
 draft: false
 description: "Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links."
-tags: ["Oracle", "26ai", "19c", "Vector Search", "Materialized Views", "Hybrid Search", "Python"]
+tags: ["Oracle", "26ai", "19c", "Vector Search", "Materialized Views", "Hybrid Search", "Python", "Autonomous"]
 categories: ["Database", "Cloud", "AI"]
 ---
 
