@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on Mark’s Tech Notes</title>
-    <link>http://localhost:1313/MyBlog/categories/machine-learning/</link>
+    <link>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/MyBlog/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generate and Store Vector Embeddings in ATP-S 26ai</title>
-      <link>http://localhost:1313/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</link>
+      <link>https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</guid>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.&lt;/p&gt;&#xA;&lt;p&gt;In &lt;strong&gt;Part 1 of this series&lt;/strong&gt;, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.&lt;/p&gt;&#xA;&lt;p&gt;This includes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Loading a Kaggle dataset&lt;/li&gt;&#xA;&lt;li&gt;Creating relational and vector tables&lt;/li&gt;&#xA;&lt;li&gt;Concatenating review text into a single embedding input&lt;/li&gt;&#xA;&lt;li&gt;Generating embeddings externally using Hugging Face&lt;/li&gt;&#xA;&lt;li&gt;Loading embeddings back into Oracle for vector search&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/&#34;&gt;&lt;strong&gt;Part 2&lt;/strong&gt;&lt;/a&gt; we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/&#34;&gt;&lt;strong&gt;Part 3&lt;/strong&gt;&lt;/a&gt; we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</title>
-      <link>http://localhost:1313/MyBlog/posts/hybrid_26ai_vector_search_part_2/</link>
+      <link>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/MyBlog/posts/hybrid_26ai_vector_search_part_2/</guid>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/&#34;&gt;&lt;strong&gt;Part 1&lt;/strong&gt;&lt;/a&gt;, we prepared an Oracle ATP-S 26ai environment by:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Loading Amazon product data&lt;/li&gt;&#xA;&lt;li&gt;Creating relational and vector tables&lt;/li&gt;&#xA;&lt;li&gt;Generating embeddings using Hugging Face&lt;/li&gt;&#xA;&lt;li&gt;Storing them in &lt;code&gt;PRODUCT_VECTORS&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Now in Part 2, we’ll run a customer-style search query by combining:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;a vector similarity search, and&lt;/li&gt;&#xA;&lt;li&gt;relational filters from &lt;code&gt;PRODUCT_METADATA&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;We’ll embed a customer query in Python, submit it to Oracle, and return the closest-matching products.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-tables-recap&#34;&gt;1. Tables Recap&lt;/h2&gt;&#xA;&lt;p&gt;We will be querying two tables:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks</title>
-      <link>http://localhost:1313/MyBlog/posts/transformer_attention_blog/</link>
+      <link>https://markstechnotes.github.io/MyBlog/posts/transformer_attention_blog/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/MyBlog/posts/transformer_attention_blog/</guid>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/transformer_attention_blog/</guid>
       <description>&lt;p&gt;Transformers have become the foundation of modern language models like GPT, PaLM, and LLaMA. But their internal workings — attention heads, Q/K/V projections, sinusoidal positional encodings, feed-forward networks — can feel overwhelming. Ironically or probably aptly, I used ChatGPT which is based on the Transformers architecture to help explain to me the concepts and it did a great job.&lt;br&gt;&#xA;This post which is a summary of the sessions I had with ChatGPT explains these concepts clearly and intuitively.&lt;/p&gt;</description>
     </item>
   </channel>

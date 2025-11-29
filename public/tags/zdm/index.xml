@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ZDM on Mark’s Tech Notes</title>
-    <link>http://localhost:1313/MyBlog/tags/zdm/</link>
+    <link>https://markstechnotes.github.io/MyBlog/tags/zdm/</link>
     <description>Recent content in ZDM on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/MyBlog/tags/zdm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/zdm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</title>
-      <link>http://localhost:1313/MyBlog/posts/adw-peer-switchover/</link>
+      <link>https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/MyBlog/posts/adw-peer-switchover/</guid>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/adw-peer-switchover/</guid>
       <description>&lt;p&gt;When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional &lt;strong&gt;Data Guard switchover&lt;/strong&gt; — to transition environments.&lt;/p&gt;&#xA;&lt;p&gt;Let’s break down what that would involve and what Oracle actually supports.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;the-proposed-scenario&#34;&gt;The Proposed Scenario&lt;/h3&gt;&#xA;&lt;p&gt;The idea typically goes like this:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Set up a &lt;strong&gt;standby (peer) database&lt;/strong&gt; on Exadata Dedicated.&lt;/li&gt;&#xA;&lt;li&gt;Perform a &lt;strong&gt;role switchover&lt;/strong&gt;, making the Dedicated database the new primary.&lt;/li&gt;&#xA;&lt;li&gt;Later, upgrade to &lt;strong&gt;23ai&lt;/strong&gt; as part of the post-migration plan.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;This approach essentially models a &lt;strong&gt;Data Guard–based migration&lt;/strong&gt;, using role switchovers to minimize downtime.&lt;/p&gt;</description>
     </item>
   </channel>

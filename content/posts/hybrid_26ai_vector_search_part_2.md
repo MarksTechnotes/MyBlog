@@ -69,24 +69,38 @@ connection = oracledb.connect(
 cursor = connection.cursor()
 ```
 
-## 4. How `query_embeddings.py` Enables Semantic Search
+## 4. Perform Hybrid Vector + Relational Search 
 
-The script converts a customer query into a **vector**, which is sent to Oracle, converted using `TO_VECTOR()`, and compared against stored embeddings using `VECTOR_DISTANCE()`:
+The `query_embeddings` script converts the query embedding List object into a JSON-like string, which is sent to Oracle, converted using `TO_VECTOR()`, and compared against stored embeddings using `VECTOR_DISTANCE()`:
+
+
+```python
+vector_str = json.dumps(query_embedding)  # produces [0.01,0.2,...]
+```
 
 ```sql
-VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) AS similarity
+WITH query AS (
+  SELECT TO_VECTOR('{vector_str}') AS q FROM dual
+)
+SELECT v.PRODUCT_ID,
+       m.PRODUCT_NAME,
+       v.REVIEW_ID,
+       VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) AS similarity
+FROM PRODUCT_VECTORS v
+JOIN PRODUCT_METADATA m
+  ON v.PRODUCT_ID = m.PRODUCT_ID, query
+ORDER BY similarity ASC
+FETCH FIRST 10 ROWS ONLY
 ```
 
 Joining with `PRODUCT_METADATA` allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.
 
 The source code for `query_embeddings.py` can be found at [**Vector Search Demo**](https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py)   
 
-## 5. Perform Hybrid Vector + Relational Search
-
 You can optionally filter by category, price, or rating:
 
 ```sql
-WHERE pm.CATEGORY = 'Laptops' AND pm.RATING >= 4
+WHERE m.CATEGORY = 'Laptops' AND m.RATING >= 4
 ```
 
 Hybrid search leverages both:

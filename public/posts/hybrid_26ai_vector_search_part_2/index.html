@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/MyBlog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=MyBlog/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -11,12 +11,12 @@
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
     
 
     
-<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
 
 
 
@@ -32,10 +32,10 @@
     
 
     
-      <link rel="canonical" href="http://localhost:1313/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
     
 
-    <meta property="og:url" content="http://localhost:1313/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
   <meta property="og:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
   <meta property="og:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
@@ -54,12 +54,14 @@
   <meta itemprop="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="382">
+  <meta itemprop="wordCount" content="421">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Python">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
   <meta name="twitter:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
 
+      
+    
 	
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
@@ -72,7 +74,7 @@
             ]
         });"></script>
 
-  </head><body class="ma0 avenir bg-near-white development">
+  </head><body class="ma0 avenir bg-near-white production">
 
     
    
@@ -197,14 +199,25 @@
 </span></span><span style="display:flex;"><span>    dsn<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;ADB_DSN&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>cursor <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span>cursor()
-</span></span></code></pre></div><h2 id="4-how-query_embeddingspy-enables-semantic-search">4. How <code>query_embeddings.py</code> Enables Semantic Search</h2>
-<p>The script converts a customer query into a <strong>vector</strong>, which is sent to Oracle, converted using <code>TO_VECTOR()</code>, and compared against stored embeddings using <code>VECTOR_DISTANCE()</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) <span style="color:#66d9ef">AS</span> similarity
+</span></span></code></pre></div><h2 id="4-perform-hybrid-vector--relational-search">4. Perform Hybrid Vector + Relational Search</h2>
+<p>The <code>query_embeddings</code> script converts the query embedding List object into a JSON-like string, which is sent to Oracle, converted using <code>TO_VECTOR()</code>, and compared against stored embeddings using <code>VECTOR_DISTANCE()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vector_str <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(query_embedding)  <span style="color:#75715e"># produces [0.01,0.2,...]</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WITH</span> query <span style="color:#66d9ef">AS</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SELECT</span> TO_VECTOR(<span style="color:#e6db74">&#39;{vector_str}&#39;</span>) <span style="color:#66d9ef">AS</span> q <span style="color:#66d9ef">FROM</span> dual
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> v.PRODUCT_ID,
+</span></span><span style="display:flex;"><span>       m.PRODUCT_NAME,
+</span></span><span style="display:flex;"><span>       v.REVIEW_ID,
+</span></span><span style="display:flex;"><span>       VECTOR_DISTANCE(v.EMBEDDING_VECTOR, q, COSINE) <span style="color:#66d9ef">AS</span> similarity
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> PRODUCT_VECTORS v
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">JOIN</span> PRODUCT_METADATA m
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ON</span> v.PRODUCT_ID <span style="color:#f92672">=</span> m.PRODUCT_ID, query
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">ORDER</span> <span style="color:#66d9ef">BY</span> similarity <span style="color:#66d9ef">ASC</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">FIRST</span> <span style="color:#ae81ff">10</span> <span style="color:#66d9ef">ROWS</span> <span style="color:#66d9ef">ONLY</span>
 </span></span></code></pre></div><p>Joining with <code>PRODUCT_METADATA</code> allows retrieval of the top 10 most relevant products, combining semantic relevance with relational information.</p>
 <p>The source code for <code>query_embeddings.py</code> can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/blob/main/vector-search-demo/query_embedding.py"><strong>Vector Search Demo</strong></a></p>
-<h2 id="5-perform-hybrid-vector--relational-search">5. Perform Hybrid Vector + Relational Search</h2>
 <p>You can optionally filter by category, price, or rating:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> pm.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Laptops&#39;</span> <span style="color:#66d9ef">AND</span> pm.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> m.CATEGORY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Laptops&#39;</span> <span style="color:#66d9ef">AND</span> m.RATING <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">4</span>
 </span></span></code></pre></div><p>Hybrid search leverages both:</p>
 <ul>
 <li><strong>Vectors</strong> → semantic relevance</li>
@@ -302,7 +315,7 @@
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="http://localhost:1313/MyBlog/" >
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
     &copy;  Mark’s Tech Notes 2025 
   </a>
     <div><div class="ananke-socials"></div>
