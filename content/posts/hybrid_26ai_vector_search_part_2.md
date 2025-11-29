@@ -1,5 +1,5 @@
 ---
-title: "Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python"
+title: "Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python"
 date: 2025-11-28
 draft: false
 description: "Run hybrid semantic + relational search on Oracle ATP-S 26ai using Python and vector embeddings."
@@ -9,7 +9,7 @@ categories: ["Database", "Machine Learning"]
 
 ## Overview
 
-In Part 1, we prepared an Oracle ATP-S 26ai environment by:
+In [Part 1](https://markstechnotes.github.io/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/), we prepared an Oracle ATP-S 26ai environment by:
 
 - Loading Amazon product data
 - Creating relational and vector tables
@@ -113,7 +113,7 @@ This pattern allows adoption of vector search without migrating core systems.
 5. Oracle joins semantic scores with relational data
 6. Results are returned to Python
 
-This completes the full hybrid search workflow.
+This completes the full hybrid search workflow. In [Part 3](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
 
 ---
 

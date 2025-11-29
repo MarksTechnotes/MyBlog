@@ -1,11 +1,13 @@
 ---
-title: "Generating and Storing Vector Embeddings in ATP-S 26ai"
+title: "Generate and Store Vector Embeddings in ATP-S 26ai"
 date: 2025-11-28
 draft: false
 description: "How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic + relational search."
 tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Hugging Face", "Embeddings"]
 categories: ["Database", "Machine Learning"]
 ---
+
+## Overview
 
 Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.
 
@@ -188,7 +190,7 @@ Now that ATP-S contains both:
 
 We can support hybrid semantic search.
 
-In **Part 2**, we will:
+In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/), we will:
 
 - Create query embeddings in Python  
 - Connect to Oracle with `oracledb`  
