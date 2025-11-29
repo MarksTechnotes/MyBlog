@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Mark’s Tech Notes</title>
-    <link>http://localhost:1313/MyBlog/tags/linux/</link>
+    <link>https://markstechnotes.github.io/MyBlog/tags/linux/</link>
     <description>Recent content in Linux on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/MyBlog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Running DBCA in GUI Mode on an OCI Linux VM</title>
-      <link>http://localhost:1313/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</link>
+      <link>https://markstechnotes.github.io/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</guid>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/</guid>
       <description>&lt;p&gt;When working with Oracle databases on OCI Linux VMs, you may want to run &lt;strong&gt;Database Configuration Assistant (DBCA)&lt;/strong&gt; in GUI mode instead of command-line mode.&lt;br&gt;&#xA;This requires a &lt;strong&gt;GNOME desktop environment&lt;/strong&gt;, a &lt;strong&gt;VNC session&lt;/strong&gt;, and optionally &lt;strong&gt;SSH tunneling&lt;/strong&gt; for secure access.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;&#xA;&lt;p&gt;Before testing DBCA in GUI mode, ensure the following:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A &lt;strong&gt;GNOME desktop environment&lt;/strong&gt; is installed on the OCI VM. GUI applications like DBCA require a desktop environment to display.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;strong&gt;VNC server&lt;/strong&gt; (e.g., &lt;code&gt;tigervnc-server&lt;/code&gt;) is installed and running on the OCI VM.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;strong&gt;VNC client&lt;/strong&gt; (such as RealVNC, TightVNC, or TigerVNC Viewer) is installed on your local desktop or laptop.&lt;/li&gt;&#xA;&lt;li&gt;If you use &lt;strong&gt;SSH tunneling&lt;/strong&gt; to access VNC, you &lt;strong&gt;do NOT need to open any VNC ports on the VM&lt;/strong&gt; externally — the tunnel handles secure forwarding and all traffic is handled through the SSH port 22.&lt;/li&gt;&#xA;&lt;li&gt;If you’re connecting directly over the network &lt;strong&gt;without using SSH tunneling&lt;/strong&gt;, open port &lt;strong&gt;5901&lt;/strong&gt; (for display &lt;code&gt;:1&lt;/code&gt;) in your OCI security list and VM firewall. This is &lt;strong&gt;NOT&lt;/strong&gt; recommended because the traffic between your laptop and the VM is &lt;strong&gt;unencrypted&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Example of an SSH tunnel for VNC:&lt;/p&gt;</description>
     </item>
   </channel>
