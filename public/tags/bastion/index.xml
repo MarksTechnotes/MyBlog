@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bastion on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/bastion/</link>
+    <link>http://localhost:1313/MyBlog/tags/bastion/</link>
     <description>Recent content in Bastion on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/bastion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/tags/bastion/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/</link>
+      <link>http://localhost:1313/MyBlog/posts/exacs-bastion/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/exacs-bastion/</guid>
+      <guid>http://localhost:1313/MyBlog/posts/exacs-bastion/</guid>
       <description>&lt;h3 id=&#34;1-prerequisites&#34;&gt;1. Prerequisites&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;SSH key (&lt;code&gt;id_rsa&lt;/code&gt;) configured.&lt;/li&gt;&#xA;&lt;li&gt;Bastion session (SSH Port forwarding) details ready.&lt;/li&gt;&#xA;&lt;li&gt;SQL Developer installed.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Reference: Bastion Concepts (&lt;a href=&#34;https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm&#34;&gt;https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;2-port-forwarding-command&#34;&gt;2. Port Forwarding Command&lt;/h3&gt;&#xA;&lt;p&gt;Forward local port 1521 to the ExaCS VM:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh -v -i id_rsa -N -L 1521:&amp;lt;EXACS_VM_IP&amp;gt;:1521 -p &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; &amp;lt;BASTION_SESSION_OCID&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;explanation&#34;&gt;Explanation&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; → verbose mode (for debugging)&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;-i id_rsa&lt;/code&gt; → use your SSH key&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;-N&lt;/code&gt; → no remote shell command, just forward ports&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;-L 1521:&amp;lt;EXACS_VM_IP&amp;gt;:1521&lt;/code&gt; → forward local port 1521 to the VM’s 1521 port&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;-p 22&lt;/code&gt; → SSH port for the Bastion&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Keep this terminal session open while connecting from SQL Developer.&lt;/p&gt;</description>
     </item>
   </channel>

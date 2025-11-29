@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/categories/</link>
+    <link>http://localhost:1313/MyBlog/categories/</link>
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/ai/</link>
+      <link>http://localhost:1313/MyBlog/categories/ai/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/ai/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloud</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/cloud/</link>
+      <link>http://localhost:1313/MyBlog/categories/cloud/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/cloud/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/cloud/</guid>
       <description></description>
     </item>
     <item>
       <title>Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
+      <link>http://localhost:1313/MyBlog/categories/database/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/database/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</link>
+      <link>http://localhost:1313/MyBlog/categories/machine-learning/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/machine-learning/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/deep-learning/</link>
+      <link>http://localhost:1313/MyBlog/categories/deep-learning/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/deep-learning/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>Natural Language Processing</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/natural-language-processing/</link>
+      <link>http://localhost:1313/MyBlog/categories/natural-language-processing/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/natural-language-processing/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/natural-language-processing/</guid>
       <description></description>
     </item>
     <item>
       <title>Oracle Cloud</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/oracle-cloud/</link>
+      <link>http://localhost:1313/MyBlog/categories/oracle-cloud/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/oracle-cloud/</guid>
+      <guid>http://localhost:1313/MyBlog/categories/oracle-cloud/</guid>
       <description></description>
     </item>
   </channel>

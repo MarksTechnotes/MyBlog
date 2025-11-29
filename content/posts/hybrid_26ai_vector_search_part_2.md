@@ -102,7 +102,7 @@ Hybrid search leverages both:
 5. Oracle joins semantic scores with relational data
 6. Results are returned to Python
 
-This completes the full hybrid relational and semantic search workflow in 26ai. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai-_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
+This completes the full hybrid relational and semantic search workflow in 26ai. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
 
 ---
 

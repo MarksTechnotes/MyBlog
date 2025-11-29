@@ -2,283 +2,283 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/</link>
+    <link>http://localhost:1313/MyBlog/tags/</link>
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>19c</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/19c/</link>
+      <link>http://localhost:1313/MyBlog/tags/19c/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/19c/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/19c/</guid>
       <description></description>
     </item>
     <item>
       <title>26ai</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/26ai/</link>
+      <link>http://localhost:1313/MyBlog/tags/26ai/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/26ai/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/26ai/</guid>
       <description></description>
     </item>
     <item>
       <title>ATP-S</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/atp-s/</link>
+      <link>http://localhost:1313/MyBlog/tags/atp-s/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/atp-s/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/atp-s/</guid>
       <description></description>
     </item>
     <item>
       <title>Embeddings</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/embeddings/</link>
+      <link>http://localhost:1313/MyBlog/tags/embeddings/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/embeddings/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/embeddings/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugging Face</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/hugging-face/</link>
+      <link>http://localhost:1313/MyBlog/tags/hugging-face/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/hugging-face/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/hugging-face/</guid>
       <description></description>
     </item>
     <item>
       <title>Hybrid Search</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/hybrid-search/</link>
+      <link>http://localhost:1313/MyBlog/tags/hybrid-search/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/hybrid-search/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/hybrid-search/</guid>
       <description></description>
     </item>
     <item>
       <title>Materialized Views</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/materialized-views/</link>
+      <link>http://localhost:1313/MyBlog/tags/materialized-views/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/materialized-views/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/materialized-views/</guid>
       <description></description>
     </item>
     <item>
       <title>Oracle</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <link>http://localhost:1313/MyBlog/tags/oracle/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/oracle/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/python/</link>
+      <link>http://localhost:1313/MyBlog/tags/python/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/python/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Vector Search</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/vector-search/</link>
+      <link>http://localhost:1313/MyBlog/tags/vector-search/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/vector-search/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/vector-search/</guid>
       <description></description>
     </item>
     <item>
       <title>Attention</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/attention/</link>
+      <link>http://localhost:1313/MyBlog/tags/attention/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/attention/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/attention/</guid>
       <description></description>
     </item>
     <item>
       <title>BERT</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/bert/</link>
+      <link>http://localhost:1313/MyBlog/tags/bert/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/bert/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/bert/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/deep-learning/</link>
+      <link>http://localhost:1313/MyBlog/tags/deep-learning/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/deep-learning/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/deep-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>GPT</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/gpt/</link>
+      <link>http://localhost:1313/MyBlog/tags/gpt/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/gpt/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/gpt/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/machine-learning/</link>
+      <link>http://localhost:1313/MyBlog/tags/machine-learning/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/machine-learning/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
       <title>NLP</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/nlp/</link>
+      <link>http://localhost:1313/MyBlog/tags/nlp/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/nlp/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/nlp/</guid>
       <description></description>
     </item>
     <item>
       <title>Transformers</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/transformers/</link>
+      <link>http://localhost:1313/MyBlog/tags/transformers/</link>
       <pubDate>Wed, 19 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/transformers/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/transformers/</guid>
       <description></description>
     </item>
     <item>
       <title>Autonomous Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
+      <link>http://localhost:1313/MyBlog/tags/autonomous-database/</link>
       <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/autonomous-database/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Pump</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/data-pump/</link>
+      <link>http://localhost:1313/MyBlog/tags/data-pump/</link>
       <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/data-pump/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/data-pump/</guid>
       <description></description>
     </item>
     <item>
       <title>Migration</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/migration/</link>
+      <link>http://localhost:1313/MyBlog/tags/migration/</link>
       <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/migration/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/migration/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/performance/</link>
+      <link>http://localhost:1313/MyBlog/tags/performance/</link>
       <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/performance/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/performance/</guid>
       <description></description>
     </item>
     <item>
       <title>Cloud</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/cloud/</link>
+      <link>http://localhost:1313/MyBlog/tags/cloud/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/cloud/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/cloud/</guid>
       <description></description>
     </item>
     <item>
       <title>Marketplace</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/marketplace/</link>
+      <link>http://localhost:1313/MyBlog/tags/marketplace/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/marketplace/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/marketplace/</guid>
       <description></description>
     </item>
     <item>
       <title>OCI</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oci/</link>
+      <link>http://localhost:1313/MyBlog/tags/oci/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oci/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/oci/</guid>
       <description></description>
     </item>
     <item>
       <title>OEM</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oem/</link>
+      <link>http://localhost:1313/MyBlog/tags/oem/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oem/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/oem/</guid>
       <description></description>
     </item>
     <item>
       <title>DBCA</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/dbca/</link>
+      <link>http://localhost:1313/MyBlog/tags/dbca/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/dbca/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/dbca/</guid>
       <description></description>
     </item>
     <item>
       <title>GNOME</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/gnome/</link>
+      <link>http://localhost:1313/MyBlog/tags/gnome/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/gnome/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/gnome/</guid>
       <description></description>
     </item>
     <item>
       <title>Linux</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/linux/</link>
+      <link>http://localhost:1313/MyBlog/tags/linux/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/linux/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>SSH</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/ssh/</link>
+      <link>http://localhost:1313/MyBlog/tags/ssh/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/ssh/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/ssh/</guid>
       <description></description>
     </item>
     <item>
       <title>VNC</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/vnc/</link>
+      <link>http://localhost:1313/MyBlog/tags/vnc/</link>
       <pubDate>Mon, 03 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/vnc/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/vnc/</guid>
       <description></description>
     </item>
     <item>
       <title>ADW</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/adw/</link>
+      <link>http://localhost:1313/MyBlog/tags/adw/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/adw/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/adw/</guid>
       <description></description>
     </item>
     <item>
       <title>Bastion</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/bastion/</link>
+      <link>http://localhost:1313/MyBlog/tags/bastion/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/bastion/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/bastion/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Guard</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/data-guard/</link>
+      <link>http://localhost:1313/MyBlog/tags/data-guard/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/data-guard/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/data-guard/</guid>
       <description></description>
     </item>
     <item>
       <title>ExaCS</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/exacs/</link>
+      <link>http://localhost:1313/MyBlog/tags/exacs/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/exacs/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/exacs/</guid>
       <description></description>
     </item>
     <item>
       <title>Exadata</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/exadata/</link>
+      <link>http://localhost:1313/MyBlog/tags/exadata/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/exadata/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/exadata/</guid>
       <description></description>
     </item>
     <item>
       <title>Port Forwarding</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/port-forwarding/</link>
+      <link>http://localhost:1313/MyBlog/tags/port-forwarding/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/port-forwarding/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/port-forwarding/</guid>
       <description></description>
     </item>
     <item>
       <title>Smart Scan</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/smart-scan/</link>
+      <link>http://localhost:1313/MyBlog/tags/smart-scan/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/smart-scan/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/smart-scan/</guid>
       <description></description>
     </item>
     <item>
       <title>SQL Developer</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/sql-developer/</link>
+      <link>http://localhost:1313/MyBlog/tags/sql-developer/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/sql-developer/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/sql-developer/</guid>
       <description></description>
     </item>
     <item>
       <title>ZDM</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/zdm/</link>
+      <link>http://localhost:1313/MyBlog/tags/zdm/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/zdm/</guid>
+      <guid>http://localhost:1313/MyBlog/tags/zdm/</guid>
       <description></description>
     </item>
   </channel>
