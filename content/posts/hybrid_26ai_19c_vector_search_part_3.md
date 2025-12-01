@@ -1,5 +1,5 @@
 ---
-title: "Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views"
+title: "Combine 19c Relational Data with 26ai Vector Data for Similarity + Relational Search Using Materialized Views"
 date: 2025-11-28
 draft: false
 description: "Guide to using Oracle ATP-S 26ai for vector search while querying relational data in Oracle 19c via materialized views and DB links."

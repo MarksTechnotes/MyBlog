@@ -1,5 +1,5 @@
 ---
-title: "Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python"
+title: "Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python"
 date: 2025-11-28
 draft: false
 description: "Run hybrid semantic + relational search on Oracle ATP-S 26ai using Python and vector embeddings."
@@ -69,7 +69,7 @@ connection = oracledb.connect(
 cursor = connection.cursor()
 ```
 
-## 4. Perform Hybrid Vector + Relational Search 
+## 4. Perform Combined Vector + Relational Search 
 
 The `query_embeddings` script converts the query embedding List object into a JSON-like string, which is sent to Oracle, converted using `TO_VECTOR()`, and compared against stored embeddings using `VECTOR_DISTANCE()`:
 
@@ -122,7 +122,7 @@ Hybrid search leverages both:
 5. Oracle joins semantic scores with relational data
 6. Results are returned to Python
 
-This completes the full hybrid relational and semantic search workflow in 26ai. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
+This completes the combined relational and semantic search workflow in 26ai. In [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/) , we’ll extend this setup to **hybrid deployments** where relational data remains in a 19c database
 
 ---
 

@@ -1,15 +1,15 @@
 ---
-title: "Generate and Store Vector Embeddings in ATP-S 26ai"
+title: "Generate and Store Vector Embeddings in Autonomous Database 26ai"
 date: 2025-11-28
 draft: false
-description: "How to prepare data, generate embeddings using Hugging Face, and store vectors in Oracle ATP-S 26ai for hybrid semantic + relational search."
+description: "How to prepare data, generate embeddings using Hugging Face, and store Vectors in Oracle Autonomous Database 26ai for combined semantic + relational search."
 tags: ["Oracle", "ATP-S", "26ai", "Vector Search", "Hugging Face", "Embeddings", "Autonomous Database"]
 categories: ["Database", "Machine Learning"]
 ---
 
 ## Overview
 
-Oracle Autonomous Database 26ai introduces native vector storage and vector search capabilities, making it possible to build hybrid semantic–relational search solutions directly inside the database.
+Oracle Autonomous Database 26ai introduces native Vector storage and Vector search capabilities, making it possible to combine similarity search with traditional relational keyword search directly inside the database.
 
 In **Part 1 of this series**, the focus is on preparing the data and storing embeddings inside ATP-S 26ai.
 
@@ -21,7 +21,7 @@ This includes:
 - Generating embeddings externally using Hugging Face  
 - Loading embeddings back into Oracle for vector search  
 
-In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/) we will perform a hybrid semantic and relational search in 26ai on this vector data and finally in [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/) we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.
+In [**Part 2**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/) we will perform a combined semantic and relational search in 26ai on this vector data and finally in [**Part 3**](https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/) we will extend the search functionality to hybrid deployments where the relational data exists in 19c instead of 26ai.
 
 ---
 
