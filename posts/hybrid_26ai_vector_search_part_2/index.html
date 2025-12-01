@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python | Mark’s Tech Notes</title>
+    <title>Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python | Mark’s Tech Notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
     <meta name="generator" content="Hugo 0.152.2">
@@ -37,7 +37,7 @@
 
     <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_vector_search_part_2/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta property="og:title" content="Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python">
   <meta property="og:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -51,14 +51,14 @@
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="Autonomous Database">
 
-  <meta itemprop="name" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta itemprop="name" content="Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python">
   <meta itemprop="description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
   <meta itemprop="datePublished" content="2025-11-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="456">
+  <meta itemprop="wordCount" content="455">
   <meta itemprop="keywords" content="Oracle,ATP-S,26ai,Vector Search,Python,Autonomous Database">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python">
+  <meta name="twitter:title" content="Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python">
   <meta name="twitter:description" content="Run hybrid semantic &#43; relational search on Oracle ATP-S 26ai using Python and vector embeddings.">
 
       
@@ -115,7 +115,7 @@
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Perform Hybrid Semantic and Relational Search on Oracle ATP-S 26ai Using Python</h1>
+<h1 class="f1 athelas mt3 mb1">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</h1>
       
       
       
@@ -200,7 +200,7 @@
 </span></span><span style="display:flex;"><span>    dsn<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&lt;ADB_DSN&#34;</span>
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>cursor <span style="color:#f92672">=</span> connection<span style="color:#f92672">.</span>cursor()
-</span></span></code></pre></div><h2 id="4-perform-hybrid-vector--relational-search">4. Perform Hybrid Vector + Relational Search</h2>
+</span></span></code></pre></div><h2 id="4-perform-combined-vector--relational-search">4. Perform Combined Vector + Relational Search</h2>
 <p>The <code>query_embeddings</code> script converts the query embedding List object into a JSON-like string, which is sent to Oracle, converted using <code>TO_VECTOR()</code>, and compared against stored embeddings using <code>VECTOR_DISTANCE()</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vector_str <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>dumps(query_embedding)  <span style="color:#75715e"># produces [0.01,0.2,...]</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">WITH</span> query <span style="color:#66d9ef">AS</span> (
@@ -235,7 +235,7 @@
 <li>Oracle joins semantic scores with relational data</li>
 <li>Results are returned to Python</li>
 </ol>
-<p>This completes the full hybrid relational and semantic search workflow in 26ai. In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/"><strong>Part 3</strong></a> , we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database</p>
+<p>This completes the combined relational and semantic search workflow in 26ai. In <a href="https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/"><strong>Part 3</strong></a> , we’ll extend this setup to <strong>hybrid deployments</strong> where relational data remains in a 19c database</p>
 <hr>
 <p>The complete source code can be found at <a href="https://github.com/MarksTechnotes/markstechnotes-labs/tree/main/vector-search-demo"><strong>Vector Search Demo</strong></a></p>
 <ul class="pa0">
@@ -281,11 +281,11 @@
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
-          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</a>
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
         </li>
 	    
 	     <li  class="mb2">
-          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in ATP-S 26ai</a>
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
         </li>
 	    
 	     <li  class="mb2">

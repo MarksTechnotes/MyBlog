@@ -9,7 +9,7 @@
     <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/19c/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Combine Oracle 19c Relational Data with Oracle 26ai Vector Search Using Materialized Views</title>
+      <title>Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/</guid>
