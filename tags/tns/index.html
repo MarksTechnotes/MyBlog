@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+    
+      <link href="/MyBlog/tags/tns/index.xml" rel="alternate" type="application/rss+xml" title="Mark’s Tech Notes" />
+      <link href="/MyBlog/tags/tns/index.xml" rel="feed" type="application/rss+xml" title="Mark’s Tech Notes" />
+      
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/tags/tns/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/tags/tns/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="TNS">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="TNS">
+  <meta itemprop="datePublished" content="2026-01-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-12T00:00:00+00:00">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="TNS">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+
+  <header>
+    <div class="pb3-m pb6-l bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          TNS
+        </h1>
+        
+      </div>
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+  <article class="cf pa3 pa4-m pa4-l">
+    <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
+      <p>Below you will find pages that utilize the taxonomy term “TNS”</p>
+    </div>
+  </article>
+  <div class="mw8 center">
+    <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
+        Connect to ATP using Basic/EZConnect, TNS and/or JDBC
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="overview">Overview</h2>
+<p>There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.</p>
+<h2 id="1-connection-methods-for-sqlcl">1. Connection Methods for SQLcl</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Method</th>
+          <th style="text-align: left">Syntax / Format</th>
+          <th style="text-align: left">Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Basic</strong></td>
+          <td style="text-align: left"><code>user/pass@//tcps://host:1521/service_name?ssl_server_dn_match=true</code></td>
+          <td style="text-align: left">Uses Easy Connect Plus. Explicitly requires <code>tcps://</code> for ATP.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>JDBC</strong></td>
+          <td style="text-align: left"><code>user/pass@jdbc:oracle:thin:@(DESCRIPTION=...)</code></td>
+          <td style="text-align: left">Most robust; bypasses local TNS files by passing the full descriptor.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>TNS</strong></td>
+          <td style="text-align: left"><code>user/pass@network_alias</code></td>
+          <td style="text-align: left">Requires a <code>tnsnames.ora</code> file and <code>TNS_ADMIN</code> environment variable.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-protocol-and-port-relationship">2. Protocol and Port Relationship</h2>
+<p>In Oracle Cloud (OCI), ports are mapped to specific security behaviors:</p>
+    </div>
+    <a href="/MyBlog/posts/atp_connection_notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+    </section>
+  </div>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
