@@ -14,9 +14,16 @@ There are several methods to connect to an Oracle Database and ATP including Bas
 | Method | Syntax / Format | Notes |
 | :--- | :--- | :--- |
 | **Basic** | `user/pass@//tcps://host:1521/service_name?ssl_server_dn_match=true` | Uses Easy Connect Plus. Explicitly requires `tcps://` for ATP. |
-| **JDBC** | `user/pass@jdbc:oracle:thin:@(DESCRIPTION=...)` | Most robust; bypasses local TNS files by passing the full descriptor. |
-| **TNS** | `user/pass@network_alias` | Requires a `tnsnames.ora` file and `TNS_ADMIN` environment variable. |
+| **JDBC** | `user/pass@jdbc:oracle:thin:@(description=...)` | Most robust; bypasses local TNS files by passing the full connection string. |
+| **TNS** | `user/pass@reviews26ai_tp` | Requires a `tnsnames.ora` file and `TNS_ADMIN` environment variable. |
 
+The `tnsnames.ora` file should be a plain text file containing your connection string mapped to a TNS Name. For example:
+
+```bash
+reviews26ai_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=host_name))(connect_data=(service_name=service_name))(security=(ssl_server_dn_match=yes)))
+```
+
+You could also optionally directly enter the Connection string above instead of specifying a TNS namea which requires an entry in a `tnsnames.ora` file. 
 ---
 
 ## 2. Protocol and Port Relationship

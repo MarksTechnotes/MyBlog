@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta itemprop="datePublished" content="2026-01-12T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-12T00:00:00+00:00">
-  <meta itemprop="wordCount" content="277">
+  <meta itemprop="wordCount" content="326">
   <meta itemprop="keywords" content="Oracle,ATP-S,SQLcl,TLS,MTLS,TNS,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
@@ -144,17 +144,19 @@
       </tr>
       <tr>
           <td style="text-align: left"><strong>JDBC</strong></td>
-          <td style="text-align: left"><code>user/pass@jdbc:oracle:thin:@(DESCRIPTION=...)</code></td>
-          <td style="text-align: left">Most robust; bypasses local TNS files by passing the full descriptor.</td>
+          <td style="text-align: left"><code>user/pass@jdbc:oracle:thin:@(description=...)</code></td>
+          <td style="text-align: left">Most robust; bypasses local TNS files by passing the full connection string.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>TNS</strong></td>
-          <td style="text-align: left"><code>user/pass@network_alias</code></td>
+          <td style="text-align: left"><code>user/pass@reviews26ai_tp</code></td>
           <td style="text-align: left">Requires a <code>tnsnames.ora</code> file and <code>TNS_ADMIN</code> environment variable.</td>
       </tr>
   </tbody>
 </table>
-<hr>
+<p>The <code>tnsnames.ora</code> file should be a plain text file containing your connection string mapped to a TNS Name. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>reviews26ai_tp <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>description<span style="color:#f92672">=</span> <span style="color:#f92672">(</span>retry_count<span style="color:#f92672">=</span>20<span style="color:#f92672">)(</span>retry_delay<span style="color:#f92672">=</span>3<span style="color:#f92672">)(</span>address<span style="color:#f92672">=(</span>protocol<span style="color:#f92672">=</span>tcps<span style="color:#f92672">)(</span>port<span style="color:#f92672">=</span>1521<span style="color:#f92672">)(</span>host<span style="color:#f92672">=</span>host_name<span style="color:#f92672">))(</span>connect_data<span style="color:#f92672">=(</span>service_name<span style="color:#f92672">=</span>service_name<span style="color:#f92672">))(</span>security<span style="color:#f92672">=(</span>ssl_server_dn_match<span style="color:#f92672">=</span>yes<span style="color:#f92672">)))</span>
+</span></span></code></pre></div><h2 id="you-could-also-optionally-directly-enter-the-connection-string-above-instead-of-specifying-a-tns-namea-which-requires-an-entry-in-a-tnsnamesora-file">You could also optionally directly enter the Connection string above instead of specifying a TNS namea which requires an entry in a <code>tnsnames.ora</code> file.</h2>
 <h2 id="2-protocol-and-port-relationship">2. Protocol and Port Relationship</h2>
 <p>In Oracle Cloud (OCI), ports are mapped to specific security behaviors:</p>
 <ul>
