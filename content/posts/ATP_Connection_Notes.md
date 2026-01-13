@@ -10,7 +10,20 @@ categories: ["Database", "Autonomous Database"]
 
 There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.
 
-## 1. Connection Methods for SQLcl
+## 1. TCP vs. TCPS: The "Safe" Analogy
+In Oracle networking, these define the "pipe" used for your data.
+
+* **TCP (Plain Text):** Like a postcard. Fast, but anyone handling it can read your data. Generally forbidden for Cloud databases.
+* **TCPS (Encrypted):** Like a locked safe. It wraps TCP in a TLS (SSL) tunnel. This is **mandatory** for Oracle ATP to protect your data over the internet.
+
+| Feature | TCP | TCPS |
+| :--- | :--- | :--- |
+| **Full Name** | Transmission Control Protocol | TCP over SSL/TLS |
+| **Encryption** | None (Plain Text) | Full (Encrypted) |
+| **Cloud Usage** | Not allowed for ATP | **Mandatory** |
+| **Analogy** | Postcard | Locked Safe |
+
+## 2. Connection Methods for SQLcl
 | Method | Syntax / Format | Notes |
 | :--- | :--- | :--- |
 | **Basic** | `user/pass@//tcps://host:1521/service_name?ssl_server_dn_match=true` | Uses Easy Connect Plus. Explicitly requires `tcps://` for ATP. |
@@ -26,7 +39,7 @@ You could also optionally directly enter the Connection string above instead of 
 
 ---
 
-## 2. Protocol and Port Relationship
+## 3. Protocol and Port Relationship
 In Oracle Cloud (OCI), ports are mapped to specific security behaviors:
 
 * **Port 1521 (TLS/One-Way):** Encrypted connection that does **not** require a client-side wallet. SQLcl uses the standard Java truststore to verify the server.
@@ -35,7 +48,7 @@ In Oracle Cloud (OCI), ports are mapped to specific security behaviors:
 
 ---
 
-## 3. Network Configuration Files
+## 4. Network Configuration Files
 | File | Location | Role |
 | :--- | :--- | :--- |
 | **tnsnames.ora** | Client | The "Address Book." Maps aliases to full connection strings. |
@@ -44,14 +57,14 @@ In Oracle Cloud (OCI), ports are mapped to specific security behaviors:
 
 ---
 
-## 4. Key SQLcl Commands
+## 5. Key SQLcl Commands
 * `show tns`: Displays where SQLcl is looking for config files and which aliases it found.
 * `show connection`: Shows the current JDBC URL and driver type (Thin vs. Thick).
 * `set TNS_ADMIN=<path>`: Manually points SQLcl to your configuration folder during a session.
 
 ---
 
-## 5. Local Setup Checklist (macOS)
+## 6. Local Setup Checklist (macOS)
 1.  **Driver:** Using **JDBC Thin** (standard in SQLcl/VS Code), so no Oracle Client installation is required.
 2.  **Environment:** Set `TNS_ADMIN` in `~/.zshrc` to point to your configuration folder.
 3.  **Security:** Always use `(PROTOCOL=tcps)` for ATP connections to ensure encryption.
