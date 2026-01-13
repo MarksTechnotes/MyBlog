@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta itemprop="datePublished" content="2026-01-12T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-12T00:00:00+00:00">
-  <meta itemprop="wordCount" content="326">
+  <meta itemprop="wordCount" content="419">
   <meta itemprop="keywords" content="Oracle,ATP-S,SQLcl,TLS,MTLS,TNS,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
@@ -127,7 +127,44 @@
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
 <p>There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.</p>
-<h2 id="1-connection-methods-for-sqlcl">1. Connection Methods for SQLcl</h2>
+<h2 id="1-tcp-vs-tcps-the-safe-analogy">1. TCP vs. TCPS: The &ldquo;Safe&rdquo; Analogy</h2>
+<p>In Oracle networking, these define the &ldquo;pipe&rdquo; used for your data.</p>
+<ul>
+<li><strong>TCP (Plain Text):</strong> Like a postcard. Fast, but anyone handling it can read your data. Generally forbidden for Cloud databases.</li>
+<li><strong>TCPS (Encrypted):</strong> Like a locked safe. It wraps TCP in a TLS (SSL) tunnel. This is <strong>mandatory</strong> for Oracle ATP to protect your data over the internet.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Feature</th>
+          <th style="text-align: left">TCP</th>
+          <th style="text-align: left">TCPS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Full Name</strong></td>
+          <td style="text-align: left">Transmission Control Protocol</td>
+          <td style="text-align: left">TCP over SSL/TLS</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Encryption</strong></td>
+          <td style="text-align: left">None (Plain Text)</td>
+          <td style="text-align: left">Full (Encrypted)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Cloud Usage</strong></td>
+          <td style="text-align: left">Not allowed for ATP</td>
+          <td style="text-align: left"><strong>Mandatory</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Analogy</strong></td>
+          <td style="text-align: left">Postcard</td>
+          <td style="text-align: left">Locked Safe</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="2-connection-methods-for-sqlcl">2. Connection Methods for SQLcl</h2>
 <table>
   <thead>
       <tr>
@@ -158,7 +195,7 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>reviews26ai_tp <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>description<span style="color:#f92672">=</span> <span style="color:#f92672">(</span>retry_count<span style="color:#f92672">=</span>20<span style="color:#f92672">)(</span>retry_delay<span style="color:#f92672">=</span>3<span style="color:#f92672">)(</span>address<span style="color:#f92672">=(</span>protocol<span style="color:#f92672">=</span>tcps<span style="color:#f92672">)(</span>port<span style="color:#f92672">=</span>1521<span style="color:#f92672">)(</span>host<span style="color:#f92672">=</span>host_name<span style="color:#f92672">))(</span>connect_data<span style="color:#f92672">=(</span>service_name<span style="color:#f92672">=</span>service_name<span style="color:#f92672">))(</span>security<span style="color:#f92672">=(</span>ssl_server_dn_match<span style="color:#f92672">=</span>yes<span style="color:#f92672">)))</span>
 </span></span></code></pre></div><p>You could also optionally directly enter the Connection string above instead of specifying a TNS name which requires an entry in a <code>tnsnames.ora</code> file.</p>
 <hr>
-<h2 id="2-protocol-and-port-relationship">2. Protocol and Port Relationship</h2>
+<h2 id="3-protocol-and-port-relationship">3. Protocol and Port Relationship</h2>
 <p>In Oracle Cloud (OCI), ports are mapped to specific security behaviors:</p>
 <ul>
 <li><strong>Port 1521 (TLS/One-Way):</strong> Encrypted connection that does <strong>not</strong> require a client-side wallet. SQLcl uses the standard Java truststore to verify the server.</li>
@@ -166,7 +203,7 @@
 <li><strong>The &ldquo;Optional&rdquo; Rule:</strong> If the Cloud Console is set to <strong>mTLS: Optional</strong>, you can connect to Port 1522 without a wallet because the server allows a fallback to One-Way TLS.</li>
 </ul>
 <hr>
-<h2 id="3-network-configuration-files">3. Network Configuration Files</h2>
+<h2 id="4-network-configuration-files">4. Network Configuration Files</h2>
 <table>
   <thead>
       <tr>
@@ -194,14 +231,14 @@
   </tbody>
 </table>
 <hr>
-<h2 id="4-key-sqlcl-commands">4. Key SQLcl Commands</h2>
+<h2 id="5-key-sqlcl-commands">5. Key SQLcl Commands</h2>
 <ul>
 <li><code>show tns</code>: Displays where SQLcl is looking for config files and which aliases it found.</li>
 <li><code>show connection</code>: Shows the current JDBC URL and driver type (Thin vs. Thick).</li>
 <li><code>set TNS_ADMIN=&lt;path&gt;</code>: Manually points SQLcl to your configuration folder during a session.</li>
 </ul>
 <hr>
-<h2 id="5-local-setup-checklist-macos">5. Local Setup Checklist (macOS)</h2>
+<h2 id="6-local-setup-checklist-macos">6. Local Setup Checklist (macOS)</h2>
 <ol>
 <li><strong>Driver:</strong> Using <strong>JDBC Thin</strong> (standard in SQLcl/VS Code), so no Oracle Client installation is required.</li>
 <li><strong>Environment:</strong> Set <code>TNS_ADMIN</code> in <code>~/.zshrc</code> to point to your configuration folder.</li>
