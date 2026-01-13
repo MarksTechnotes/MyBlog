@@ -1,5 +1,5 @@
 ---
-title: "Connect to ATP using Basic/EZConnect, TNS and/or JDBC"
+title: "Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC"
 date: 2026-01-12
 draft: false
 description: "Connect to ATP using Basic/EZConnect, TNS and/or JDBC"
@@ -8,7 +8,7 @@ categories: ["Database", "Autonomous Database"]
 ---
 ## Overview
 
-There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.
+With Autonomous Database (ATP), we are often told to simply 'download the wallet and point the tool at the folder.' When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting 'Connection Refused' errors when they try connecting using the `Wallet-less` connection types: `Basic\EZConnect`, `TNS` and `JDBC` because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the 'why.' and will hopefully help you if you face similar connection issues.
 
 ## 1. TCP vs. TCPS: The "Safe" Analogy
 In Oracle networking, these define the "pipe" used for your data.

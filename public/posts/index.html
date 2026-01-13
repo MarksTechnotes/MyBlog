@@ -111,77 +111,12 @@
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
       <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
-        Connect to ATP using Basic/EZConnect, TNS and/or JDBC
+        Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h2 id="overview">Overview</h2>
-<p>There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.</p>
-<h2 id="1-tcp-vs-tcps-the-safe-analogy">1. TCP vs. TCPS: The &ldquo;Safe&rdquo; Analogy</h2>
-<p>In Oracle networking, these define the &ldquo;pipe&rdquo; used for your data.</p>
-<ul>
-<li><strong>TCP (Plain Text):</strong> Like a postcard. Fast, but anyone handling it can read your data. Generally forbidden for Cloud databases.</li>
-<li><strong>TCPS (Encrypted):</strong> Like a locked safe. It wraps TCP in a TLS (SSL) tunnel. This is <strong>mandatory</strong> for Oracle ATP to protect your data over the internet.</li>
-</ul>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Feature</th>
-          <th style="text-align: left">TCP</th>
-          <th style="text-align: left">TCPS</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Full Name</strong></td>
-          <td style="text-align: left">Transmission Control Protocol</td>
-          <td style="text-align: left">TCP over SSL/TLS</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Encryption</strong></td>
-          <td style="text-align: left">None (Plain Text)</td>
-          <td style="text-align: left">Full (Encrypted)</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Cloud Usage</strong></td>
-          <td style="text-align: left">Not allowed for ATP</td>
-          <td style="text-align: left"><strong>Mandatory</strong></td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>Analogy</strong></td>
-          <td style="text-align: left">Postcard</td>
-          <td style="text-align: left">Locked Safe</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="2-connection-methods-for-sqlcl">2. Connection Methods for SQLcl</h2>
-<table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Method</th>
-          <th style="text-align: left">Syntax / Format</th>
-          <th style="text-align: left">Notes</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left"><strong>Basic</strong></td>
-          <td style="text-align: left"><code>user/pass@//tcps://host:1521/service_name?ssl_server_dn_match=true</code></td>
-          <td style="text-align: left">Uses Easy Connect Plus. Explicitly requires <code>tcps://</code> for ATP.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>JDBC</strong></td>
-          <td style="text-align: left"><code>user/pass@jdbc:oracle:thin:@(description=...)</code></td>
-          <td style="text-align: left">Most robust; bypasses local TNS files by passing the full connection string.</td>
-      </tr>
-      <tr>
-          <td style="text-align: left"><strong>TNS</strong></td>
-          <td style="text-align: left"><code>user/pass@reviews26ai_tp</code></td>
-          <td style="text-align: left">Requires a <code>tnsnames.ora</code> file and <code>TNS_ADMIN</code> environment variable.</td>
-      </tr>
-  </tbody>
-</table>
-<p>The <code>tnsnames.ora</code> file should be a plain text file containing your connection string mapped to a TNS Name. For example:</p>
+<p>With Autonomous Database (ATP), we are often told to simply &lsquo;download the wallet and point the tool at the folder.&rsquo; When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting &lsquo;Connection Refused&rsquo; errors when they try connecting using the <code>Wallet-less</code> connection types: <code>Basic\EZConnect</code>, <code>TNS</code> and <code>JDBC</code> because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the &lsquo;why.&rsquo; and will hopefully help you if you face similar connection issues.</p>
     </div>
     <a href="/MyBlog/posts/atp_connection_notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

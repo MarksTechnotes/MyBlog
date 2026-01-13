@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Connect to ATP using Basic/EZConnect, TNS and/or JDBC | Mark’s Tech Notes</title>
+    <title>Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC | Mark’s Tech Notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
     <meta name="generator" content="Hugo 0.152.2">
@@ -37,7 +37,7 @@
 
     <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/atp_connection_notes/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta property="og:title" content="Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta property="og:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -51,14 +51,14 @@
     <meta property="article:tag" content="MTLS">
     <meta property="article:tag" content="TNS">
 
-  <meta itemprop="name" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta itemprop="name" content="Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta itemprop="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta itemprop="datePublished" content="2026-01-12T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-12T00:00:00+00:00">
-  <meta itemprop="wordCount" content="419">
+  <meta itemprop="wordCount" content="490">
   <meta itemprop="keywords" content="Oracle,ATP-S,SQLcl,TLS,MTLS,TNS,Autonomous Database">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta name="twitter:title" content="Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
   <meta name="twitter:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
 
       
@@ -115,7 +115,7 @@
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Connect to ATP using Basic/EZConnect, TNS and/or JDBC</h1>
+<h1 class="f1 athelas mt3 mb1">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</h1>
       
       
       
@@ -126,7 +126,7 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
-<p>There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.</p>
+<p>With Autonomous Database (ATP), we are often told to simply &lsquo;download the wallet and point the tool at the folder.&rsquo; When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting &lsquo;Connection Refused&rsquo; errors when they try connecting using the <code>Wallet-less</code> connection types: <code>Basic\EZConnect</code>, <code>TNS</code> and <code>JDBC</code> because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the &lsquo;why.&rsquo; and will hopefully help you if you face similar connection issues.</p>
 <h2 id="1-tcp-vs-tcps-the-safe-analogy">1. TCP vs. TCPS: The &ldquo;Safe&rdquo; Analogy</h2>
 <p>In Oracle networking, these define the &ldquo;pipe&rdquo; used for your data.</p>
 <ul>
