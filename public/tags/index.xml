@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ATP-S</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/atp-s/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/atp-s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MTLS</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/mtls/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/mtls/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SQLcl</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/sqlcl/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/sqlcl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TLS</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/tls/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/tls/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TNS</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/tns/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/tns/</guid>
+      <description></description>
+    </item>
     <item>
       <title>19c</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/19c/</link>
@@ -20,20 +69,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/26ai/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/26ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ATP-S</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/atp-s/</link>
-      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/atp-s/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Autonomous Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
-      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
       <description></description>
     </item>
     <item>
@@ -62,13 +97,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/materialized-views/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/materialized-views/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oracle</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
       <description></description>
     </item>
     <item>

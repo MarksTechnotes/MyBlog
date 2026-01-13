@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Connect to ATP using Basic/EZConnect, TNS and/or JDBC | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/atp_connection_notes/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/atp_connection_notes/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta property="og:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-12T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-12T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ATP-S">
+    <meta property="article:tag" content="SQLcl">
+    <meta property="article:tag" content="TLS">
+    <meta property="article:tag" content="MTLS">
+    <meta property="article:tag" content="TNS">
+
+  <meta itemprop="name" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta itemprop="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta itemprop="datePublished" content="2026-01-12T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-12T00:00:00+00:00">
+  <meta itemprop="wordCount" content="277">
+  <meta itemprop="keywords" content="Oracle,ATP-S,SQLcl,TLS,MTLS,TNS,Autonomous Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta name="twitter:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Connect to ATP using Basic/EZConnect, TNS and/or JDBC</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-01-12T00:00:00Z">January 12, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="overview">Overview</h2>
+<p>There are several methods to connect to an Oracle Database and ATP including Basic/EZConnect, TNS , JDBC and Wallet. This post talks about these different connection types.</p>
+<h2 id="1-connection-methods-for-sqlcl">1. Connection Methods for SQLcl</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Method</th>
+          <th style="text-align: left">Syntax / Format</th>
+          <th style="text-align: left">Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Basic</strong></td>
+          <td style="text-align: left"><code>user/pass@//tcps://host:1521/service_name?ssl_server_dn_match=true</code></td>
+          <td style="text-align: left">Uses Easy Connect Plus. Explicitly requires <code>tcps://</code> for ATP.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>JDBC</strong></td>
+          <td style="text-align: left"><code>user/pass@jdbc:oracle:thin:@(DESCRIPTION=...)</code></td>
+          <td style="text-align: left">Most robust; bypasses local TNS files by passing the full descriptor.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>TNS</strong></td>
+          <td style="text-align: left"><code>user/pass@network_alias</code></td>
+          <td style="text-align: left">Requires a <code>tnsnames.ora</code> file and <code>TNS_ADMIN</code> environment variable.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="2-protocol-and-port-relationship">2. Protocol and Port Relationship</h2>
+<p>In Oracle Cloud (OCI), ports are mapped to specific security behaviors:</p>
+<ul>
+<li><strong>Port 1521 (TLS/One-Way):</strong> Encrypted connection that does <strong>not</strong> require a client-side wallet. SQLcl uses the standard Java truststore to verify the server.</li>
+<li><strong>Port 1522 (mTLS/Mutual):</strong> Encrypted connection that typically <strong>requires a wallet</strong>.</li>
+<li><strong>The &ldquo;Optional&rdquo; Rule:</strong> If the Cloud Console is set to <strong>mTLS: Optional</strong>, you can connect to Port 1522 without a wallet because the server allows a fallback to One-Way TLS.</li>
+</ul>
+<hr>
+<h2 id="3-network-configuration-files">3. Network Configuration Files</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">File</th>
+          <th style="text-align: left">Location</th>
+          <th style="text-align: left">Role</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>tnsnames.ora</strong></td>
+          <td style="text-align: left">Client</td>
+          <td style="text-align: left">The &ldquo;Address Book.&rdquo; Maps aliases to full connection strings.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>sqlnet.ora</strong></td>
+          <td style="text-align: left">Client/Server</td>
+          <td style="text-align: left">The &ldquo;Policy Manual.&rdquo; Sets timeouts, wallet locations, and naming methods.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>listener.ora</strong></td>
+          <td style="text-align: left">Server</td>
+          <td style="text-align: left">The &ldquo;Receiver.&rdquo; Listens for incoming traffic on specific ports (1521/1522).</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-key-sqlcl-commands">4. Key SQLcl Commands</h2>
+<ul>
+<li><code>show tns</code>: Displays where SQLcl is looking for config files and which aliases it found.</li>
+<li><code>show connection</code>: Shows the current JDBC URL and driver type (Thin vs. Thick).</li>
+<li><code>set TNS_ADMIN=&lt;path&gt;</code>: Manually points SQLcl to your configuration folder during a session.</li>
+</ul>
+<hr>
+<h2 id="5-local-setup-checklist-macos">5. Local Setup Checklist (macOS)</h2>
+<ol>
+<li><strong>Driver:</strong> Using <strong>JDBC Thin</strong> (standard in SQLcl/VS Code), so no Oracle Client installation is required.</li>
+<li><strong>Environment:</strong> Set <code>TNS_ADMIN</code> in <code>~/.zshrc</code> to point to your configuration folder.</li>
+<li><strong>Security:</strong> Always use <code>(PROTOCOL=tcps)</code> for ATP connections to ensure encryption.</li>
+</ol>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/atp-s/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ATP-S</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/sqlcl/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">SQLcl</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/tls/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TLS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/mtls/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">MTLS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/tns/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">TNS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
