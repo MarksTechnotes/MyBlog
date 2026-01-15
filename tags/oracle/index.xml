@@ -6,8 +6,15 @@
     <description>Recent content in Oracle on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/the-database-middleman---dbfs/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/the-database-middleman---dbfs/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;&#xA;&lt;p&gt;In modern Oracle Cloud Infrastructure (OCI) architectures, architects often look for ways to manage file payloads without bloating the database. A common proposal is to use the &lt;strong&gt;Database File System (DBFS)&lt;/strong&gt; to attach an external &lt;strong&gt;File Storage Service (FSS)&lt;/strong&gt; to an &lt;strong&gt;Autonomous Transaction Processing (ATP)&lt;/strong&gt; database.&lt;/p&gt;&#xA;&lt;p&gt;The intent is usually good: keep the database lean while using its familiar interface to manage files. However, in practice, this creates a &amp;ldquo;Database Middleman&amp;rdquo; that introduces significant performance and operational risks.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/atp_connection_notes/</link>
