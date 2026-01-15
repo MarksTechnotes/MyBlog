@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/the-database-middleman---dbfs/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/the-database-middleman---dbfs/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS">
+  <meta property="og:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-15T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ATP-S">
+    <meta property="article:tag" content="DBFS">
+    <meta property="article:tag" content="FSS">
+    <meta property="article:tag" content="Autonomous Database">
+
+  <meta itemprop="name" content="The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS">
+  <meta itemprop="description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+  <meta itemprop="datePublished" content="2026-01-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="560">
+  <meta itemprop="keywords" content="Oracle,ATP-S,DBFS,FSS,Autonomous Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS">
+  <meta name="twitter:description" content="Connect to ATP using Basic/EZConnect, TNS and/or JDBC">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-01-15T00:00:00Z">January 15, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="overview">Overview</h1>
+<p>In modern Oracle Cloud Infrastructure (OCI) architectures, architects often look for ways to manage file payloads without bloating the database. A common proposal is to use the <strong>Database File System (DBFS)</strong> to attach an external <strong>File Storage Service (FSS)</strong> to an <strong>Autonomous Transaction Processing (ATP)</strong> database.</p>
+<p>The intent is usually good: keep the database lean while using its familiar interface to manage files. However, in practice, this creates a &ldquo;Database Middleman&rdquo; that introduces significant performance and operational risks.</p>
+<h2 id="the-architecture-a-bridge-to-nowhere">The Architecture: A Bridge to Nowhere?</h2>
+<p>When you use the <code>DBMS_CLOUD_ADMIN.ATTACH_FILE_SYSTEM</code> procedure in an ATP database, you aren&rsquo;t changing the network protocol. Instead, you are creating a <strong>software bridge</strong>. The database acts as a gateway; the application sends file data to the database, which then writes it out to the external NFS mount.</p>
+<h3 id="the-pros--cons-of-the-attached-approach">The Pros &amp; Cons of the &ldquo;Attached&rdquo; Approach</h3>
+<ul>
+<li><strong>Tablespace Bloat (Solved):</strong> Files are stored as standard files on external FSS, not as massive BLOBs inside your datafiles. This keeps your database backups smaller and prevents tablespace pressure.</li>
+<li><strong>Latency (High):</strong> Data must be brokered by the DB engine. This creates a &ldquo;double-hop&rdquo; where every byte of data must be processed by the database before it can reach the storage.</li>
+<li><strong>Cost (Expensive):</strong> You consume high-cost ATP OCPUs for basic file I/O—tasks a standard OS kernel handles for free.</li>
+<li><strong>Availability (Fragile):</strong> If the database is down for patching or busy with heavy analytical queries, your entire file transfer gateway is paralyzed, even if the storage itself is online.</li>
+</ul>
+<hr>
+<h2 id="why-i-recommend-decoupling-instead">Why I Recommend Decoupling Instead</h2>
+<p>For any Greenfield OCI environment, especially those running high-volume services like Oracle Managed File Transfer (OMFT), using the database as a file bridge is an over-engineered solution.</p>
+<h3 id="1-the-performance-toll-booth">1. The Performance &ldquo;Toll Booth&rdquo;</h3>
+<p>The DBFS interface is not optimized for high-concurrency throughput. Every file must be buffered through the database memory space. In a high-volume environment, this creates a bottleneck that limits how fast you can ingest or distribute files.</p>
+<h3 id="2-operational-complexity">2. Operational Complexity</h3>
+<p>By linking your storage to your database, you make troubleshooting significantly harder. A &ldquo;slow file transfer&rdquo; now requires you to analyze the network, the database kernel, the PL/SQL execution, and the storage layer simultaneously.</p>
+<h3 id="3-the-code-comparison-simplicity-wins">3. The Code Comparison: Simplicity Wins</h3>
+<p>When you bridge through the database, you often have to rely on complex PL/SQL loops (using <code>UTL_FILE</code> or <code>DBMS_LOB</code>) to move data.</p>
+<h3 id="the-middleman-way-complex">The &ldquo;Middleman&rdquo; Way (Complex):</h3>
+<p>The DB engine must process the file bits in chunks, consuming memory and CPU:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- The DB engine must &#39;touch&#39; every byte, consuming OCPU cycles
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DECLARE</span>
+</span></span><span style="display:flex;"><span>  l_file UTL_FILE.FILE_TYPE;
+</span></span><span style="display:flex;"><span>  l_pos  INTEGER :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>  l_file :<span style="color:#f92672">=</span> UTL_FILE.FOPEN(<span style="color:#e6db74">&#39;FSS_DIR&#39;</span>, <span style="color:#e6db74">&#39;data.bin&#39;</span>, <span style="color:#e6db74">&#39;wb&#39;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- [Manual loop to read BLOB and write to external FSS]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">-- The engine loops here, buffering data through DB memory
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">-- This is where the &#39;Buffer Tax&#39; is paid.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  UTL_FILE.FCLOSE(l_file);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span></code></pre></div><p><strong>The &ldquo;Cloud Native&rdquo; Way (Direct):</strong> By mounting the FSS directly to your application server, you use native OS commands that bypass the database entirely for the data path.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Direct OS-level write. No Database OCPUs consumed.</span>
+</span></span><span style="display:flex;"><span>cp /local/source/data.bin /mnt/fss_shared_storage/
+</span></span></code></pre></div><h2 id="the-bottom-line">The Bottom Line</h2>
+<p>Keep your database for what it does best: Metadata (tracking job status, filenames, and timestamps). Use your file system for what it does best: Payloads.</p>
+<p>By mounting OCI File Storage (FSS) directly to your application servers and using ATP only for the metadata repository, you achieve better performance, lower costs, and a much cleaner architecture for Disaster Recovery.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/atp-s/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ATP-S</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/dbfs/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">DBFS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/fss/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">FSS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
