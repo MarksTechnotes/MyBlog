@@ -6,20 +6,48 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ATP-S</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/atp-s/</link>
-      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/atp-s/</guid>
+      <title>ADB</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/adb/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/adb/</guid>
       <description></description>
     </item>
     <item>
       <title>Autonomous Database</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
-      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GoldenGate</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/goldengate/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/goldengate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ZDM</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/zdm/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/zdm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ATP-S</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/atp-s/</link>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/atp-s/</guid>
       <description></description>
     </item>
     <item>
@@ -34,13 +62,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/fss/</link>
       <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/fss/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oracle</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
       <description></description>
     </item>
     <item>
@@ -314,13 +335,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/sql-developer/</link>
       <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/sql-developer/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ZDM</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/zdm/</link>
-      <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/zdm/</guid>
       <description></description>
     </item>
   </channel>
