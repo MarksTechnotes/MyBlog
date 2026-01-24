@@ -2,7 +2,7 @@
 title: "The Database Middleman: Why You Shouldn't Bridge Cloud Storage via DBFS"
 date: 2026-01-15
 draft: false
-description: "Connect to ATP using Basic/EZConnect, TNS and/or JDBC"
+description: "Why not bridge Cloud Storage via DBFS"
 tags: ["Oracle", "ATP-S", "DBFS", "FSS","Autonomous Database"]
 categories: ["Database", "Autonomous Database", "DBFS", "File Systems"]
 ---
