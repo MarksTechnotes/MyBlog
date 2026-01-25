@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Why use ZDM to migrate large databases">
   <meta itemprop="datePublished" content="2026-01-24T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="571">
+  <meta itemprop="wordCount" content="576">
   <meta itemprop="keywords" content="Oracle,ADB,ZDM,Autonomous Database,GoldenGate">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama">
@@ -138,7 +138,7 @@
 </span></span></code></pre></div><p>Furthermore, GoldenGate doesn&rsquo;t move metadata (like table structures and indexes) automatically. It is far more effective as a &ldquo;catch-up&rdquo; mechanism used after the bulk data has been &ldquo;pre-seeded&rdquo; into the target.</p>
 <p>The &ldquo;hardest&rdquo; part of this manual journey is <strong>SCN Management</strong>. In a 75TB environment, the initial export can take days. If the SCN isn&rsquo;t perfectly coordinated between the export and the replication start point, you risk data corruption or &ldquo;Unique Constraint&rdquo; errors. ZDM solves this by performing a &ldquo;handshake&rdquo; between tools, ensuring that the second GoldenGate starts, it picks up exactly where the Data Pump snapshot left off, preserving transaction atomicity across the entire 75TB landscape.</p>
 <h2 id="the-pilot-vs-the-engine-vs-the-fuel-line">The Pilot vs the Engine vs the Fuel Line</h2>
-<p>ZDM is not a <strong>magic pill</strong> that will solve data architectural issues. We recently saw a migration where ZDM requested 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn&rsquo;t the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be &lsquo;migration-ready&rsquo; before the first byte moves.ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data</p>
+<p>ZDM is not a <strong>magic pill</strong> that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn&rsquo;t the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be &lsquo;migration-ready&rsquo; before the first byte moves.ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data</p>
 <p>At this scale, ZDM is less about convenience and more about risk containment. It does not eliminate complexity — it centralizes it.  Teams that assume ZDM “handles everything” still run into issues around redo volume spikes, unexpected Data Pump runtimes, and GoldenGate lag that only becomes visible after the bulk load has already committed. By automating the technical minutiae of log sequence tracking and parallelism tuning, ZDM allows database architects to focus on what matters most: a successful, risk-free transition to Dedicated infrastructure.</p>
 <ul class="pa0">
   
