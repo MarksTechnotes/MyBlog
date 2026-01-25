@@ -38,4 +38,9 @@ The "hardest" part of this manual journey is **SCN Management**. In a 75TB envir
 
 ZDM is not a **magic pill** that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn't the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be 'migration-ready' before the first byte moves.ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data
 
+## Bandwidth Requirement 
+
+For a 75TB migration, do not settle for a standard 1 Gbps connection, which results in an 11-day transfer window. To achieve a viable 48-hour cutover, you must ensure a minimum sustained throughput of 10 Gbps. This requires scaling your Target ADB-D to at least 32 ECPUs and ensuring your ZDM control host is not bottlenecked by a small VM shape.
+
+## Conclusion
 At this scale, ZDM is less about convenience and more about risk containment. It does not eliminate complexity — it centralizes it.  Teams that assume ZDM “handles everything” still run into issues around redo volume spikes, unexpected Data Pump runtimes, and GoldenGate lag that only becomes visible after the bulk load has already committed. By automating the technical minutiae of log sequence tracking and parallelism tuning, ZDM allows database architects to focus on what matters most: a successful, risk-free transition to Dedicated infrastructure.
