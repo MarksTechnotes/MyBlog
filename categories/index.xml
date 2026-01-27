@@ -6,33 +6,47 @@
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autonomous Database</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</link>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Pump</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/data-pump/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/data-pump/</guid>
       <description></description>
     </item>
     <item>
       <title>Database</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DMS</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/dms/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/dms/</guid>
       <description></description>
     </item>
     <item>
       <title>GoldenGate</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/goldengate/</link>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/goldengate/</guid>
       <description></description>
     </item>
     <item>
       <title>ZDM</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/zdm/</link>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/zdm/</guid>
       <description></description>
     </item>

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama | Mark’s Tech Notes</title>
+    <title>Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama | Mark’s Tech Notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="Why use ZDM to migrate large databases">
+    <meta name="description" content="Why use ZDM or DMS to migrate large databases">
     <meta name="generator" content="Hugo 0.152.2">
     
     
@@ -37,28 +37,29 @@
 
     <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama">
-  <meta property="og:description" content="Why use ZDM to migrate large databases">
+  <meta property="og:title" content="Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama">
+  <meta property="og:description" content="Why use ZDM or DMS to migrate large databases">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-01-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-01-24T00:00:00+00:00">
+    <meta property="article:published_time" content="2026-01-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-27T00:00:00+00:00">
     <meta property="article:tag" content="Oracle">
     <meta property="article:tag" content="ADB">
     <meta property="article:tag" content="ZDM">
     <meta property="article:tag" content="Autonomous Database">
-    <meta property="article:tag" content="GoldenGate">
+    <meta property="article:tag" content="DMS">
+    <meta property="article:tag" content="Data Pump">
 
-  <meta itemprop="name" content="Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama">
-  <meta itemprop="description" content="Why use ZDM to migrate large databases">
-  <meta itemprop="datePublished" content="2026-01-24T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-01-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="640">
-  <meta itemprop="keywords" content="Oracle,ADB,ZDM,Autonomous Database,GoldenGate">
+  <meta itemprop="name" content="Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama">
+  <meta itemprop="description" content="Why use ZDM or DMS to migrate large databases">
+  <meta itemprop="datePublished" content="2026-01-27T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-27T00:00:00+00:00">
+  <meta itemprop="wordCount" content="816">
+  <meta itemprop="keywords" content="Oracle,ADB,ZDM,Autonomous Database,DMS,Data Pump,GoldenGate">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama">
-  <meta name="twitter:description" content="Why use ZDM to migrate large databases">
+  <meta name="twitter:title" content="Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama">
+  <meta name="twitter:description" content="Why use ZDM or DMS to migrate large databases">
 
       
     
@@ -114,35 +115,46 @@
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama</h1>
+<h1 class="f1 athelas mt3 mb1">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2026-01-24T00:00:00Z">January 24, 2026</time>
+      <time class="f6 mv4 dib tracked" datetime="2026-01-27T00:00:00Z">January 27, 2026</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>A customer I am working is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo; At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
-<h2 id="zero-downtime-migration-zdm">Zero Downtime Migration (ZDM)</h2>
-<p>Oracle’s recommended approach is <strong>Zero Downtime Migration (ZDM)</strong>, which acts as a sophisticated orchestrator. Rather than being a standalone &ldquo;mover,&rdquo; ZDM automates the heavy lifting by combining the strengths of Data Pump and GoldenGate. It uses Data Pump for the initial bulk transfer of the 75TB and GoldenGate to sync the &ldquo;delta&rdquo; changes. This eliminates the manual complexity of tracking <strong>System Change Numbers (SCNs)</strong>, ensuring there are no gaps or overlaps in data during the transition.</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+<h2 id="zero-downtime-migration-zdm-and-database-migration-service-dms">Zero Downtime Migration (ZDM) and Database Migration Service (DMS)</h2>
+<p>Oracle’s recommended approach is <strong>Zero Downtime Migration (ZDM)</strong> or its cloud-native evolution, OCI <strong>Database Migration Service (DMS)</strong>. Both act as sophisticated orchestrators. Rather than being standalone &ldquo;movers,&rdquo; they automate the heavy lifting by combining Data Pump (for the 75TB initial load) and GoldenGate (to sync &ldquo;delta&rdquo; changes).</p>
+<p>While ZDM is a powerful CLI tool you run on your own VM, DMS is a fully managed service in the OCI Console. DMS essentially provides a &ldquo;managed cockpit&rdquo; for the ZDM engine, which is a major advantage for 75TB moves because it offloads the resource requirements of the migration host to Oracle&rsquo;s managed infrastructure.</p>
+<p>Whether you use the CLI or the Console, these tools automate the heavy lifting by combining the strengths of Data Pump and GoldenGate. Since this is an online logical migration, the source database will be online and accessible to users during the migration process.</p>
 <p>ZDM provides a &ldquo;pause and validate&rdquo; workflow that allows teams to test the 75TB target environment before the final cutover.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Pre-migration evaluation for a risk-free start</span>
 </span></span><span style="display:flex;"><span>zdmcli migrate database -sourcesid SOURCE_ADB -rsp config.rsp -eval
-</span></span></code></pre></div><h2 id="why-not-goldengate">Why not GoldenGate?</h2>
+</span></span></code></pre></div><h2 id="why-not-goldengate-alone">Why not GoldenGate alone?</h2>
 <p>Some customers consider using GoldenGate alone, but for a full 75TB migration, this is often a &ldquo;garden hose vs. swimming pool&rdquo; scenario. GoldenGate is designed for real-time replication via SQL, which is significantly slower for initial loads than the direct-path methods used by Data Pump. ZDM optimizes this by using Data Pump with high parallelism for the heavy lifting:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Typical starting points in environments of this size might look like</span>
 </span></span><span style="display:flex;"><span>DATAPUMP_PARALLELISM<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span>
 </span></span><span style="display:flex;"><span>DATAPUMP_CHUNK_SIZE_IN_MB<span style="color:#f92672">=</span><span style="color:#ae81ff">2048</span>
-</span></span></code></pre></div><p>Furthermore, GoldenGate doesn&rsquo;t move metadata (like table structures and indexes) automatically. It is far more effective as a &ldquo;catch-up&rdquo; mechanism used after the bulk data has been &ldquo;pre-seeded&rdquo; into the target.</p>
+</span></span></code></pre></div><p>GoldenGate is far more effective as a &ldquo;catch-up&rdquo; mechanism used after the bulk data has been &ldquo;pre-seeded&rdquo; into the target.</p>
 <p>The &ldquo;hardest&rdquo; part of this manual journey is <strong>SCN Management</strong>. In a 75TB environment, the initial export can take days. If the SCN isn&rsquo;t perfectly coordinated between the export and the replication start point, you risk data corruption or &ldquo;Unique Constraint&rdquo; errors. ZDM solves this by performing a &ldquo;handshake&rdquo; between tools, ensuring that the second GoldenGate starts, it picks up exactly where the Data Pump snapshot left off, preserving transaction atomicity across the entire 75TB landscape.</p>
 <h2 id="the-pilot-vs-the-engine-vs-the-fuel-line">The Pilot vs the Engine vs the Fuel Line</h2>
-<p>ZDM is not a <strong>magic pill</strong> that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn&rsquo;t the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be &lsquo;migration-ready&rsquo; before the first byte moves.ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data</p>
-<h2 id="bandwidth-requirement">Bandwidth Requirement</h2>
-<p>For a 75TB migration, do not settle for a standard 1 Gbps connection, which results in an 11-day transfer window. To achieve a viable 48-hour cutover, you must ensure a minimum sustained throughput of 10 Gbps. This requires scaling your Target ADB-D to at least 32 ECPUs and ensuring your ZDM control host is not bottlenecked by a small VM shape.</p>
+<p>Orchestration via DMS/ZDM is not a <strong>magic pill</strong> that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn&rsquo;t the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be &lsquo;migration-ready&rsquo; before the first byte moves. ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- Check if your &#39;Fuel Line&#39; is blocked: 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- Are workers actually working, or just idling?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> worker_method, <span style="color:#66d9ef">state</span>, <span style="color:#66d9ef">count</span>(<span style="color:#f92672">*</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> v$datapump_worker 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">GROUP</span> <span style="color:#66d9ef">BY</span> worker_method, <span style="color:#66d9ef">state</span>;
+</span></span></code></pre></div><h2 id="bandwidth-requirement">Bandwidth Requirement</h2>
+<p>Don’t settle for a 1 Gbps connection. At 75TB, that leads to a theoretical 11-day transfer—and that&rsquo;s before you account for index rebuilding or metadata. Even with optimized throughput, a migration of this scale can take a week or longer.</p>
+<p>To hit that window, you need:<br>
+<strong>10 Gbps Minimum:</strong> Anything less turns a week-long project into a month-long ordeal.<br>
+<strong>Target Scaling:</strong> Scale your Target ADB-D to at least 32-64 ECPUs during the migration to handle the write volume. <br>
+<strong>Managed Infrastructure:</strong> If using ZDM CLI, ensure your host has at least 8-16 OCPUs. If you want to bypass the risk of a &ldquo;small VM&rdquo; bottleneck entirely, DMS is the better fit as Oracle manages the migration resources for you.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>At this scale, ZDM is less about convenience and more about risk containment. It does not eliminate complexity — it centralizes it.  Teams that assume ZDM “handles everything” still run into issues around redo volume spikes, unexpected Data Pump runtimes, and GoldenGate lag that only becomes visible after the bulk load has already committed. By automating the technical minutiae of log sequence tracking and parallelism tuning, ZDM allows database architects to focus on what matters most: a successful, risk-free transition to Dedicated infrastructure.</p>
+<p>At 75TB, choosing between ZDM and DMS is about risk containment. While ZDM offers CLI-level granularity, DMS provides a streamlined, managed experience that is often a better fit for cloud-native architectures. Neither tool eliminates complexity—they centralize it. Teams must still account for redo volume spikes and ensure their data structure allows for parallelism. By automating SCN tracking and parallelism tuning, these tools allow architects to focus on the goal: a successful, risk-free transition to Dedicated infrastructure.</p>
 <ul class="pa0">
   
    <li class="list di">
@@ -159,6 +171,14 @@
   
    <li class="list di">
      <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/dms/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">DMS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/data-pump/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Data Pump</a>
    </li>
   
    <li class="list di">
@@ -182,6 +202,10 @@
     <ul class="pa0 list">
 	   
 	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
           <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
         </li>
 	    
@@ -203,10 +227,6 @@
 	    
 	     <li  class="mb2">
           <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
-        </li>
-	    
-	     <li  class="mb2">
-          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
         </li>
 	    
 	     <li  class="mb2">
