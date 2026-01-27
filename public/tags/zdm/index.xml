@@ -6,14 +6,14 @@
     <description>Recent content in ZDM on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/zdm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Size Matters: Why ZDM is the way to migrate 75TB from ADB-S to ADB-D without the Drama</title>
+      <title>Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</link>
-      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</guid>
-      <description>&lt;p&gt;A customer I am working is in the process of migrating a massive &lt;strong&gt;75TB database&lt;/strong&gt; from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&amp;rsquo;t an option. While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &amp;ldquo;how&amp;rdquo; just as important as the &amp;ldquo;what.&amp;rdquo; At this scale, the primary challenge isn&amp;rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.&lt;/p&gt;</description>
+      <description>&lt;p&gt;A customer I am working with is in the process of migrating a massive &lt;strong&gt;75TB database&lt;/strong&gt; from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&amp;rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &amp;ldquo;how&amp;rdquo; just as important as the &amp;ldquo;what.&amp;rdquo;. At this scale, the primary challenge isn&amp;rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</title>

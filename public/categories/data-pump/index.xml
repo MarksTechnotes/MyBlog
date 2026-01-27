@@ -2,25 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Pump on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/tags/data-pump/</link>
+    <link>https://markstechnotes.github.io/MyBlog/categories/data-pump/</link>
     <description>Recent content in Data Pump on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/data-pump/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/data-pump/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</link>
       <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</guid>
       <description>&lt;p&gt;A customer I am working with is in the process of migrating a massive &lt;strong&gt;75TB database&lt;/strong&gt; from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&amp;rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &amp;ldquo;how&amp;rdquo; just as important as the &amp;ldquo;what.&amp;rdquo;. At this scale, the primary challenge isn&amp;rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/speeding-up-data-pump-imports-adb/</link>
-      <pubDate>Fri, 14 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/speeding-up-data-pump-imports-adb/</guid>
-      <description>&lt;p&gt;Many DBAs prefer using &lt;strong&gt;Oracle Data Pump&lt;/strong&gt; when migrating data into &lt;strong&gt;Autonomous Database (ADB)&lt;/strong&gt;, largely because the tool is familiar and reliable. However, Data Pump imports can become slow and resource-intensive, especially when migrating databases larger than a few 100 GB. In one customer case I was involved in, a &lt;strong&gt;650 GB import&lt;/strong&gt; into ADB took &lt;strong&gt;18 hours&lt;/strong&gt; to complete - clearly a pain point.&lt;/p&gt;&#xA;&lt;p&gt;A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
