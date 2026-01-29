@@ -40,7 +40,7 @@ The "hardest" part of this manual journey is **SCN Management**. In a 75TB envir
 
 ## The Pilot vs the Engine vs the Fuel Line
 
-Orchestration via DMS/ZDM is not a **magic pill** that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn't the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be 'migration-ready' before the first byte moves. ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data.
+Orchestration via DMS/ZDM is not a **magic pill** that will solve data architectural issues. In the migration I was referring to earlier, the customer configured ZDM for 62 threads of parallelism, but the execution remained single-threaded. The culprit wasn't the pilot (ZDM) or the Engine (Data Pump); it was the Fuel Line (the data structure) itself. Large LOBs or unpartitioned tables act as a bottleneck that stalls even the most powerful migration engines. For a 75TB leap, your data architecture must be 'migration-ready' before the first byte moves. ZDM can orchestrate the move, but it cannot override the physics of unpartitioned data. Even without large unpartitioned tables, parallelism can be throttled if ECPUs are scaled after the Master Process has already initialized. Data Pump's resource 'handshake' happens at the start—scale your target before you hit go, or you'll be stuck in the slow lane regardless of your ECPU count.
 
 ```sql
 -- Check if your 'Fuel Line' is blocked: 
