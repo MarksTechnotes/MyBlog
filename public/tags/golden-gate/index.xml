@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Pump on Mark’s Tech Notes</title>
-    <link>https://markstechnotes.github.io/MyBlog/categories/data-pump/</link>
-    <description>Recent content in Data Pump on Mark’s Tech Notes</description>
+    <title>Golden Gate on Mark’s Tech Notes</title>
+    <link>https://markstechnotes.github.io/MyBlog/tags/golden-gate/</link>
+    <description>Recent content in Golden Gate on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 17 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/data-pump/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/golden-gate/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Real-Time Replication: ATP to ADW with OCI GoldenGate</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/</link>
       <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Target Audience:&lt;/strong&gt; Senior DBAs, Cloud Architects, and Oracle User Groups&lt;br&gt;&#xA;&lt;strong&gt;Technical Context:&lt;/strong&gt; Replicating SOE schema between 4-ECPU Autonomous instances&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-environment--performance-profile&#34;&gt;1. Environment &amp;amp; Performance Profile&lt;/h2&gt;&#xA;&lt;p&gt;To provide a baseline for these benchmarks, both the source and target environments were configured as follows:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Source:&lt;/strong&gt; ATP (&lt;code&gt;dbai26&lt;/code&gt;) — &lt;strong&gt;4 ECPUs&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Target:&lt;/strong&gt; ADW (&lt;code&gt;PerfDB23ai&lt;/code&gt;) — &lt;strong&gt;4 ECPUs&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Data Volume:&lt;/strong&gt; ~700 MB (SOE Schema)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;initial-load-via-dbms_datapump&#34;&gt;Initial Load via &lt;code&gt;DBMS_DATAPUMP&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;p&gt;I used the &lt;code&gt;DBMS_DATAPUMP&lt;/code&gt; PL/SQL package to integrate directly with OCI Object Storage via &lt;code&gt;DBMS_CLOUD&lt;/code&gt; credentials.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</title>
-      <link>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</link>
-      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</guid>
-      <description>&lt;p&gt;A customer I am working with is in the process of migrating a massive &lt;strong&gt;75TB database&lt;/strong&gt; from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&amp;rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &amp;ldquo;how&amp;rdquo; just as important as the &amp;ldquo;what.&amp;rdquo;. At this scale, the primary challenge isn&amp;rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

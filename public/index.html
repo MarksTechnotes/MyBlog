@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2026-01-27T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-01-27T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,6 +126,40 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="color-inherit dim link">
+            Real-Time Replication: ATP to ADW with OCI GoldenGate
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+        </div>
+        <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="color-inherit dim link">
             Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
             </a>
@@ -166,36 +200,18 @@
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/atp_connection_notes/" class="color-inherit dim link">
-            Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="overview">Overview</h2>
-<p>With Autonomous Database (ATP), we are often told to simply &lsquo;download the wallet and point the tool at the folder.&rsquo; When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting &lsquo;Connection Refused&rsquo; errors when they try connecting using the <code>Wallet-less</code> connection types: <code>Basic\EZConnect</code>, <code>TNS</code> and <code>JDBC</code> because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the &lsquo;why.&rsquo; and will hopefully help you if you face similar connection issues.</p>
-        </div>
-        <a href="/MyBlog/posts/atp_connection_notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
+                Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/" class="link black dim">
@@ -212,12 +228,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="link black dim">
                 Generate and Store Vector Embeddings in Autonomous Database 26ai
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/transformer_attention_blog/" class="link black dim">
-                Demystifying Transformers: Attention, Positional Encoding, and Feed-Forward Networks
               </a>
             </h2>
           

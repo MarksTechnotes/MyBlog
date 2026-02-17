@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2026-01-27T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-01-27T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -111,8 +111,8 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/MyBlog/tags/adb/" class="link blue hover-black">
-            Tag: ADB
+          <a href="/MyBlog/tags/adw/" class="link blue hover-black">
+            Tag: ADW
           </a>
         </h2>
         
@@ -120,14 +120,85 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
     </div>
-    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
+        Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
+<p>Let’s break down what that would involve and what Oracle actually supports.</p>
+<hr>
+<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
+<p>The idea typically goes like this:</p>
+<ol>
+<li>Set up a <strong>standby (peer) database</strong> on Exadata Dedicated.</li>
+<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
+<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
+</ol>
+<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
+    </div>
+    <a href="/MyBlog/posts/adw-peer-switchover/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/atp/" class="link blue hover-black">
+            Tag: ATP
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -138,6 +209,33 @@
             Tag: Autonomous Database
           </a>
         </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
         
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
   <div class="mb3 pa4 gray overflow-hidden bg-white">
@@ -329,6 +427,33 @@ disruption.</p>
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
       <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
         Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
       </a>
@@ -360,8 +485,8 @@ disruption.</p>
         
       
         <h2 class="f1">
-          <a href="/MyBlog/tags/dms/" class="link blue hover-black">
-            Tag: DMS
+          <a href="/MyBlog/tags/golden-gate/" class="link blue hover-black">
+            Tag: Golden Gate
           </a>
         </h2>
         
@@ -369,37 +494,25 @@ disruption.</p>
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
     </div>
-    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/tags/goldengate/" class="link blue hover-black">
-            Tag: GoldenGate
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
-    </div>
-    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -410,6 +523,33 @@ disruption.</p>
             Tag: Oracle
           </a>
         </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
         
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
   <div class="mb3 pa4 gray overflow-hidden bg-white">
@@ -701,6 +841,75 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 </span></span></code></pre></div><p>Replace <password>, <exadata-scan-host>, and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.</p>
     </div>
     <a href="/MyBlog/posts/first-blog-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/adb/" class="link blue hover-black">
+            Tag: ADB
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+    </div>
+    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/dms/" class="link blue hover-black">
+            Tag: DMS
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+    </div>
+    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/goldengate/" class="link blue hover-black">
+            Tag: GoldenGate
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+    </div>
+    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -2012,39 +2221,6 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 <p>Example of an SSH tunnel for VNC:</p>
     </div>
     <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/tags/adw/" class="link blue hover-black">
-            Tag: ADW
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/adw-peer-switchover/" class="link black dim">
-        Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>When planning a migration from Autonomous Data Warehouse (ADW) Serverless to ADW Dedicated, one question that often comes up is whether you can use a peer or standby database setup — similar to a traditional <strong>Data Guard switchover</strong> — to transition environments.</p>
-<p>Let’s break down what that would involve and what Oracle actually supports.</p>
-<hr>
-<h3 id="the-proposed-scenario">The Proposed Scenario</h3>
-<p>The idea typically goes like this:</p>
-<ol>
-<li>Set up a <strong>standby (peer) database</strong> on Exadata Dedicated.</li>
-<li>Perform a <strong>role switchover</strong>, making the Dedicated database the new primary.</li>
-<li>Later, upgrade to <strong>23ai</strong> as part of the post-migration plan.</li>
-</ol>
-<p>This approach essentially models a <strong>Data Guard–based migration</strong>, using role switchovers to minimize downtime.</p>
-    </div>
-    <a href="/MyBlog/posts/adw-peer-switchover/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 

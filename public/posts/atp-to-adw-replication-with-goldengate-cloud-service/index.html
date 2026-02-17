@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Real-Time Replication: ATP to ADW with OCI GoldenGate | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
+  <meta property="og:description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-02-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-17T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ATP">
+    <meta property="article:tag" content="ADW">
+    <meta property="article:tag" content="Data Pump">
+    <meta property="article:tag" content="Golden Gate">
+    <meta property="article:tag" content="Autonomous Database">
+
+  <meta itemprop="name" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
+  <meta itemprop="description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
+  <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="wordCount" content="444">
+  <meta itemprop="keywords" content="Oracle,ATP,ADW,Data Pump,Golden Gate,Autonomous Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
+  <meta name="twitter:description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Real-Time Replication: ATP to ADW with OCI GoldenGate</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-02-17T00:00:00Z">February 17, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+<ul>
+<li><strong>Export Time:</strong> 266 seconds</li>
+<li><strong>Import Time:</strong> 218 seconds</li>
+</ul>
+<blockquote>
+<h3 id="-the-quota-requirement">🛑 The Quota Requirement</h3>
+<p>During the setup, <strong>NOT granting the target schema <code>UNLIMITED QUOTA ON DATA</code> caused the Data Pump job to fail.</strong> Even with <code>DWROLE</code> assigned, the import engine requires explicit space permissions to materialize objects.</p>
+<p><strong>The Fix:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> SOE QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DATA</span>;
+</span></span></code></pre></div></blockquote>
+<hr>
+<h2 id="2-solving-the-invisible-key-problem-ogg-06439">2. Solving the &ldquo;Invisible&rdquo; Key Problem (OGG-06439)</h2>
+<p>Post-import, the GoldenGate Replicat threw:<br>
+<code>WARNING OGG-06439: No unique key is defined for table ORDERS.</code></p>
+<h3 id="the-diagnosis">The Diagnosis</h3>
+<p>In Autonomous environments, Data Pump imports constraints in an <code>ENABLE NOVALIDATE</code> state. While the DB enforces these for <em>new</em> data, GoldenGate ignores them because it has not verified that the <em>existing</em> data follows the rule.</p>
+<h3 id="the-fix">The Fix</h3>
+<p>Validate all Primary and Unique keys in the <code>SOE</code> schema using this PL/SQL loop:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">FOR</span> r <span style="color:#66d9ef">IN</span> (<span style="color:#66d9ef">SELECT</span> <span style="color:#66d9ef">owner</span>, <span style="color:#66d9ef">table_name</span>, <span style="color:#66d9ef">constraint_name</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">FROM</span> all_constraints 
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">WHERE</span> <span style="color:#66d9ef">owner</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;SOE&#39;</span> 
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">AND</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ENABLED&#39;</span> 
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">AND</span> validated <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;NOT VALIDATED&#39;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">AND</span> constraint_type <span style="color:#66d9ef">IN</span> (<span style="color:#e6db74">&#39;P&#39;</span>, <span style="color:#e6db74">&#39;U&#39;</span>)) 
+</span></span><span style="display:flex;"><span>  LOOP
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">EXECUTE</span> <span style="color:#66d9ef">IMMEDIATE</span> <span style="color:#e6db74">&#39;ALTER TABLE &#39;</span> <span style="color:#f92672">||</span> r.<span style="color:#66d9ef">owner</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#f92672">||</span> r.<span style="color:#66d9ef">table_name</span> <span style="color:#f92672">||</span> 
+</span></span><span style="display:flex;"><span>                      <span style="color:#e6db74">&#39; MODIFY CONSTRAINT &#39;</span> <span style="color:#f92672">||</span> r.<span style="color:#66d9ef">constraint_name</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39; VALIDATE&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">END</span> LOOP;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span></code></pre></div><h2 id="3-surgical-error-handling-ora-1403--ora-02291">3. Surgical Error Handling (ORA-1403 &amp; ORA-02291)</h2>
+<p>To bridge the gap between the Data Pump snapshot and real-time trails, I utilized the <code>REPERROR</code> parameter for precision handling.</p>
+<ul>
+<li><strong>ORA-1403 (No Data Found):</strong>  Occurs if Replicat updates a row not in the initial snapshot.</li>
+<li><strong>ORA-02291 (Parent Key Not Found):</strong> Occurs if child records are processed before parents during hand-off.</li>
+</ul>
+<p><strong>Replicat Parameter Configuration:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>REPLICAT rep_soe
+</span></span><span style="display:flex;"><span>USERIDALIAS adw_target_alias
+</span></span><span style="display:flex;"><span>-- Precision Error Handling <span style="color:#f92672">(</span>Avoids HANDLECOLLISIONS<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>REPERROR <span style="color:#f92672">(</span>1403, DISCARD<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>REPERROR <span style="color:#f92672">(</span>2291, DISCARD<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>MAP SOE.*, TARGET SOE.*;
+</span></span></code></pre></div><h2 id="4-trail-file-navigation--final-state">4. Trail File Navigation &amp; Final State</h2>
+<p>I resolved a backlog lag by identifying the specific GoldenGate Trail Sequence 6 and Offset (RBA) - 1778 and manually positioning the Replicat to start from there via the Golden Gate Admin Console.</p>
+<h1 id="oci-goldengate-troubleshooting-reference">OCI GoldenGate Troubleshooting Reference</h1>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Issue</th>
+          <th style="text-align: left">Symptom</th>
+          <th style="text-align: left">Technical Resolution</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Quota Deficiency</strong></td>
+          <td style="text-align: left"><code>DBMS_DATAPUMP</code> fails</td>
+          <td style="text-align: left">Grant <code>UNLIMITED QUOTA ON DATA</code> to schema.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Missing Keys</strong></td>
+          <td style="text-align: left"><code>OGG-06439</code> Warning</td>
+          <td style="text-align: left">Move constraints from <code>NOVALIDATE</code> to <code>VALIDATE</code>.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Sync Handoff</strong></td>
+          <td style="text-align: left"><code>ORA-1403</code> / <code>ORA-02291</code></td>
+          <td style="text-align: left">Add <code>REPERROR (code, DISCARD)</code> to params.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Connectivity</strong></td>
+          <td style="text-align: left">Admin Console timeout</td>
+          <td style="text-align: left">Whitelist OCI-GG Deployment IP in ADB ACL.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Security</strong></td>
+          <td style="text-align: left">Auth Failure</td>
+          <td style="text-align: left">Match <code>GGADMIN</code> password during unlock to Vault Secret exactly.</td>
+      </tr>
+  </tbody>
+</table>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/atp/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ATP</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/adw/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ADW</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/data-pump/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Data Pump</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/golden-gate/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Golden Gate</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
