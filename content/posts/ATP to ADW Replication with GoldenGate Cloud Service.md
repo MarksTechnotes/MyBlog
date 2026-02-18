@@ -76,16 +76,36 @@ REPERROR (1403, DISCARD)
 REPERROR (2291, DISCARD)
 MAP SOE.*, TARGET SOE.*;
 ```
+
+## 💡  Dev vs. Prod Strategy
+
+While REPERROR (..., DISCARD) is excellent for clearing initial sync noise in a Development environment, it is risky for Production. Discarding a record in Prod creates "silent data drift"—a scenario where your source and target no longer match without triggering an alert.
+For Production: Transition from DISCARD to an Exceptions Table strategy. This allows the Replicat to continue processing while logging failed transactions for audit.
+
+```bash
+-- Production-grade mapping example
+MAP SOE.*, TARGET SOE.*, 
+EXCEPTIONSONLY,
+INSERTALLRECORDS, 
+MAPEXCEPTION (TARGET SOE.EXCEPTIONS_TABLE);
+```
+
 ## 4. Trail File Navigation & Final State
 
 I resolved a backlog lag by identifying the specific GoldenGate Trail Sequence 6 and Offset (RBA) - 1778 and manually positioning the Replicat to start from there via the Golden Gate Admin Console. 
 
-# OCI GoldenGate Troubleshooting Reference
 
-| Issue | Symptom | Technical Resolution |
-| :--- | :--- | :--- |
-| **Quota Deficiency** | `DBMS_DATAPUMP` fails | Grant `UNLIMITED QUOTA ON DATA` to schema. |
-| **Missing Keys** | `OGG-06439` Warning | Move constraints from `NOVALIDATE` to `VALIDATE`. |
-| **Sync Handoff** | `ORA-1403` / `ORA-02291` | Add `REPERROR (code, DISCARD)` to params. |
-| **Connectivity** | Admin Console timeout | Whitelist OCI-GG Deployment IP in ADB ACL. |
-| **Security** | Auth Failure | Match `GGADMIN` password during unlock to Vault Secret exactly. |
+## OCI GoldenGate Troubleshooting & Production Reference
+
+| Issue | Symptom | Immediate Resolution (Dev) | Architectural Standard (Prod) |
+| :--- | :--- | :--- | :--- |
+| **Quota Deficiency** | `DBMS_DATAPUMP` fails | `ALTER USER SOE QUOTA UNLIMITED ON DATA` | Include as part of Pre-Migration checklist |
+| **Missing Keys** | `OGG-06439` Warning | `MODIFY CONSTRAINT ... VALIDATE` | Ensure Validation Script is part of the Schema Baseline before sync. |
+| **Sync Handoff** | `ORA-1403` / `ORA-02291` | `REPERROR (code, DISCARD)` | **Exceptions Table** with `INSERTALLRECORDS` for data audit. |
+| **Connectivity** | Console Timeout | Whitelist GG IP in Database ACL | **Private Endpoints + NSGs** to eliminate public exposure. |
+| **Security** | Auth Failure | Sync `GGADMIN` password with Vault Secret | Use **OCI Vault** for dynamic secret rotation and least-privilege users. |
+
+
+## Note on Environment Scale:
+
+The fixes and parameters documented in this post were performed within a controlled, small-scale development environment and primarily intended to help someone new to the OCI GoldenGate Cloud Service. For production-grade architectures involving multi-terabyte datasets, additional considerations regarding Parallel Replicat tuning, network bandwidth, and high-availability (HA) configuration should be applied.

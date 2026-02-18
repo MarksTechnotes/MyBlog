@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
   <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
-  <meta itemprop="wordCount" content="444">
+  <meta itemprop="wordCount" content="619">
   <meta itemprop="keywords" content="Oracle,ATP,ADW,Data Pump,Golden Gate,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
@@ -180,45 +180,61 @@
 </span></span><span style="display:flex;"><span>REPERROR <span style="color:#f92672">(</span>1403, DISCARD<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>REPERROR <span style="color:#f92672">(</span>2291, DISCARD<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>MAP SOE.*, TARGET SOE.*;
+</span></span></code></pre></div><h2 id="--dev-vs-prod-strategy">💡  Dev vs. Prod Strategy</h2>
+<p>While REPERROR (&hellip;, DISCARD) is excellent for clearing initial sync noise in a Development environment, it is risky for Production. Discarding a record in Prod creates &ldquo;silent data drift&rdquo;—a scenario where your source and target no longer match without triggering an alert.
+For Production: Transition from DISCARD to an Exceptions Table strategy. This allows the Replicat to continue processing while logging failed transactions for audit.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-- Production-grade mapping example
+</span></span><span style="display:flex;"><span>MAP SOE.*, TARGET SOE.*, 
+</span></span><span style="display:flex;"><span>EXCEPTIONSONLY,
+</span></span><span style="display:flex;"><span>INSERTALLRECORDS, 
+</span></span><span style="display:flex;"><span>MAPEXCEPTION <span style="color:#f92672">(</span>TARGET SOE.EXCEPTIONS_TABLE<span style="color:#f92672">)</span>;
 </span></span></code></pre></div><h2 id="4-trail-file-navigation--final-state">4. Trail File Navigation &amp; Final State</h2>
 <p>I resolved a backlog lag by identifying the specific GoldenGate Trail Sequence 6 and Offset (RBA) - 1778 and manually positioning the Replicat to start from there via the Golden Gate Admin Console.</p>
-<h1 id="oci-goldengate-troubleshooting-reference">OCI GoldenGate Troubleshooting Reference</h1>
+<h2 id="oci-goldengate-troubleshooting--production-reference">OCI GoldenGate Troubleshooting &amp; Production Reference</h2>
 <table>
   <thead>
       <tr>
           <th style="text-align: left">Issue</th>
           <th style="text-align: left">Symptom</th>
-          <th style="text-align: left">Technical Resolution</th>
+          <th style="text-align: left">Immediate Resolution (Dev)</th>
+          <th style="text-align: left">Architectural Standard (Prod)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td style="text-align: left"><strong>Quota Deficiency</strong></td>
           <td style="text-align: left"><code>DBMS_DATAPUMP</code> fails</td>
-          <td style="text-align: left">Grant <code>UNLIMITED QUOTA ON DATA</code> to schema.</td>
+          <td style="text-align: left"><code>ALTER USER SOE QUOTA UNLIMITED ON DATA</code></td>
+          <td style="text-align: left">Include as part of Pre-Migration checklist</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Missing Keys</strong></td>
           <td style="text-align: left"><code>OGG-06439</code> Warning</td>
-          <td style="text-align: left">Move constraints from <code>NOVALIDATE</code> to <code>VALIDATE</code>.</td>
+          <td style="text-align: left"><code>MODIFY CONSTRAINT ... VALIDATE</code></td>
+          <td style="text-align: left">Ensure Validation Script is part of the Schema Baseline before sync.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Sync Handoff</strong></td>
           <td style="text-align: left"><code>ORA-1403</code> / <code>ORA-02291</code></td>
-          <td style="text-align: left">Add <code>REPERROR (code, DISCARD)</code> to params.</td>
+          <td style="text-align: left"><code>REPERROR (code, DISCARD)</code></td>
+          <td style="text-align: left"><strong>Exceptions Table</strong> with <code>INSERTALLRECORDS</code> for data audit.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Connectivity</strong></td>
-          <td style="text-align: left">Admin Console timeout</td>
-          <td style="text-align: left">Whitelist OCI-GG Deployment IP in ADB ACL.</td>
+          <td style="text-align: left">Console Timeout</td>
+          <td style="text-align: left">Whitelist GG IP in Database ACL</td>
+          <td style="text-align: left"><strong>Private Endpoints + NSGs</strong> to eliminate public exposure.</td>
       </tr>
       <tr>
           <td style="text-align: left"><strong>Security</strong></td>
           <td style="text-align: left">Auth Failure</td>
-          <td style="text-align: left">Match <code>GGADMIN</code> password during unlock to Vault Secret exactly.</td>
+          <td style="text-align: left">Sync <code>GGADMIN</code> password with Vault Secret</td>
+          <td style="text-align: left">Use <strong>OCI Vault</strong> for dynamic secret rotation and least-privilege users.</td>
       </tr>
   </tbody>
 </table>
+<h2 id="note-on-environment-scale">Note on Environment Scale:</h2>
+<p>The fixes and parameters documented in this post were performed within a controlled, small-scale development environment and primarily intended to help someone new to the OCI GoldenGate Cloud Service. For production-grade architectures involving multi-terabyte datasets, additional considerations regarding Parallel Replicat tuning, network bandwidth, and high-availability (HA) configuration should be applied.</p>
 <ul class="pa0">
   
    <li class="list di">
