@@ -18,7 +18,17 @@ To provide a baseline for these benchmarks, both the source and target environme
 * **Target:** ADW (`PerfDB23ai`) — **4 ECPUs**
 * **Data Volume:** ~700 MB (SOE Schema)
 
-### Initial Load via `DBMS_DATAPUMP`
+### Enable Supplemental Logging 
+To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:
+
+* **Minimal Supplemental Logging:** This was enabled at the PDB level `(ALTER PLUGGABLE DATABASE ADD SUPPLEMENTAL LOG DATA)` to turn on the "master switch" for the redo stream. This ensures the Oracle logs contain the necessary metadata for GoldenGate to interpret transactions.
+
+* **Object-level Supplemental Logging:** I applied this at the SOE schema level using ADD TRANDATA on the GoldenGate Administration Console. This command ensures that 'Before Images' of primary keys are captured for every operation. By logging the unique identifier of the row—even when the primary key itself isn't being updated—we provide the Replicat with the exact coordinates it needs to build a valid WHERE clause for the target ADW.
+
+### Create Checkpoint Table
+I established a **Checkpoint Table** within the GGADMIN schema on the target database directly through the GoldenGate Administration Console to ensure once only replication and enable recovery from network interruptions or process restarts.
+
+### Initial Load via Data Pump `DBMS_DATAPUMP`
 I used the `DBMS_DATAPUMP` PL/SQL package to integrate directly with OCI Object Storage via `DBMS_CLOUD` credentials.
 
 * **Export Time:** 266 seconds
