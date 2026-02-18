@@ -42,6 +42,10 @@ I used the `DBMS_DATAPUMP` PL/SQL package to integrate directly with OCI Object 
 > ALTER USER SOE QUOTA UNLIMITED ON DATA;
 > ```
 
+### Non-Integrated Replicat Mode Selection
+
+For this implementation, I intentionally used a **Non-Integrated** Replicat. The objective was to validate correctness, constraint semantics, and initial-load handoff behavior before introducing apply parallelism. A single-threaded Replicat provides deterministic ordering, clearer diagnostics, and simpler recovery when positioning by trail sequence and RBA. Integrated or Parallel Replicat options become relevant once correctness is established and apply throughput becomes the dominant constraint.
+
 ---
 
 ## 2. Solving the "Invisible" Key Problem (OGG-06439)

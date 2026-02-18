@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
   <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
-  <meta itemprop="wordCount" content="790">
+  <meta itemprop="wordCount" content="855">
   <meta itemprop="keywords" content="Oracle,ATP,ADW,Data Pump,Golden Gate,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
@@ -159,6 +159,8 @@
 <p><strong>The Fix:</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">ALTER</span> <span style="color:#66d9ef">USER</span> SOE QUOTA UNLIMITED <span style="color:#66d9ef">ON</span> <span style="color:#66d9ef">DATA</span>;
 </span></span></code></pre></div></blockquote>
+<h3 id="non-integrated-replicat-mode-selection">Non-Integrated Replicat Mode Selection</h3>
+<p>For this implementation, I intentionally used a <strong>Non-Integrated</strong> Replicat. The objective was to validate correctness, constraint semantics, and initial-load handoff behavior before introducing apply parallelism. A single-threaded Replicat provides deterministic ordering, clearer diagnostics, and simpler recovery when positioning by trail sequence and RBA. Integrated or Parallel Replicat options become relevant once correctness is established and apply throughput becomes the dominant constraint.</p>
 <hr>
 <h2 id="2-solving-the-invisible-key-problem-ogg-06439">2. Solving the &ldquo;Invisible&rdquo; Key Problem (OGG-06439)</h2>
 <p>Post-import, the GoldenGate Replicat threw:<br>
