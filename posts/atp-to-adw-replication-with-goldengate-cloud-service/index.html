@@ -55,7 +55,7 @@
   <meta itemprop="description" content="Real Time replcation from ATP to ADW with GoldenGate Cloud Service">
   <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
-  <meta itemprop="wordCount" content="619">
+  <meta itemprop="wordCount" content="790">
   <meta itemprop="keywords" content="Oracle,ATP,ADW,Data Pump,Golden Gate,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Real-Time Replication: ATP to ADW with OCI GoldenGate">
@@ -135,7 +135,19 @@
 <li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
 <li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
 </ul>
-<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
+<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
+<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
+<ul>
+<li>
+<p><strong>Minimal Supplemental Logging:</strong> This was enabled at the PDB level <code>(ALTER PLUGGABLE DATABASE ADD SUPPLEMENTAL LOG DATA)</code> to turn on the &ldquo;master switch&rdquo; for the redo stream. This ensures the Oracle logs contain the necessary metadata for GoldenGate to interpret transactions.</p>
+</li>
+<li>
+<p><strong>Object-level Supplemental Logging:</strong> I applied this at the SOE schema level using ADD TRANDATA on the GoldenGate Administration Console. This command ensures that &lsquo;Before Images&rsquo; of primary keys are captured for every operation. By logging the unique identifier of the row—even when the primary key itself isn&rsquo;t being updated—we provide the Replicat with the exact coordinates it needs to build a valid WHERE clause for the target ADW.</p>
+</li>
+</ul>
+<h3 id="create-checkpoint-table">Create Checkpoint Table</h3>
+<p>I established a <strong>Checkpoint Table</strong> within the GGADMIN schema on the target database directly through the GoldenGate Administration Console to ensure once only replication and enable recovery from network interruptions or process restarts.</p>
+<h3 id="initial-load-via-data-pump-dbms_datapump">Initial Load via Data Pump <code>DBMS_DATAPUMP</code></h3>
 <p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
 <ul>
 <li><strong>Export Time:</strong> 266 seconds</li>

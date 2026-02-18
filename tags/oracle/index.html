@@ -129,8 +129,8 @@
 <li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
 <li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
 </ul>
-<h3 id="initial-load-via-dbms_datapump">Initial Load via <code>DBMS_DATAPUMP</code></h3>
-<p>I used the <code>DBMS_DATAPUMP</code> PL/SQL package to integrate directly with OCI Object Storage via <code>DBMS_CLOUD</code> credentials.</p>
+<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
+<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
     </div>
     <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
