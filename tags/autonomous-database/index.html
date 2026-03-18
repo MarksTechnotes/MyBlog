@@ -120,7 +120,7 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
-<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs may be kept in the Fast Recovery Area (FRA) for relatively short periods like 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
     </div>
     <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>

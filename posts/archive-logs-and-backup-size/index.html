@@ -53,7 +53,7 @@
   <meta itemprop="description" content="Why Backup Storage Can Exceed Database Size (Even with 48-Hour Retention)">
   <meta itemprop="datePublished" content="2026-03-18T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-03-18T00:00:00+00:00">
-  <meta itemprop="wordCount" content="517">
+  <meta itemprop="wordCount" content="521">
   <meta itemprop="keywords" content="Oracle,Backup,ADW,Autonomous Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)">
@@ -124,7 +124,7 @@
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
-<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs may be kept in the Fast Recovery Area (FRA) for relatively short periods like 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
 <h3 id="database-size-vs-change-volume-churn">Database size vs. change volume (churn)</h3>
 <p>A database might be 5 TB at rest, but if it processes large daily loads, rebuilds, or heavy UPDATE/DELETE activity, it can generate many terabytes of changes over a short period. Backup and recovery systems need to retain enough information to restore and recover the database to a specific point in time, and that retained information grows with change volume.</p>
 <p>Common high-churn patterns include:</p>
