@@ -9,7 +9,7 @@ categories: ["Database", "Autonomous Database", "Backup", "Autonomous Database"]
 
 ## Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention
 
-I was on a call with a customer who were insisting that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”
+I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”
 
 ### Database size vs. change volume (churn)
 A database might be 5 TB at rest, but if it processes large daily loads, rebuilds, or heavy UPDATE/DELETE activity, it can generate many terabytes of changes over a short period. Backup and recovery systems need to retain enough information to restore and recover the database to a specific point in time, and that retained information grows with change volume.
