@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-03-18T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-18T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,6 +126,30 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="color-inherit dim link">
+            Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+        </div>
+        <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="color-inherit dim link">
             Real-Time Replication: ATP to ADW with OCI GoldenGate
             </a>
@@ -175,37 +199,18 @@
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="color-inherit dim link">
-            The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="overview">Overview</h1>
-<p>In modern Oracle Cloud Infrastructure (OCI) architectures, architects often look for ways to manage file payloads without bloating the database. A common proposal is to use the <strong>Database File System (DBFS)</strong> to attach an external <strong>File Storage Service (FSS)</strong> to an <strong>Autonomous Transaction Processing (ATP)</strong> database.</p>
-<p>The intent is usually good: keep the database lean while using its familiar interface to manage files. However, in practice, this creates a &ldquo;Database Middleman&rdquo; that introduces significant performance and operational risks.</p>
-        </div>
-        <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="link black dim">
+                The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
@@ -222,12 +227,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/" class="link black dim">
                 Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/" class="link black dim">
-                Generate and Store Vector Embeddings in Autonomous Database 26ai
               </a>
             </h2>
           

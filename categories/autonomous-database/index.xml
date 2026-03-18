@@ -6,8 +6,15 @@
     <description>Recent content in Autonomous Database on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/autonomous-database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/archive-logs-and-backup-size/</link>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/archive-logs-and-backup-size/</guid>
+      <description>&lt;h2 id=&#34;why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention&#34;&gt;Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention&lt;/h2&gt;&#xA;&lt;p&gt;I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Real-Time Replication: ATP to ADW with OCI GoldenGate</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/</link>

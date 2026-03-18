@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Posts">
-  <meta itemprop="datePublished" content="2026-02-17T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-02-17T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-03-18T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-18T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
 
@@ -104,6 +104,25 @@
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="link black dim">
+        Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+    </div>
+    <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
@@ -315,39 +334,6 @@ This post which is a summary of the sessions I had with ChatGPT explains these c
 <p>A few simple adjustments can dramatically reduce import times and make the overall migration process smoother.</p>
     </div>
     <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="link black dim">
-        Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>I recently deployed <strong>Oracle Enterprise Manager (OEM) 13c</strong> on <strong>Oracle Cloud Infrastructure (OCI)</strong> using the <strong>OEM Marketplace image</strong>.<br>
-This post captures the key steps and observations from that quick deployment.</p>
-<hr>
-<h3 id="oem-marketplace-image"><strong>OEM Marketplace Image</strong></h3>
-<p>The OEM Marketplace image used was available here:<br>
-👉 <a href="https://cloudmarketplace.oracle.com/marketplace/en_US/listing/104183179">OEM 13c Marketplace Image</a></p>
-<p>The Marketplace option made setup straightforward — a single-instance OMS installation without manual configuration steps.</p>
-<hr>
-<h3 id="deployment-setup"><strong>Deployment Setup</strong></h3>
-<ul>
-<li>Chose the <strong>Simple</strong> deployment size which provides a single node deployment with an Oracle single instance database as a repository</li>
-<li>Used an <strong>existing VCN and public subnet</strong> to avoid creating a bastion host.</li>
-<li>Selected a <strong>Standard2 VM shape</strong> due to <strong>quota restrictions</strong> in my tenancy.</li>
-<li>Chose to deploy in a <strong>public subnet</strong> so I could access the OEM console directly from my laptop browser.</li>
-</ul>
-<p>To resolve an <strong>invalid SSH key</strong> error during provisioning, I generated a new PEM-format key:</p>
-    </div>
-    <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
