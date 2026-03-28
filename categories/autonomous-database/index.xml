@@ -6,8 +6,22 @@
     <description>Recent content in Autonomous Database on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/autonomous-database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</guid>
+      <description>&lt;h1 id=&#34;the-death-by-10-million-rows-problem-why-big-transactions-fail&#34;&gt;The &amp;ldquo;Death by 10 Million Rows&amp;rdquo; Problem: Why Big Transactions Fail&lt;/h1&gt;&#xA;&lt;p&gt;We’ve all been there: You have a &amp;ldquo;simple&amp;rdquo; update to run on a massive table. You hit execute on a single &lt;code&gt;UPDATE&lt;/code&gt; statement, and then&amp;hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the &lt;strong&gt;Undo Tablespace&lt;/strong&gt; is screaming for mercy.&lt;/p&gt;&#xA;&lt;p&gt;Here’s why &amp;ldquo;one big transaction&amp;rdquo; is usually a bad idea—and how to break it down.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</guid>
+      <description>&lt;h2 id=&#34;why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles&#34;&gt;Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)&lt;/h2&gt;&#xA;&lt;p&gt;When people ask “How big is the database?”, the answer depends on &lt;em&gt;which&lt;/em&gt; size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.&lt;/p&gt;&#xA;&lt;h3 id=&#34;segments-object-footprint-logical-allocation&#34;&gt;Segments: object footprint (logical allocation)&lt;/h3&gt;&#xA;&lt;p&gt;A &lt;strong&gt;segment&lt;/strong&gt; is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying &lt;code&gt;DBA_SEGMENTS&lt;/code&gt; answers:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;“How much space has been allocated to my objects?”&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/archive-logs-and-backup-size/</link>

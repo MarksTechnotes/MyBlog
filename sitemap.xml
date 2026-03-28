@@ -2,13 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/adw/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/adb/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/adb/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/big-transactions/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/datafiles/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/segments/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</loc>
+    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/adw/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/backup/</loc>
@@ -17,22 +53,7 @@
     <loc>https://markstechnotes.github.io/MyBlog/tags/backup/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/archive-logs-and-backup-size/</loc>
@@ -55,9 +76,6 @@
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/adb/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/dms/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>

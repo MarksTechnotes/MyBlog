@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+  <meta property="og:description" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-28T00:00:00+00:00">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="ADB">
+    <meta property="article:tag" content="Autonomous Database">
+    <meta property="article:tag" content="Big Transactions">
+
+  <meta itemprop="name" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+  <meta itemprop="description" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+  <meta itemprop="datePublished" content="2026-03-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="428">
+  <meta itemprop="keywords" content="Oracle,ADB,Autonomous Database,Big Transactions">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+  <meta name="twitter:description" content="The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-03-28T00:00:00Z">March 28, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="the-death-by-10-million-rows-problem-why-big-transactions-fail">The &ldquo;Death by 10 Million Rows&rdquo; Problem: Why Big Transactions Fail</h1>
+<p>We’ve all been there: You have a &ldquo;simple&rdquo; update to run on a massive table. You hit execute on a single <code>UPDATE</code> statement, and then&hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the <strong>Undo Tablespace</strong> is screaming for mercy.</p>
+<p>Here’s why &ldquo;one big transaction&rdquo; is usually a bad idea—and how to break it down.</p>
+<hr>
+<h3 id="the-single-statement-trap">The Single-Statement Trap</h3>
+<p>When you run a single <code>UPDATE</code> on 10 million rows, Oracle treats it as a single, indivisible unit of work.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">UPDATE</span> orders 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">SET</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROCESSED&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PENDING&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">COMMIT</span>;
+</span></span></code></pre></div><p>This creates three massive bottlenecks:</p>
+<ul>
+<li><strong>Undo Exhaustion</strong>: Oracle must store the &ldquo;before&rdquo; image of all 10 million rows to support <strong>read consistency</strong>. If your Undo space isn&rsquo;t huge, the query crashes.</li>
+<li><strong>Locking Gridlock</strong>: Every row you touch is locked until you <code>COMMIT</code>. This stops other users from modifying that same data.</li>
+<li><strong>The All-or-Nothing Risk</strong>: If the database hiccups at row 9,999,999, the whole thing rolls back. You’ve wasted hours of processing time with zero results.</li>
+</ul>
+<hr>
+<h3 id="the-solution-logical-batching">The Solution: Logical Batching</h3>
+<p>Instead of one giant leap, take 200 small steps. By breaking the work into batches (e.g., 50,000 rows at a time), you keep the database &ldquo;breathing.&rdquo;</p>
+<h4 id="the-pro-code-pattern-plsql-bulk-processing">The Pro Code Pattern: PL/SQL Bulk Processing</h4>
+<p>Using <code>BULK COLLECT</code> with a <code>LIMIT</code> clause is the gold standard. It minimizes the &ldquo;context switching&rdquo; between the SQL and PL/SQL engines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">DECLARE</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">CURSOR</span> c_huge_data <span style="color:#66d9ef">IS</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">SELECT</span> rowid <span style="color:#66d9ef">FROM</span> orders <span style="color:#66d9ef">WHERE</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PENDING&#39;</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">TYPE</span> t_rowid <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">OF</span> UROWID;
+</span></span><span style="display:flex;"><span>  v_rowids t_rowid;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">OPEN</span> c_huge_data;
+</span></span><span style="display:flex;"><span>  LOOP
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 1. Grab a manageable &#34;chunk&#34; (e.g., 50k rows)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">FETCH</span> c_huge_data BULK COLLECT <span style="color:#66d9ef">INTO</span> v_rowids <span style="color:#66d9ef">LIMIT</span> <span style="color:#ae81ff">50000</span>;
+</span></span><span style="display:flex;"><span>    EXIT <span style="color:#66d9ef">WHEN</span> v_rowids.<span style="color:#66d9ef">COUNT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 2. Update just that chunk
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    FORALL i <span style="color:#66d9ef">IN</span> <span style="color:#ae81ff">1</span>..v_rowids.<span style="color:#66d9ef">COUNT</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">UPDATE</span> orders <span style="color:#66d9ef">SET</span> status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;PROCESSED&#39;</span> <span style="color:#66d9ef">WHERE</span> rowid <span style="color:#f92672">=</span> v_rowids(i);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- 3. Commit to free up Undo space and release locks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">COMMIT</span>; 
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">END</span> LOOP;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">CLOSE</span> c_huge_data;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span></code></pre></div><h3 id="summary-the-golden-rules">Summary: The Golden Rules</h3>
+<ul>
+<li><strong>Don&rsquo;t commit too often</strong>: Committing after every single row creates massive overhead. Aim for a &ldquo;sweet spot&rdquo; batch size, typically between <strong>5,000 to 50,000 rows</strong>.</li>
+<li><strong>Watch the logs</strong>: High-volume batching generates significant <strong>Redo Log</strong> activity; ensure your storage can handle the IOPS.</li>
+<li><strong>Consider CTAS</strong>: If you are updating a vast majority of the table, it is often faster to use <strong>Create Table As Select (CTAS)</strong> to build a new version of the table rather than updating the existing one.</li>
+<li><strong>Monitor Undo</strong>: Even with batching, keep an eye on your <strong>Undo Tablespace</strong> to prevent &ldquo;Snapshot Too Old&rdquo; errors.</li>
+</ul>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/adb/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ADB</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/big-transactions/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Big Transactions</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/what-is-your-database-size/">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/">Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">Real-Time Replication: ATP to ADW with OCI GoldenGate</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/exacs-bastion/">Quick Guide: Connect to ExaCS in a private subnet from SQL Developer on your laptop</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/first-blog-post/">Smart Scan Demo on Exadata Cloud Service (ExaCS)</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Segments on Mark’s Tech Notes</title>
+    <link>https://markstechnotes.github.io/MyBlog/tags/segments/</link>
+    <description>Recent content in Segments on Mark’s Tech Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/segments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</guid>
+      <description>&lt;h2 id=&#34;why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles&#34;&gt;Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)&lt;/h2&gt;&#xA;&lt;p&gt;When people ask “How big is the database?”, the answer depends on &lt;em&gt;which&lt;/em&gt; size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.&lt;/p&gt;&#xA;&lt;h3 id=&#34;segments-object-footprint-logical-allocation&#34;&gt;Segments: object footprint (logical allocation)&lt;/h3&gt;&#xA;&lt;p&gt;A &lt;strong&gt;segment&lt;/strong&gt; is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying &lt;code&gt;DBA_SEGMENTS&lt;/code&gt; answers:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;“How much space has been allocated to my objects?”&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Big Transactions on Mark’s Tech Notes</title>
+    <link>https://markstechnotes.github.io/MyBlog/tags/big-transactions/</link>
+    <description>Recent content in Big Transactions on Mark’s Tech Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://markstechnotes.github.io/MyBlog/tags/big-transactions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</guid>
+      <description>&lt;h1 id=&#34;the-death-by-10-million-rows-problem-why-big-transactions-fail&#34;&gt;The &amp;ldquo;Death by 10 Million Rows&amp;rdquo; Problem: Why Big Transactions Fail&lt;/h1&gt;&#xA;&lt;p&gt;We’ve all been there: You have a &amp;ldquo;simple&amp;rdquo; update to run on a massive table. You hit execute on a single &lt;code&gt;UPDATE&lt;/code&gt; statement, and then&amp;hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the &lt;strong&gt;Undo Tablespace&lt;/strong&gt; is screaming for mercy.&lt;/p&gt;&#xA;&lt;p&gt;Here’s why &amp;ldquo;one big transaction&amp;rdquo; is usually a bad idea—and how to break it down.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
