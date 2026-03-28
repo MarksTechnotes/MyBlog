@@ -6,12 +6,19 @@
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADB</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/adb/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/adb/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Autonomous Database</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</link>
-      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</guid>
       <description></description>
     </item>

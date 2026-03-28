@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2026-03-18T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-18T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-03-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-03-28T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,72 +126,68 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="color-inherit dim link">
+            The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h1 id="the-death-by-10-million-rows-problem-why-big-transactions-fail">The &ldquo;Death by 10 Million Rows&rdquo; Problem: Why Big Transactions Fail</h1>
+<p>We’ve all been there: You have a &ldquo;simple&rdquo; update to run on a massive table. You hit execute on a single <code>UPDATE</code> statement, and then&hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the <strong>Undo Tablespace</strong> is screaming for mercy.</p>
+<p>Here’s why &ldquo;one big transaction&rdquo; is usually a bad idea—and how to break it down.</p>
+        </div>
+        <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/what-is-your-database-size/" class="color-inherit dim link">
+            Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h2 id="why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</h2>
+<p>When people ask “How big is the database?”, the answer depends on <em>which</em> size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.</p>
+<h3 id="segments-object-footprint-logical-allocation">Segments: object footprint (logical allocation)</h3>
+<p>A <strong>segment</strong> is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying <code>DBA_SEGMENTS</code> answers:</p>
+<blockquote>
+<p>“How much space has been allocated to my objects?”</p>
+        </div>
+        <a href="/MyBlog/posts/what-is-your-database-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="color-inherit dim link">
             Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
-<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs are kept in the Fast Recovery Area (FRA) for only 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs may be kept in the Fast Recovery Area (FRA) for relatively short periods like 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
         </div>
         <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="color-inherit dim link">
-            Real-Time Replication: ATP to ADW with OCI GoldenGate
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
-<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
-<hr>
-<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
-<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
-<ul>
-<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
-</ul>
-<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
-<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
-        </div>
-        <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="color-inherit dim link">
-            Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
-        </div>
-        <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
       </div>
     </div>
   </div>
@@ -207,6 +203,18 @@
           
           
             <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+                Real-Time Replication: ATP to ADW with OCI GoldenGate
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+                Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="link black dim">
                 The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
               </a>
@@ -215,18 +223,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
                 Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/" class="link black dim">
-                Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/" class="link black dim">
-                Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python
               </a>
             </h2>
           
