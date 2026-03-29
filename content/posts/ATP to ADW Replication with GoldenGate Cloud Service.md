@@ -3,8 +3,8 @@ title: "Real-Time Replication: ATP to ADW with OCI GoldenGate"
 date: 2026-02-17
 draft: false
 description: "Real Time replcation from ATP to ADW with GoldenGate Cloud Service"
-tags: ["Oracle", "ATP", "ADW", "Data Pump", "Golden Gate", "Autonomous Database"]
-categories: ["Database", "Autonomous Database", "Data Pump", "Golden Gate"]
+tags: ["Oracle", "ATP", "ADW", "Data Pump", "GoldenGate", "Autonomous Database"]
+categories: ["Database", "Autonomous Database", "Data Pump", "GoldenGate"]
 ---
 **Target Audience:** Senior DBAs, Cloud Architects, and Oracle User Groups  
 **Technical Context:** Replicating SOE schema between 4-ECPU Autonomous instances
