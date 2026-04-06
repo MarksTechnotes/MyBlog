@@ -2,40 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/adw/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/atp/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/backup/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/backup-protection-in-autonomous-database/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/data-pump/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/goldengate/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
+    <lastmod>2026-04-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/adb/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/adb/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/big-transactions/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/datafiles/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/oracle/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/segments/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</loc>
@@ -44,34 +65,16 @@
     <loc>https://markstechnotes.github.io/MyBlog/posts/what-is-your-database-size/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/adw/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/backup/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/backup/</loc>
-    <lastmod>2026-03-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/database/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/archive-logs-and-backup-size/</loc>
     <lastmod>2026-03-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/atp/</loc>
-    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/data-pump/</loc>
-    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/data-pump/</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/golden-gate/</loc>
-    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/golden-gate/</loc>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/goldengate/</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/</loc>
@@ -81,12 +84,6 @@
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/dms/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/goldengate/</loc>
-    <lastmod>2026-01-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/goldengate/</loc>
     <lastmod>2026-01-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/why-use-zdm-to-migrate-large-databases/</loc>
