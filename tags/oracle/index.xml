@@ -6,8 +6,15 @@
     <description>Recent content in Oracle on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backup Immutability in Autonomous Database vs ARS</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/backup-protection-in-autonomous-database/</link>
+      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/backup-protection-in-autonomous-database/</guid>
+      <description>&lt;h1 id=&#34;backup-immutability-in-autonomous-database-vs-ars&#34;&gt;Backup Immutability in Autonomous Database vs ARS&lt;/h1&gt;&#xA;&lt;p&gt;As ransomware and compliance requirements grow, &lt;strong&gt;backup protectin and immutability&lt;/strong&gt; has become a key concern. A common question is:&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;autonomous-database-atpadw&#34;&gt;Autonomous Database (ATP/ADW)&lt;/h2&gt;&#xA;&lt;p&gt;Autonomous Database provides &lt;strong&gt;fully managed backups&lt;/strong&gt; that are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Not accessible to users or DBAs&lt;/li&gt;&#xA;&lt;li&gt;Not directly deletable or modifiable&lt;/li&gt;&#xA;&lt;li&gt;Automatically incremental, compressed, and lifecycle-managed&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This means:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;DBAs &lt;strong&gt;cannot delete or access backups&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Strong protection from accidental or malicious actions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;However:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Backup retention can be changed (1–60 days)&lt;/li&gt;&#xA;&lt;li&gt;Older backups may be automatically purged if retention is reduced&lt;/li&gt;&#xA;&lt;li&gt;No &lt;strong&gt;WORM / retention lock enforcement&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;autonomous-recovery-service-ars&#34;&gt;Autonomous Recovery Service (ARS)&lt;/h2&gt;&#xA;&lt;p&gt;ARS is designed for &lt;strong&gt;cyber-resilient backup protection&lt;/strong&gt; and provides:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/the-death-by-10-million-rows-problem/</link>
