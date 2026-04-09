@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Monitoring Oracle database performance using AAS | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Monitoring Oracle database performance using AAS">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Monitoring Oracle database performance using AAS">
+  <meta property="og:description" content="Monitoring Oracle database performance using AAS">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:tag" content="AAS">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Performance">
+    <meta property="article:tag" content="Database">
+
+  <meta itemprop="name" content="Monitoring Oracle database performance using AAS">
+  <meta itemprop="description" content="Monitoring Oracle database performance using AAS">
+  <meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="378">
+  <meta itemprop="keywords" content="AAS,Oracle,Performance,Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Monitoring Oracle database performance using AAS">
+  <meta name="twitter:description" content="Monitoring Oracle database performance using AAS">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Monitoring Oracle database performance using AAS</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-09T00:00:00Z">April 9, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="oracle-performance-101-a-guide-to-average-active-sessions-aas">Oracle Performance 101: A Guide to Average Active Sessions (AAS)</h1>
+<p>Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is <strong>Average Active Sessions (AAS)</strong>. While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
+<hr>
+<h2 id="what-is-aas">What is AAS?</h2>
+<p>Think of it like a highway:</p>
+<ul>
+<li><strong>Active Sessions</strong> = a snapshot of how many cars are on the road at one exact second</li>
+<li><strong>AAS</strong> = the <em>average</em> number of cars on that road over time (like an hour or a day)</li>
+</ul>
+<p>In Oracle, it’s calculated as:</p>
+<pre tabindex="0"><code>AAS = Total DB Time / Elapsed Wall Clock Time
+</code></pre><hr>
+<h2 id="how-to-read-the-numbers">How to Read the Numbers</h2>
+<p>To understand if your database is healthy, compare your <strong>AAS</strong> to your <strong>CPU Count</strong>.</p>
+<table>
+  <thead>
+      <tr>
+          <th>AAS Value</th>
+          <th>Status</th>
+          <th>Meaning</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Close to 0</td>
+          <td>Idle</td>
+          <td>The database is nearly empty. Most activity is likely background housekeeping.</td>
+      </tr>
+      <tr>
+          <td>&lt; CPU Count</td>
+          <td>Healthy</td>
+          <td>The database is processing work efficiently. There are free processors available.</td>
+      </tr>
+      <tr>
+          <td>&gt; CPU Count</td>
+          <td>Bottleneck</td>
+          <td>The system is overloaded. Sessions are queuing up, causing performance delays.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="example-the-008-case">Example: The 0.08 Case</h2>
+<p>If your database has an <strong>AAS of 0.08</strong> and <strong>2 CPUs</strong>, you are only using <strong>4% of your capacity</strong>.</p>
+<p>👉 Your database is extremely quiet, and any slowness users feel is likely occurring in the <strong>application or network</strong>, not the database.</p>
+<hr>
+<h2 id="cpu-vs-wait-sessions">CPU vs. Wait Sessions</h2>
+<p>AAS is usually broken down into two parts:</p>
+<ul>
+<li><strong>CPU Sessions</strong>: Time spent actually processing data</li>
+<li><strong>Wait Sessions</strong>: Time spent waiting for resources (disk I/O, network, locks, etc.)</li>
+</ul>
+<p>✅ In a healthy system:</p>
+<ul>
+<li>CPU Sessions should be the <strong>largest portion</strong></li>
+</ul>
+<p>🚨 Warning sign:</p>
+<ul>
+<li>High Wait Sessions = database is waiting instead of working</li>
+</ul>
+<hr>
+<h2 id="real-life-tuning-with-aas">Real-Life Tuning with AAS</h2>
+<p>DBAs use AAS like <strong>CCTV footage</strong> to diagnose problems:</p>
+<ul>
+<li>
+<p><strong>Demand Surges</strong><br>
+If AAS spikes above CPU count during high volume → add more CPU cores</p>
+</li>
+<li>
+<p><strong>Locking Issues</strong><br>
+A spike in <em>Concurrency waits</em> → indicates blocking sessions</p>
+</li>
+<li>
+<p><strong>Bad SQL</strong><br>
+If one query dominates AAS → tune that SQL ID</p>
+</li>
+</ul>
+<hr>
+<h2 id="how-to-find-your-cpu-count">How to Find Your CPU Count</h2>
+<p>Use this query to determine the CPU capacity you should compare against:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> value <span style="color:#66d9ef">AS</span> cpu_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> v$parameter
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cpu_count&#39;</span>;
+</span></span></code></pre></div><p><em>Bottom line: AAS is the pulse of your database. Keep it below your CPU count, and you&rsquo;re in the clear!</em></p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/aas/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">AAS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/performance/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Performance</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/">Real-Life DBA Scenarios using AAS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/backup-protection-in-autonomous-database/">Backup Immutability in Autonomous Database vs ARS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/">The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/what-is-your-database-size/">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/">Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">Real-Time Replication: ATP to ADW with OCI GoldenGate</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

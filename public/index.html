@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2026-04-06T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-06T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,6 +126,78 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="color-inherit dim link">
+            Monitoring Oracle database performance using AAS
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h1 id="oracle-performance-101-a-guide-to-average-active-sessions-aas">Oracle Performance 101: A Guide to Average Active Sessions (AAS)</h1>
+<p>Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is <strong>Average Active Sessions (AAS)</strong>. While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
+<hr>
+<h2 id="what-is-aas">What is AAS?</h2>
+<p>Think of it like a highway:</p>
+<ul>
+<li><strong>Active Sessions</strong> = a snapshot of how many cars are on the road at one exact second</li>
+<li><strong>AAS</strong> = the <em>average</em> number of cars on that road over time (like an hour or a day)</li>
+</ul>
+<p>In Oracle, it’s calculated as:</p>
+        </div>
+        <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="color-inherit dim link">
+            Real-Life DBA Scenarios using AAS
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h1 id="real-life-dba-scenarios-using-aas">Real-Life DBA Scenarios Using AAS</h1>
+<p>Here are three real-life scenarios where DBAs use <strong>Average Active Sessions (AAS)</strong> to solve performance issues.</p>
+<hr>
+<h2 id="1-the-demand-surge-scaling-check">1. The &ldquo;Demand Surge&rdquo; (Scaling Check)</h2>
+<p>Imagine a retail site during a flash sale. The DBA sees <strong>AAS jump from 2.0 to 15.0</strong> on a server with <strong>8 CPUs</strong>.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>Because <strong>AAS &gt; CPU count</strong>, the system is saturated.</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>By drilling down into the AAS <em>Wait Class</em>, the DBA sees it is mostly <strong>CPU activity</strong>.</li>
+<li>This proves the hardware is too small for peak load.</li>
+<li>The solution is an immediate vertical scale-up (add more CPU cores).</li>
+</ul>
+<hr>
+<h2 id="2-the-locking-disaster-application-bug">2. The &ldquo;Locking Disaster&rdquo; (Application Bug)</h2>
+<p>A payroll application suddenly freezes. The total CPU usage on the server looks low (5%), but the AAS is 12.0 on a 24-CPU machine.</p>
+        </div>
+        <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="color-inherit dim link">
             Backup Immutability in Autonomous Database vs ARS
             </a>
@@ -164,65 +236,24 @@
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="color-inherit dim link">
-            The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="the-death-by-10-million-rows-problem-why-big-transactions-fail">The &ldquo;Death by 10 Million Rows&rdquo; Problem: Why Big Transactions Fail</h1>
-<p>We’ve all been there: You have a &ldquo;simple&rdquo; update to run on a massive table. You hit execute on a single <code>UPDATE</code> statement, and then&hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the <strong>Undo Tablespace</strong> is screaming for mercy.</p>
-<p>Here’s why &ldquo;one big transaction&rdquo; is usually a bad idea—and how to break it down.</p>
-        </div>
-        <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/what-is-your-database-size/" class="color-inherit dim link">
-            Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h2 id="why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</h2>
-<p>When people ask “How big is the database?”, the answer depends on <em>which</em> size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.</p>
-<h3 id="segments-object-footprint-logical-allocation">Segments: object footprint (logical allocation)</h3>
-<p>A <strong>segment</strong> is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying <code>DBA_SEGMENTS</code> answers:</p>
-<blockquote>
-<p>“How much space has been allocated to my objects?”</p>
-        </div>
-        <a href="/MyBlog/posts/what-is-your-database-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="link black dim">
+                The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
+              </a>
+            </h2>
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/what-is-your-database-size/" class="link black dim">
+                Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="link black dim">
@@ -233,18 +264,6 @@
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
                 Real-Time Replication: ATP to ADW with OCI GoldenGate
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-                Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="link black dim">
-                The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
               </a>
             </h2>
           
