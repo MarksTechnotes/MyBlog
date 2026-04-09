@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Real-Life DBA Scenarios using AAS | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Real-Life DBA Scenarios using AAS">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/real-life-dba-scenarious-using-aas/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/real-life-dba-scenarious-using-aas/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Real-Life DBA Scenarios using AAS">
+  <meta property="og:description" content="Real-Life DBA Scenarios using AAS">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:tag" content="AAS">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Performance">
+    <meta property="article:tag" content="Database">
+
+  <meta itemprop="name" content="Real-Life DBA Scenarios using AAS">
+  <meta itemprop="description" content="Real-Life DBA Scenarios using AAS">
+  <meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="wordCount" content="298">
+  <meta itemprop="keywords" content="AAS,Oracle,Performance,Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Real-Life DBA Scenarios using AAS">
+  <meta name="twitter:description" content="Real-Life DBA Scenarios using AAS">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Real-Life DBA Scenarios using AAS</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-09T00:00:00Z">April 9, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="real-life-dba-scenarios-using-aas">Real-Life DBA Scenarios Using AAS</h1>
+<p>Here are three real-life scenarios where DBAs use <strong>Average Active Sessions (AAS)</strong> to solve performance issues.</p>
+<hr>
+<h2 id="1-the-demand-surge-scaling-check">1. The &ldquo;Demand Surge&rdquo; (Scaling Check)</h2>
+<p>Imagine a retail site during a flash sale. The DBA sees <strong>AAS jump from 2.0 to 15.0</strong> on a server with <strong>8 CPUs</strong>.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>Because <strong>AAS &gt; CPU count</strong>, the system is saturated.</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>By drilling down into the AAS <em>Wait Class</em>, the DBA sees it is mostly <strong>CPU activity</strong>.</li>
+<li>This proves the hardware is too small for peak load.</li>
+<li>The solution is an immediate vertical scale-up (add more CPU cores).</li>
+</ul>
+<hr>
+<h2 id="2-the-locking-disaster-application-bug">2. The &ldquo;Locking Disaster&rdquo; (Application Bug)</h2>
+<p>A payroll application suddenly freezes. The total CPU usage on the server looks low (5%), but the AAS is 12.0 on a 24-CPU machine.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>The DBA checks the AAS chart and sees a massive block of <strong>Concurrency waits</strong> (often shown in dark red).</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>Filter AAS by <strong>Top Sessions</strong> and <strong>Blocking Session</strong></li>
+<li>Identify one user session that forgot to COMMIT</li>
+<li>This single session is blocking 11 others, creating a queue</li>
+</ul>
+<hr>
+<h2 id="3-the-bad-execution-plan-query-tuning">3. The &ldquo;Bad Execution Plan&rdquo; (Query Tuning)</h2>
+<p>After a software update, a report slows from <strong>10 seconds to 10 minutes</strong>. The overall AAS increases from <strong>0.5 to 1.5</strong>.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>Using <strong>ASH Analytics</strong>, the DBA filters AAS by <strong>SQL ID</strong></li>
+<li>One query accounts for 1.0 of the 1.5 AAS</li>
+<li>The wait class is <strong>User I/O</strong></li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>The query is doing a ull table scan</li>
+<li>Add the missing index</li>
+<li>AAS contribution drops back near zero</li>
+</ul>
+<hr>
+<h2 id="summary-of-rules-of-thumb">Summary of Rules of Thumb</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Observation</th>
+          <th>Likely Conclusion</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Spike in AAS (Mostly CPU)</td>
+          <td>Too much work for processors; tune SQL or add CPU cores</td>
+      </tr>
+      <tr>
+          <td>Spike in AAS (Mostly Concurrency)</td>
+          <td>Application locking issue; find the blocking session</td>
+      </tr>
+      <tr>
+          <td>Spike in AAS (Mostly I/O)</td>
+          <td>Storage bottleneck or missing indexes causing heavy disk reads</td>
+      </tr>
+  </tbody>
+</table>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/aas/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">AAS</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/performance/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Performance</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/">Monitoring Oracle database performance using AAS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/backup-protection-in-autonomous-database/">Backup Immutability in Autonomous Database vs ARS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/">The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/what-is-your-database-size/">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/">Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">Real-Time Replication: ATP to ADW with OCI GoldenGate</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

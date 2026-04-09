@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Categories">
-  <meta itemprop="datePublished" content="2026-04-06T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-06T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Categories">
 
@@ -111,279 +111,68 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/MyBlog/categories/autonomous-database/" class="link blue hover-black">
-            Category: Autonomous Database
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="link black dim">
-        Backup Immutability in Autonomous Database vs ARS
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="backup-immutability-in-autonomous-database-vs-ars">Backup Immutability in Autonomous Database vs ARS</h1>
-<p>As ransomware and compliance requirements grow, <strong>backup protectin and immutability</strong> has become a key concern. A common question is:</p>
-<hr>
-<h2 id="autonomous-database-atpadw">Autonomous Database (ATP/ADW)</h2>
-<p>Autonomous Database provides <strong>fully managed backups</strong> that are:</p>
-<ul>
-<li>Not accessible to users or DBAs</li>
-<li>Not directly deletable or modifiable</li>
-<li>Automatically incremental, compressed, and lifecycle-managed</li>
-</ul>
-<p>This means:</p>
-<ul>
-<li>DBAs <strong>cannot delete or access backups</strong></li>
-<li>Strong protection from accidental or malicious actions</li>
-</ul>
-<p>However:</p>
-<ul>
-<li>Backup retention can be changed (1–60 days)</li>
-<li>Older backups may be automatically purged if retention is reduced</li>
-<li>No <strong>WORM / retention lock enforcement</strong></li>
-</ul>
-<hr>
-<h2 id="autonomous-recovery-service-ars">Autonomous Recovery Service (ARS)</h2>
-<p>ARS is designed for <strong>cyber-resilient backup protection</strong> and provides:</p>
-    </div>
-    <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="link black dim">
-        The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="the-death-by-10-million-rows-problem-why-big-transactions-fail">The &ldquo;Death by 10 Million Rows&rdquo; Problem: Why Big Transactions Fail</h1>
-<p>We’ve all been there: You have a &ldquo;simple&rdquo; update to run on a massive table. You hit execute on a single <code>UPDATE</code> statement, and then&hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the <strong>Undo Tablespace</strong> is screaming for mercy.</p>
-<p>Here’s why &ldquo;one big transaction&rdquo; is usually a bad idea—and how to break it down.</p>
-    </div>
-    <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/what-is-your-database-size/" class="link black dim">
-        Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</h2>
-<p>When people ask “How big is the database?”, the answer depends on <em>which</em> size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.</p>
-<h3 id="segments-object-footprint-logical-allocation">Segments: object footprint (logical allocation)</h3>
-<p>A <strong>segment</strong> is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying <code>DBA_SEGMENTS</code> answers:</p>
-<blockquote>
-<p>“How much space has been allocated to my objects?”</p>
-    </div>
-    <a href="/MyBlog/posts/what-is-your-database-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="link black dim">
-        Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
-<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs may be kept in the Fast Recovery Area (FRA) for relatively short periods like 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
-    </div>
-    <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
-        Real-Time Replication: ATP to ADW with OCI GoldenGate
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
-<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
-<hr>
-<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
-<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
-<ul>
-<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
-</ul>
-<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
-<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
-    </div>
-    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
-    </div>
-    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="link black dim">
-        The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="overview">Overview</h1>
-<p>In modern Oracle Cloud Infrastructure (OCI) architectures, architects often look for ways to manage file payloads without bloating the database. A common proposal is to use the <strong>Database File System (DBFS)</strong> to attach an external <strong>File Storage Service (FSS)</strong> to an <strong>Autonomous Transaction Processing (ATP)</strong> database.</p>
-<p>The intent is usually good: keep the database lean while using its familiar interface to manage files. However, in practice, this creates a &ldquo;Database Middleman&rdquo; that introduces significant performance and operational risks.</p>
-    </div>
-    <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
-        Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h2 id="overview">Overview</h2>
-<p>With Autonomous Database (ATP), we are often told to simply &lsquo;download the wallet and point the tool at the folder.&rsquo; When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting &lsquo;Connection Refused&rsquo; errors when they try connecting using the <code>Wallet-less</code> connection types: <code>Basic\EZConnect</code>, <code>TNS</code> and <code>JDBC</code> because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the &lsquo;why.&rsquo; and will hopefully help you if you face similar connection issues.</p>
-    </div>
-    <a href="/MyBlog/posts/atp_connection_notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/categories/data-pump/" class="link blue hover-black">
-            Category: Data Pump
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="link black dim">
-        Backup Immutability in Autonomous Database vs ARS
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="backup-immutability-in-autonomous-database-vs-ars">Backup Immutability in Autonomous Database vs ARS</h1>
-<p>As ransomware and compliance requirements grow, <strong>backup protectin and immutability</strong> has become a key concern. A common question is:</p>
-<hr>
-<h2 id="autonomous-database-atpadw">Autonomous Database (ATP/ADW)</h2>
-<p>Autonomous Database provides <strong>fully managed backups</strong> that are:</p>
-<ul>
-<li>Not accessible to users or DBAs</li>
-<li>Not directly deletable or modifiable</li>
-<li>Automatically incremental, compressed, and lifecycle-managed</li>
-</ul>
-<p>This means:</p>
-<ul>
-<li>DBAs <strong>cannot delete or access backups</strong></li>
-<li>Strong protection from accidental or malicious actions</li>
-</ul>
-<p>However:</p>
-<ul>
-<li>Backup retention can be changed (1–60 days)</li>
-<li>Older backups may be automatically purged if retention is reduced</li>
-<li>No <strong>WORM / retention lock enforcement</strong></li>
-</ul>
-<hr>
-<h2 id="autonomous-recovery-service-ars">Autonomous Recovery Service (ARS)</h2>
-<p>ARS is designed for <strong>cyber-resilient backup protection</strong> and provides:</p>
-    </div>
-    <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
-        Real-Time Replication: ATP to ADW with OCI GoldenGate
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
-<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
-<hr>
-<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
-<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
-<ul>
-<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
-<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
-</ul>
-<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
-<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
-    </div>
-    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
-        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
-    </div>
-    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
           <a href="/MyBlog/categories/database/" class="link blue hover-black">
             Category: Database
           </a>
         </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="link black dim">
+        Monitoring Oracle database performance using AAS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="oracle-performance-101-a-guide-to-average-active-sessions-aas">Oracle Performance 101: A Guide to Average Active Sessions (AAS)</h1>
+<p>Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is <strong>Average Active Sessions (AAS)</strong>. While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
+<hr>
+<h2 id="what-is-aas">What is AAS?</h2>
+<p>Think of it like a highway:</p>
+<ul>
+<li><strong>Active Sessions</strong> = a snapshot of how many cars are on the road at one exact second</li>
+<li><strong>AAS</strong> = the <em>average</em> number of cars on that road over time (like an hour or a day)</li>
+</ul>
+<p>In Oracle, it’s calculated as:</p>
+    </div>
+    <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="link black dim">
+        Real-Life DBA Scenarios using AAS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="real-life-dba-scenarios-using-aas">Real-Life DBA Scenarios Using AAS</h1>
+<p>Here are three real-life scenarios where DBAs use <strong>Average Active Sessions (AAS)</strong> to solve performance issues.</p>
+<hr>
+<h2 id="1-the-demand-surge-scaling-check">1. The &ldquo;Demand Surge&rdquo; (Scaling Check)</h2>
+<p>Imagine a retail site during a flash sale. The DBA sees <strong>AAS jump from 2.0 to 15.0</strong> on a server with <strong>8 CPUs</strong>.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>Because <strong>AAS &gt; CPU count</strong>, the system is saturated.</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>By drilling down into the AAS <em>Wait Class</em>, the DBA sees it is mostly <strong>CPU activity</strong>.</li>
+<li>This proves the hardware is too small for peak load.</li>
+<li>The solution is an immediate vertical scale-up (add more CPU cores).</li>
+</ul>
+<hr>
+<h2 id="2-the-locking-disaster-application-bug">2. The &ldquo;Locking Disaster&rdquo; (Application Bug)</h2>
+<p>A payroll application suddenly freezes. The total CPU usage on the server looks low (5%), but the AAS is 12.0 on a 24-CPU machine.</p>
+    </div>
+    <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
         
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
   <div class="mb3 pa4 gray overflow-hidden bg-white">
@@ -758,6 +547,340 @@ This requires a <strong>GNOME desktop environment</strong>, a <strong>VNC sessio
 </span></span></code></pre></div><p>Replace <password>, <exadata-scan-host>, and &lt;db_service&gt; with your own Exadata Cloud Service connection details as shown in your OCI console or TNS names file.</p>
     </div>
     <a href="/MyBlog/posts/first-blog-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/categories/performance/" class="link blue hover-black">
+            Category: Performance
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="link black dim">
+        Monitoring Oracle database performance using AAS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="oracle-performance-101-a-guide-to-average-active-sessions-aas">Oracle Performance 101: A Guide to Average Active Sessions (AAS)</h1>
+<p>Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is <strong>Average Active Sessions (AAS)</strong>. While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
+<hr>
+<h2 id="what-is-aas">What is AAS?</h2>
+<p>Think of it like a highway:</p>
+<ul>
+<li><strong>Active Sessions</strong> = a snapshot of how many cars are on the road at one exact second</li>
+<li><strong>AAS</strong> = the <em>average</em> number of cars on that road over time (like an hour or a day)</li>
+</ul>
+<p>In Oracle, it’s calculated as:</p>
+    </div>
+    <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="link black dim">
+        Real-Life DBA Scenarios using AAS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="real-life-dba-scenarios-using-aas">Real-Life DBA Scenarios Using AAS</h1>
+<p>Here are three real-life scenarios where DBAs use <strong>Average Active Sessions (AAS)</strong> to solve performance issues.</p>
+<hr>
+<h2 id="1-the-demand-surge-scaling-check">1. The &ldquo;Demand Surge&rdquo; (Scaling Check)</h2>
+<p>Imagine a retail site during a flash sale. The DBA sees <strong>AAS jump from 2.0 to 15.0</strong> on a server with <strong>8 CPUs</strong>.</p>
+<p><strong>Diagnosis:</strong></p>
+<ul>
+<li>Because <strong>AAS &gt; CPU count</strong>, the system is saturated.</li>
+</ul>
+<p><strong>Fix:</strong></p>
+<ul>
+<li>By drilling down into the AAS <em>Wait Class</em>, the DBA sees it is mostly <strong>CPU activity</strong>.</li>
+<li>This proves the hardware is too small for peak load.</li>
+<li>The solution is an immediate vertical scale-up (add more CPU cores).</li>
+</ul>
+<hr>
+<h2 id="2-the-locking-disaster-application-bug">2. The &ldquo;Locking Disaster&rdquo; (Application Bug)</h2>
+<p>A payroll application suddenly freezes. The total CPU usage on the server looks low (5%), but the AAS is 12.0 on a 24-CPU machine.</p>
+    </div>
+    <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/categories/autonomous-database/" class="link blue hover-black">
+            Category: Autonomous Database
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="link black dim">
+        Backup Immutability in Autonomous Database vs ARS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="backup-immutability-in-autonomous-database-vs-ars">Backup Immutability in Autonomous Database vs ARS</h1>
+<p>As ransomware and compliance requirements grow, <strong>backup protectin and immutability</strong> has become a key concern. A common question is:</p>
+<hr>
+<h2 id="autonomous-database-atpadw">Autonomous Database (ATP/ADW)</h2>
+<p>Autonomous Database provides <strong>fully managed backups</strong> that are:</p>
+<ul>
+<li>Not accessible to users or DBAs</li>
+<li>Not directly deletable or modifiable</li>
+<li>Automatically incremental, compressed, and lifecycle-managed</li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>DBAs <strong>cannot delete or access backups</strong></li>
+<li>Strong protection from accidental or malicious actions</li>
+</ul>
+<p>However:</p>
+<ul>
+<li>Backup retention can be changed (1–60 days)</li>
+<li>Older backups may be automatically purged if retention is reduced</li>
+<li>No <strong>WORM / retention lock enforcement</strong></li>
+</ul>
+<hr>
+<h2 id="autonomous-recovery-service-ars">Autonomous Recovery Service (ARS)</h2>
+<p>ARS is designed for <strong>cyber-resilient backup protection</strong> and provides:</p>
+    </div>
+    <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="link black dim">
+        The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="the-death-by-10-million-rows-problem-why-big-transactions-fail">The &ldquo;Death by 10 Million Rows&rdquo; Problem: Why Big Transactions Fail</h1>
+<p>We’ve all been there: You have a &ldquo;simple&rdquo; update to run on a massive table. You hit execute on a single <code>UPDATE</code> statement, and then&hellip; you wait. Suddenly, the DBA is at your desk because you’ve locked the table for everyone else and the <strong>Undo Tablespace</strong> is screaming for mercy.</p>
+<p>Here’s why &ldquo;one big transaction&rdquo; is usually a bad idea—and how to break it down.</p>
+    </div>
+    <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/what-is-your-database-size/" class="link black dim">
+        Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="why-database-size-can-mean-different-things-in-adw-segments-vs-datafiles">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</h2>
+<p>When people ask “How big is the database?”, the answer depends on <em>which</em> size you’re measuring. In Autonomous Data Warehouse (ADW), two common SQL-based views can appear to disagree.</p>
+<h3 id="segments-object-footprint-logical-allocation">Segments: object footprint (logical allocation)</h3>
+<p>A <strong>segment</strong> is the storage allocated to a database object—tables, indexes, LOB segments, partitions, etc. Querying <code>DBA_SEGMENTS</code> answers:</p>
+<blockquote>
+<p>“How much space has been allocated to my objects?”</p>
+    </div>
+    <a href="/MyBlog/posts/what-is-your-database-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="link black dim">
+        Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="why-backup-and-archive-log-storage-can-be-large-even-with-a-small-database-and-48hour-retention">Why Backup and Archive Log Storage Can Be Large even with a Small Database and 48‑Hour Retention</h2>
+<p>I was on a call with a customer who were under the impression that since the database was not large and since Archive logs may be kept in the Fast Recovery Area (FRA) for relatively short periods like 48 hrs in ADW-Serverless, it would not make a material difference in the backup size. It’s natural to assume that backup storage should be roughly proportional to database size, and that a short retention period (like 48 hours) should keep backup costs low. In practice, backup and recovery storage is often driven less by “how big the database is” and more by “how much the database changes.”</p>
+    </div>
+    <a href="/MyBlog/posts/archive-logs-and-backup-size/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
+<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+    </div>
+    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="link black dim">
+        The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="overview">Overview</h1>
+<p>In modern Oracle Cloud Infrastructure (OCI) architectures, architects often look for ways to manage file payloads without bloating the database. A common proposal is to use the <strong>Database File System (DBFS)</strong> to attach an external <strong>File Storage Service (FSS)</strong> to an <strong>Autonomous Transaction Processing (ATP)</strong> database.</p>
+<p>The intent is usually good: keep the database lean while using its familiar interface to manage files. However, in practice, this creates a &ldquo;Database Middleman&rdquo; that introduces significant performance and operational risks.</p>
+    </div>
+    <a href="/MyBlog/posts/the-database-middleman---dbfs/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp_connection_notes/" class="link black dim">
+        Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h2 id="overview">Overview</h2>
+<p>With Autonomous Database (ATP), we are often told to simply &lsquo;download the wallet and point the tool at the folder.&rsquo; When it works, it feels like magic; when it fails, it feels like an impenetrable wall of networking protocols. Most developers spend hours troubleshooting &lsquo;Connection Refused&rsquo; errors when they try connecting using the <code>Wallet-less</code> connection types: <code>Basic\EZConnect</code>, <code>TNS</code> and <code>JDBC</code> because they view the connection string as a cryptic incantation rather than a logical map. This post is the result of a deep dive into the &lsquo;why.&rsquo; and will hopefully help you if you face similar connection issues.</p>
+    </div>
+    <a href="/MyBlog/posts/atp_connection_notes/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/categories/data-pump/" class="link blue hover-black">
+            Category: Data Pump
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="link black dim">
+        Backup Immutability in Autonomous Database vs ARS
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="backup-immutability-in-autonomous-database-vs-ars">Backup Immutability in Autonomous Database vs ARS</h1>
+<p>As ransomware and compliance requirements grow, <strong>backup protectin and immutability</strong> has become a key concern. A common question is:</p>
+<hr>
+<h2 id="autonomous-database-atpadw">Autonomous Database (ATP/ADW)</h2>
+<p>Autonomous Database provides <strong>fully managed backups</strong> that are:</p>
+<ul>
+<li>Not accessible to users or DBAs</li>
+<li>Not directly deletable or modifiable</li>
+<li>Automatically incremental, compressed, and lifecycle-managed</li>
+</ul>
+<p>This means:</p>
+<ul>
+<li>DBAs <strong>cannot delete or access backups</strong></li>
+<li>Strong protection from accidental or malicious actions</li>
+</ul>
+<p>However:</p>
+<ul>
+<li>Backup retention can be changed (1–60 days)</li>
+<li>Older backups may be automatically purged if retention is reduced</li>
+<li>No <strong>WORM / retention lock enforcement</strong></li>
+</ul>
+<hr>
+<h2 id="autonomous-recovery-service-ars">Autonomous Recovery Service (ARS)</h2>
+<p>ARS is designed for <strong>cyber-resilient backup protection</strong> and provides:</p>
+    </div>
+    <a href="/MyBlog/posts/backup-protection-in-autonomous-database/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="link black dim">
+        Real-Time Replication: ATP to ADW with OCI GoldenGate
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p><strong>Target Audience:</strong> Senior DBAs, Cloud Architects, and Oracle User Groups<br>
+<strong>Technical Context:</strong> Replicating SOE schema between 4-ECPU Autonomous instances</p>
+<hr>
+<h2 id="1-environment--performance-profile">1. Environment &amp; Performance Profile</h2>
+<p>To provide a baseline for these benchmarks, both the source and target environments were configured as follows:</p>
+<ul>
+<li><strong>Source:</strong> ATP (<code>dbai26</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Target:</strong> ADW (<code>PerfDB23ai</code>) — <strong>4 ECPUs</strong></li>
+<li><strong>Data Volume:</strong> ~700 MB (SOE Schema)</li>
+</ul>
+<h3 id="enable-supplemental-logging">Enable Supplemental Logging</h3>
+<p>To prepare the environment for Change Data Capture (CDC), I configured the source at two specific layers of the redo hierarchy:</p>
+    </div>
+    <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="link black dim">
+        Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>A customer I am working with is in the process of migrating a massive <strong>75TB database</strong> from Autonomous Database Serverless (ADB-S) to Dedicated (ADB-D), which is a high-stakes operation where downtime isn&rsquo;t an option. In addition, ADB-S has bi-weekly/monthly maintenance windows which can interfere with the migration process if it takes too long, that makes it critical to complete the migration in a timely manner.  While Oracle offers a suite of tools like Data Pump and GoldenGate, the sheer volume of data makes the &ldquo;how&rdquo; just as important as the &ldquo;what.&rdquo;. At this scale, the primary challenge isn&rsquo;t just moving the bytes; it’s maintaining absolute data integrity while the source database continues to process thousands of transactions per second.</p>
+    </div>
+    <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 

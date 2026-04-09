@@ -6,8 +6,22 @@
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/performance/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/performance/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Autonomous Database</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</link>
@@ -20,13 +34,6 @@
       <link>https://markstechnotes.github.io/MyBlog/categories/data-pump/</link>
       <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/data-pump/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/database/</link>
-      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/database/</guid>
       <description></description>
     </item>
     <item>
