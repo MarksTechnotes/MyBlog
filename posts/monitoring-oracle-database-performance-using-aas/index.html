@@ -42,8 +42,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-04-09T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-04-09T00:00:00+00:00">
+    <meta property="article:published_time" content="2026-04-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-14T00:00:00+00:00">
     <meta property="article:tag" content="AAS">
     <meta property="article:tag" content="Oracle">
     <meta property="article:tag" content="Performance">
@@ -51,9 +51,9 @@
 
   <meta itemprop="name" content="Monitoring Oracle database performance using AAS">
   <meta itemprop="description" content="Monitoring Oracle database performance using AAS">
-  <meta itemprop="datePublished" content="2026-04-09T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-09T00:00:00+00:00">
-  <meta itemprop="wordCount" content="378">
+  <meta itemprop="datePublished" content="2026-04-14T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-14T00:00:00+00:00">
+  <meta itemprop="wordCount" content="442">
   <meta itemprop="keywords" content="AAS,Oracle,Performance,Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Monitoring Oracle database performance using AAS">
@@ -117,16 +117,17 @@
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2026-04-09T00:00:00Z">April 9, 2026</time>
+      <time class="f6 mv4 dib tracked" datetime="2026-04-14T00:00:00Z">April 14, 2026</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="oracle-performance-101-a-guide-to-average-active-sessions-aas">Oracle Performance 101: A Guide to Average Active Sessions (AAS)</h1>
-<p>Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is <strong>Average Active Sessions (AAS)</strong>. While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="a-guide-to-average-active-sessions-aas">A Guide to Average Active Sessions (AAS)</h1>
+<p>Every DBA has lived through the vague &lsquo;database is slow&rsquo; complaint. The challenge isn&rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. While those metrics matter, <strong>Average Active Sessions (AAS)</strong> is the single most important indicator of the database&rsquo;s true &lsquo;pulse&rsquo; and its ability to handle work.</p>
 <hr>
 <h2 id="what-is-aas">What is AAS?</h2>
+<p>While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>
 <p>Think of it like a highway:</p>
 <ul>
 <li><strong>Active Sessions</strong> = a snapshot of how many cars are on the road at one exact second</li>
@@ -137,7 +138,11 @@
 </code></pre><hr>
 <h2 id="how-to-read-the-numbers">How to Read the Numbers</h2>
 <p>To understand if your database is healthy, compare your <strong>AAS</strong> to your <strong>CPU Count</strong>.</p>
-<table>
+<p>Use this query to determine the CPU capacity you should compare against:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> value <span style="color:#66d9ef">AS</span> cpu_count
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> v$parameter
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cpu_count&#39;</span>;
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th>AAS Value</th>
@@ -163,11 +168,8 @@
       </tr>
   </tbody>
 </table>
-<hr>
-<h2 id="example-the-008-case">Example: The 0.08 Case</h2>
-<p>If your database has an <strong>AAS of 0.08</strong> and <strong>2 CPUs</strong>, you are only using <strong>4% of your capacity</strong>.</p>
+<p>For example, if your database has an <strong>AAS of 0.08</strong> and <strong>2 CPUs</strong>, it is only using <strong>4% of its capacity</strong>.</p>
 <p>👉 Your database is extremely quiet, and any slowness users feel is likely occurring in the <strong>application or network</strong>, not the database.</p>
-<hr>
 <h2 id="cpu-vs-wait-sessions">CPU vs. Wait Sessions</h2>
 <p>AAS is usually broken down into two parts:</p>
 <ul>
@@ -200,12 +202,8 @@ If one query dominates AAS → tune that SQL ID</p>
 </li>
 </ul>
 <hr>
-<h2 id="how-to-find-your-cpu-count">How to Find Your CPU Count</h2>
-<p>Use this query to determine the CPU capacity you should compare against:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> value <span style="color:#66d9ef">AS</span> cpu_count
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> v$parameter
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">WHERE</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cpu_count&#39;</span>;
-</span></span></code></pre></div><p><em>Bottom line: AAS is the pulse of your database. Keep it below your CPU count, and you&rsquo;re in the clear!</em></p>
+<p><em>Bottom line: AAS is the pulse of your database. Keep it below your CPU count, and you&rsquo;re in the clear!</em></p>
+<p>Knowing your database is busy is only half the battle. In Part 2, we’ll dive into the specific <strong>Wait Classes</strong> that drive high AAS and how to identify exactly what resource is holding your data hostage.</p>
 <ul class="pa0">
   
    <li class="list di">

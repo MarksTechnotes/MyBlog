@@ -6,14 +6,14 @@
     <description>Recent content in Oracle on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitoring Oracle database performance using AAS</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/</link>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/</guid>
-      <description>&lt;h1 id=&#34;oracle-performance-101-a-guide-to-average-active-sessions-aas&#34;&gt;Oracle Performance 101: A Guide to Average Active Sessions (AAS)&lt;/h1&gt;&#xA;&lt;p&gt;Understanding database performance doesn’t have to be a mystery. One of the most important metrics you can track is &lt;strong&gt;Average Active Sessions (AAS)&lt;/strong&gt;. While &lt;em&gt;&amp;ldquo;Total Sessions&amp;rdquo;&lt;/em&gt; tells you who is logged in, &lt;strong&gt;AAS tells you who is actually doing work.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-aas&#34;&gt;What is AAS?&lt;/h2&gt;&#xA;&lt;p&gt;Think of it like a highway:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Active Sessions&lt;/strong&gt; = a snapshot of how many cars are on the road at one exact second&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;AAS&lt;/strong&gt; = the &lt;em&gt;average&lt;/em&gt; number of cars on that road over time (like an hour or a day)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;In Oracle, it’s calculated as:&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;a-guide-to-average-active-sessions-aas&#34;&gt;A Guide to Average Active Sessions (AAS)&lt;/h1&gt;&#xA;&lt;p&gt;Every DBA has lived through the vague &amp;lsquo;database is slow&amp;rsquo; complaint. The challenge isn&amp;rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. While those metrics matter, &lt;strong&gt;Average Active Sessions (AAS)&lt;/strong&gt; is the single most important indicator of the database&amp;rsquo;s true &amp;lsquo;pulse&amp;rsquo; and its ability to handle work.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-aas&#34;&gt;What is AAS?&lt;/h2&gt;&#xA;&lt;p&gt;While &lt;em&gt;&amp;ldquo;Total Sessions&amp;rdquo;&lt;/em&gt; tells you who is logged in, &lt;strong&gt;AAS tells you who is actually doing work.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Real-Life DBA Scenarios using AAS</title>
