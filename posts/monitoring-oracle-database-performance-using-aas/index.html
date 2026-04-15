@@ -42,8 +42,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-04-14T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-04-14T00:00:00+00:00">
+    <meta property="article:published_time" content="2026-04-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-15T00:00:00+00:00">
     <meta property="article:tag" content="AAS">
     <meta property="article:tag" content="Oracle">
     <meta property="article:tag" content="Performance">
@@ -51,9 +51,9 @@
 
   <meta itemprop="name" content="Monitoring Oracle database performance using AAS">
   <meta itemprop="description" content="Monitoring Oracle database performance using AAS">
-  <meta itemprop="datePublished" content="2026-04-14T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-04-14T00:00:00+00:00">
-  <meta itemprop="wordCount" content="442">
+  <meta itemprop="datePublished" content="2026-04-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="508">
   <meta itemprop="keywords" content="AAS,Oracle,Performance,Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Monitoring Oracle database performance using AAS">
@@ -117,14 +117,21 @@
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2026-04-14T00:00:00Z">April 14, 2026</time>
+      <time class="f6 mv4 dib tracked" datetime="2026-04-15T00:00:00Z">April 15, 2026</time>
       
 
       
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="a-guide-to-average-active-sessions-aas">A Guide to Average Active Sessions (AAS)</h1>
-<p>Every DBA has lived through the vague &lsquo;database is slow&rsquo; complaint. The challenge isn&rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. While those metrics matter, <strong>Average Active Sessions (AAS)</strong> is the single most important indicator of the database&rsquo;s true &lsquo;pulse&rsquo; and its ability to handle work.</p>
+<p>Every DBA has lived through the vague &lsquo;database is slow&rsquo; complaint. The challenge isn&rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise.</p>
+<p>Before you look at the metrics: <strong>Define the Scope</strong></p>
+<p>A common pitfall when receiving a &ldquo;database is slow&rdquo; complaint is diving into the metrics too early. The first question should always be: Is everything slow, or is it just one specific process?</p>
+<pre><code>If it's a &quot;Global&quot; slowdown: Use Average Active Sessions (AAS) to check for system-wide bottlenecks (CPU, I/O, or Locks).
+
+If it's a &quot;Local&quot; slowdown: Drill down into the specific SQL ID or session using ASH.
+</code></pre>
+<p><strong>AAS</strong> is your tool for the &ldquo;Global&rdquo; view—let&rsquo;s look at how to interpret it.</p>
 <hr>
 <h2 id="what-is-aas">What is AAS?</h2>
 <p>While <em>&ldquo;Total Sessions&rdquo;</em> tells you who is logged in, <strong>AAS tells you who is actually doing work.</strong></p>

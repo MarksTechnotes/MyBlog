@@ -6,14 +6,14 @@
     <description>Recent content in Database on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monitoring Oracle database performance using AAS</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/</link>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/posts/monitoring-oracle-database-performance-using-aas/</guid>
-      <description>&lt;h1 id=&#34;a-guide-to-average-active-sessions-aas&#34;&gt;A Guide to Average Active Sessions (AAS)&lt;/h1&gt;&#xA;&lt;p&gt;Every DBA has lived through the vague &amp;lsquo;database is slow&amp;rsquo; complaint. The challenge isn&amp;rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. While those metrics matter, &lt;strong&gt;Average Active Sessions (AAS)&lt;/strong&gt; is the single most important indicator of the database&amp;rsquo;s true &amp;lsquo;pulse&amp;rsquo; and its ability to handle work.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-aas&#34;&gt;What is AAS?&lt;/h2&gt;&#xA;&lt;p&gt;While &lt;em&gt;&amp;ldquo;Total Sessions&amp;rdquo;&lt;/em&gt; tells you who is logged in, &lt;strong&gt;AAS tells you who is actually doing work.&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;a-guide-to-average-active-sessions-aas&#34;&gt;A Guide to Average Active Sessions (AAS)&lt;/h1&gt;&#xA;&lt;p&gt;Every DBA has lived through the vague &amp;lsquo;database is slow&amp;rsquo; complaint. The challenge isn&amp;rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise.&lt;/p&gt;&#xA;&lt;p&gt;Before you look at the metrics: &lt;strong&gt;Define the Scope&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;A common pitfall when receiving a &amp;ldquo;database is slow&amp;rdquo; complaint is diving into the metrics too early. The first question should always be: Is everything slow, or is it just one specific process?&lt;/p&gt;</description>
     </item>
     <item>
       <title>Real-Life DBA Scenarios using AAS</title>
