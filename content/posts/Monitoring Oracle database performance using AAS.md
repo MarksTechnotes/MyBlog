@@ -1,6 +1,6 @@
 ---
 title: "Monitoring Oracle database performance using AAS"
-date: 2026-04-14
+date: 2026-04-15
 draft: false
 description: "Monitoring Oracle database performance using AAS"
 tags: ["AAS", "Oracle", "Performance", "Database"]
@@ -9,7 +9,17 @@ categories: ["Database", "Performance"]
 
 # A Guide to Average Active Sessions (AAS)
 
-Every DBA has lived through the vague 'database is slow' complaint. The challenge isn't a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. While those metrics matter, **Average Active Sessions (AAS)** is the single most important indicator of the database's true 'pulse' and its ability to handle work.
+Every DBA has lived through the vague 'database is slow' complaint. The challenge isn't a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise. 
+
+Before you look at the metrics: **Define the Scope**
+
+A common pitfall when receiving a "database is slow" complaint is diving into the metrics too early. The first question should always be: Is everything slow, or is it just one specific process?
+
+    If it's a "Global" slowdown: Use Average Active Sessions (AAS) to check for system-wide bottlenecks (CPU, I/O, or Locks).
+
+    If it's a "Local" slowdown: Drill down into the specific SQL ID or session using ASH.
+
+**AAS** is your tool for the "Global" view—let's look at how to interpret it.
 
 ---
 
