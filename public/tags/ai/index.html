@@ -31,26 +31,26 @@
 
     
     
-      <link href="/MyBlog/tags/database/index.xml" rel="alternate" type="application/rss+xml" title="Mark’s Tech Notes" />
-      <link href="/MyBlog/tags/database/index.xml" rel="feed" type="application/rss+xml" title="Mark’s Tech Notes" />
+      <link href="/MyBlog/tags/ai/index.xml" rel="alternate" type="application/rss+xml" title="Mark’s Tech Notes" />
+      <link href="/MyBlog/tags/ai/index.xml" rel="feed" type="application/rss+xml" title="Mark’s Tech Notes" />
       
     
 
     
-      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/tags/database/">
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/tags/ai/">
     
 
-    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/tags/database/">
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/tags/ai/">
   <meta property="og:site_name" content="Mark’s Tech Notes">
-  <meta property="og:title" content="Database">
+  <meta property="og:title" content="AI">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Database">
+  <meta itemprop="name" content="AI">
   <meta itemprop="datePublished" content="2026-04-25T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-04-25T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Database">
+  <meta name="twitter:title" content="AI">
 
       
     
@@ -91,7 +91,7 @@
 
       <div class="tc-l pv3 ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Database
+          AI
         </h1>
         
       </div>
@@ -103,7 +103,7 @@
       
   <article class="cf pa3 pa4-m pa4-l">
     <div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links mid-gray">
-      <p>Below you will find pages that utilize the taxonomy term “Database”</p>
+      <p>Below you will find pages that utilize the taxonomy term “AI”</p>
     </div>
   </article>
   <div class="mw8 center">
@@ -139,62 +139,6 @@ search and RAG is becoming foundational.</p>
 Total storage includes: Original data + vectors + vector indexes</p>
     </div>
     <a href="/MyBlog/posts/vector_cost_optimization/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="link black dim">
-        Monitoring Oracle database performance using AAS
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="a-guide-to-average-active-sessions-aas">A Guide to Average Active Sessions (AAS)</h1>
-<p>Every DBA has lived through the vague &lsquo;database is slow&rsquo; complaint. The challenge isn&rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise.</p>
-<p>Before you look at the metrics: <strong>Define the Scope</strong></p>
-<p>A common pitfall when receiving a &ldquo;database is slow&rdquo; complaint is diving into the metrics too early. The first question should always be: Is everything slow, or is it just one specific process?</p>
-    </div>
-    <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="link black dim">
-        Real-Life DBA Scenarios using AAS
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="real-life-dba-scenarios-using-aas">Real-Life DBA Scenarios Using AAS</h1>
-<p>Here are three real-life scenarios where DBAs use <strong>Average Active Sessions (AAS)</strong> to solve performance issues.</p>
-<hr>
-<h2 id="1-the-demand-surge-scaling-check">1. The &ldquo;Demand Surge&rdquo; (Scaling Check)</h2>
-<p>Imagine a retail site during a flash sale. The DBA sees <strong>AAS jump from 2.0 to 15.0</strong> on a server with <strong>8 CPUs</strong>.</p>
-<p><strong>Diagnosis:</strong></p>
-<ul>
-<li>Because <strong>AAS &gt; CPU count</strong>, the system is saturated.</li>
-</ul>
-<p><strong>Fix:</strong></p>
-<ul>
-<li>By drilling down into the AAS <em>Wait Class</em>, the DBA sees it is mostly <strong>CPU activity</strong>.</li>
-<li>This proves the hardware is too small for peak load.</li>
-<li>The solution is an immediate vertical scale-up (add more CPU cores).</li>
-</ul>
-<hr>
-<h2 id="2-the-locking-disaster-application-bug">2. The &ldquo;Locking Disaster&rdquo; (Application Bug)</h2>
-<p>A payroll application suddenly freezes. The total CPU usage on the server looks low (5%), but the AAS is 12.0 on a 24-CPU machine.</p>
-    </div>
-    <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 

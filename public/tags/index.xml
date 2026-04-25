@@ -6,33 +6,54 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AAS</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/aas/</link>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/aas/</guid>
+      <title>AI</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/ai/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Database</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/database/</link>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GenAI</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/genai/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/genai/</guid>
       <description></description>
     </item>
     <item>
       <title>Oracle</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/oracle/</link>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vector</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/vector/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/vector/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AAS</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/aas/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/aas/</guid>
       <description></description>
     </item>
     <item>
       <title>Performance</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/performance/</link>
-      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/performance/</guid>
       <description></description>
     </item>

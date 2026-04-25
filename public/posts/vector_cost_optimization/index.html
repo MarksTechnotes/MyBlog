@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Cost Optimization for Vector Storage in Oracle AI Database 26ai | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/vector_cost_optimization/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/vector_cost_optimization/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+  <meta property="og:description" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-04-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-25T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Vector">
+    <meta property="article:tag" content="GenAI">
+    <meta property="article:tag" content="Oracle">
+    <meta property="article:tag" content="Database">
+
+  <meta itemprop="name" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+  <meta itemprop="description" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+  <meta itemprop="datePublished" content="2026-04-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-04-25T00:00:00+00:00">
+  <meta itemprop="wordCount" content="354">
+  <meta itemprop="keywords" content="AI,Vector,GenAI,Oracle,Database">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+  <meta name="twitter:description" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Cost Optimization for Vector Storage in Oracle AI Database 26ai</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-04-25T00:00:00Z">April 25, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="cost-optimization-for-vector-storage-in-oracle-ai-database-26ai">Cost Optimization for Vector Storage in Oracle AI Database 26ai</h1>
+<h2 id="overview">Overview</h2>
+<p>As more organizations adopt AI, vector search
+which enables powerful AI use cases like semantic
+search and RAG is becoming foundational.</p>
+<p>But one question that comes up almost every time I meet with customers is</p>
+<p>👉 <em>&ldquo;What about storage costs?&rdquo;</em></p>
+<hr>
+<h2 id="-how-big-are-vectors">🧠 How Big Are Vectors?</h2>
+<p>Vectors are just arrays of numbers:</p>
+<p><strong>Size ≈ Dimensions × 4 bytes</strong></p>
+<ul>
+<li>384 dims → ~1.5 KB</li>
+<li>768 dims → ~3 KB</li>
+<li>1536 dims → ~6 KB</li>
+</ul>
+<p>But remember,
+Total storage includes: Original data + vectors + vector indexes</p>
+<hr>
+<h2 id="-what-really-drives-cost">💸 What Really Drives Cost?</h2>
+<p>It&rsquo;s NOT just vector size.</p>
+<p>The biggest drivers are: - Number of vectors - Dimensions (size per vector) -
+Index overhead -  Poor vdata design (duplication, over-chunking)</p>
+<hr>
+<h2 id="-5-practical-ways-to-reduce-cost">⚡ 5 Practical Ways to Reduce Cost</h2>
+<h3 id="1-reduce-dimensions">1. Reduce Dimensions</h3>
+<ul>
+<li>Start with 384&ndash;768 dims</li>
+<li>Increase only if needed</li>
+</ul>
+<h3 id="2-avoid-over-chunking">2. Avoid Over-Chunking</h3>
+<ul>
+<li>Chunk by meaning (paragraphs, sections)</li>
+<li>Avoid tiny fragments</li>
+</ul>
+<h3 id="3-deduplicate-data">3. Deduplicate Data</h3>
+<ul>
+<li>Avoid embedding duplicate content</li>
+<li>Use hashing to detect repeats</li>
+</ul>
+<h3 id="4-use-hybrid-search">4. Use Hybrid Search</h3>
+<ul>
+<li>Combine SQL filters + vector search</li>
+<li>Don&rsquo;t vectorize structured data</li>
+</ul>
+<h3 id="5-choose-the-right-index">5. Choose the Right Index</h3>
+<ul>
+<li>HNSW → higher accuracy, more storage</li>
+<li>IVF → more compact, tunable</li>
+</ul>
+<h3 id="6-use-lower-precision--compression">6. Use Lower Precision / Compression</h3>
+<ul>
+<li>Float32 → Float16 or quantization</li>
+<li>Tradeoff: slight accuracy vs. lower storage</li>
+</ul>
+<h3 id="7-lifecycle-management">7. Lifecycle Management</h3>
+<ul>
+<li>Archive or delete old vectors</li>
+<li>Prevent long-term growth</li>
+</ul>
+<h2 id="quick-sizing-formula">Quick Sizing Formula</h2>
+<pre><code>Total Storage ≈ Rows × Dimensions × 4 bytes × (1.5–2.5 with index)
+Storage for 1M rows × 768-dim → ~3 GB just for vectors + indexing overhead → ~5–7 GB total
+</code></pre>
+<hr>
+<h2 id="-storage-tiering-pattern">📦 Storage Tiering Pattern</h2>
+<p>Not all data needs to live inside the database.</p>
+<p>A common enterprise approach:</p>
+<pre><code>[ Object Storage ]
+   ├── PDFs / Images / Logs
+
+[ Oracle AI Database ]
+   ├── Metadata
+   ├── Vectors
+   └── Object References (links)
+</code></pre>
+<p>👉 Why this matters:</p>
+<p>Keeps the database lean and fast <br>
+Uses low-cost storage for large files</p>
+<h2 id="key-takeaway">Key Takeaway</h2>
+<blockquote>
+<p>The biggest cost driver is the number of vectors - not just their
+size. This combined with smart storage tiering will help in controlling
+both cost and complexity.</p>
+</blockquote>
+<p>Start small, optimize early, and scale intentionally.</p>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/ai/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">AI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/vector/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Vector</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/genai/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">GenAI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oracle/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Oracle</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Database</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/">Monitoring Oracle database performance using AAS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/">Real-Life DBA Scenarios using AAS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/backup-protection-in-autonomous-database/">Backup Immutability in Autonomous Database vs ARS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/">The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/what-is-your-database-size/">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/">Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">Real-Time Replication: ATP to ADW with OCI GoldenGate</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

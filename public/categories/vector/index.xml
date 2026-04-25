@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vector on Mark’s Tech Notes</title>
+    <link>https://markstechnotes.github.io/MyBlog/categories/vector/</link>
+    <description>Recent content in Vector on Mark’s Tech Notes</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://markstechnotes.github.io/MyBlog/categories/vector/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cost Optimization for Vector Storage in Oracle AI Database 26ai</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/vector_cost_optimization/</link>
+      <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/vector_cost_optimization/</guid>
+      <description>&lt;h1 id=&#34;cost-optimization-for-vector-storage-in-oracle-ai-database-26ai&#34;&gt;Cost Optimization for Vector Storage in Oracle AI Database 26ai&lt;/h1&gt;&#xA;&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;As more organizations adopt AI, vector search&#xA;which enables powerful AI use cases like semantic&#xA;search and RAG is becoming foundational.&lt;/p&gt;&#xA;&lt;p&gt;But one question that comes up almost every time I meet with customers is&lt;/p&gt;&#xA;&lt;p&gt;👉 &lt;em&gt;&amp;ldquo;What about storage costs?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-how-big-are-vectors&#34;&gt;🧠 How Big Are Vectors?&lt;/h2&gt;&#xA;&lt;p&gt;Vectors are just arrays of numbers:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Size ≈ Dimensions × 4 bytes&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;384 dims → ~1.5 KB&lt;/li&gt;&#xA;&lt;li&gt;768 dims → ~3 KB&lt;/li&gt;&#xA;&lt;li&gt;1536 dims → ~6 KB&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;But remember,&#xA;Total storage includes: Original data + vectors + vector indexes&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
