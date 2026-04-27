@@ -1,6 +1,6 @@
 ---
 title: "Cost Optimization for Vector Storage in Oracle AI Database 26ai"
-date: 2026-04-25
+date: 2026-04-27
 draft: false
 description: "Cost Optimization for Vector Storage in Oracle AI Database 26ai"
 tags: ["AI", "Vector", "GenAI", "Oracle", "Database"]
@@ -68,6 +68,14 @@ Index overhead -  Poor vdata design (duplication, over-chunking)
 -   Combine SQL filters + vector search
 -   Don't vectorize structured data
 
+```sql
+SELECT *
+FROM tickets
+WHERE status = 'OPEN'
+ORDER BY VECTOR_DISTANCE(description_vector, :query)
+FETCH FIRST 10 ROWS;
+```
+
 ### 5. Choose the Right Index
 
 -   HNSW → higher accuracy, more storage
@@ -105,6 +113,17 @@ A common enterprise approach:
        ├── Vectors
        └── Object References (links)
 
+```sql
+CREATE TABLE documents (
+    doc_id NUMBER,
+    doc_url VARCHAR2(500),
+    doc_embedding VECTOR(768)
+);
+```
+
+- doc_url → points to object storage
+- doc_embedding → used for search
+
 👉 Why this matters:
 
 Keeps the database lean and fast    
@@ -113,7 +132,7 @@ Uses low-cost storage for large files
 ## Key Takeaway
 
 > The biggest cost driver is the number of vectors - not just their
-> size. This combined with smart storage tiering will help in controlling
+> size. Keeping the number in check combined with smart storage tiering will help in controlling
 both cost and complexity. 
 
 Start small, optimize early, and scale intentionally.
