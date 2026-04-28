@@ -54,7 +54,7 @@
   <meta itemprop="description" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
   <meta itemprop="datePublished" content="2026-04-27T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-04-27T00:00:00+00:00">
-  <meta itemprop="wordCount" content="396">
+  <meta itemprop="wordCount" content="400">
   <meta itemprop="keywords" content="AI,Vector,GenAI,Oracle,Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cost Optimization for Vector Storage in Oracle AI Database 26ai">
@@ -142,11 +142,15 @@ search and RAG is becoming foundational.</p>
 </ul>
 <p>But remember,
 Total storage includes: Original data + vectors + vector indexes</p>
+<h2 id="quick-sizing-formula">Quick Sizing Formula</h2>
+<pre><code>Total Storage ≈ Rows × Dimensions × 4 bytes × (1.5–2.5 with index)
+Storage for 1M rows × 768-dim → ~3 GB just for vectors + indexing overhead → ~5–7 GB total (excluding the Original data)
+</code></pre>
 <hr>
 <h2 id="-what-really-drives-cost">💸 What Really Drives Cost?</h2>
 <p>It&rsquo;s NOT just vector size.</p>
 <p>The biggest drivers are: - Number of vectors - Dimensions (size per vector) -
-Index overhead -  Poor vdata design (duplication, over-chunking)</p>
+Index overhead -  Poor data design (duplication, over-chunking)</p>
 <hr>
 <h2 id="-5-practical-ways-to-reduce-cost">⚡ 5 Practical Ways to Reduce Cost</h2>
 <h3 id="1-reduce-dimensions">1. Reduce Dimensions</h3>
@@ -189,10 +193,6 @@ Index overhead -  Poor vdata design (duplication, over-chunking)</p>
 <li>Archive or delete old vectors</li>
 <li>Prevent long-term growth</li>
 </ul>
-<h2 id="quick-sizing-formula">Quick Sizing Formula</h2>
-<pre><code>Total Storage ≈ Rows × Dimensions × 4 bytes × (1.5–2.5 with index)
-Storage for 1M rows × 768-dim → ~3 GB just for vectors + indexing overhead → ~5–7 GB total
-</code></pre>
 <hr>
 <h2 id="-storage-tiering-pattern">📦 Storage Tiering Pattern</h2>
 <p>Not all data needs to live inside the database.</p>
