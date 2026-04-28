@@ -34,6 +34,11 @@ Vectors are just arrays of numbers:
 But remember,
 Total storage includes: Original data + vectors + vector indexes
 
+## Quick Sizing Formula
+
+    Total Storage ≈ Rows × Dimensions × 4 bytes × (1.5–2.5 with index)
+    Storage for 1M rows × 768-dim → ~3 GB just for vectors + indexing overhead → ~5–7 GB total (excluding the Original data)
+
 ------------------------------------------------------------------------
 
 ## 💸 What Really Drives Cost?
@@ -41,7 +46,7 @@ Total storage includes: Original data + vectors + vector indexes
 It's NOT just vector size.
 
 The biggest drivers are: - Number of vectors - Dimensions (size per vector) - 
-Index overhead -  Poor vdata design (duplication, over-chunking)
+Index overhead -  Poor data design (duplication, over-chunking)
 
 
 ------------------------------------------------------------------------
@@ -90,12 +95,6 @@ FETCH FIRST 10 ROWS;
 
 -   Archive or delete old vectors
 -   Prevent long-term growth
-
-
-## Quick Sizing Formula
-
-    Total Storage ≈ Rows × Dimensions × 4 bytes × (1.5–2.5 with index)
-    Storage for 1M rows × 768-dim → ~3 GB just for vectors + indexing overhead → ~5–7 GB total
 
 ------------------------------------------------------------------------
 
