@@ -62,6 +62,7 @@ For example, if your database has an **AAS of 0.08** and **2 CPUs**, it is only 
 
 👉 Your database is extremely quiet, and any slowness users feel is likely occurring in the **application or network**, not the database.
 
+A caveat worth mentioning is that while high AAS often correlates with CPU saturation under real workloads, lightweight continuously active sessions—especially internal Oracle tasks—can produce elevated AAS values even when actual OS CPU utilization remains low.
 
 ## CPU vs. Wait Sessions
 

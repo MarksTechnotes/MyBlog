@@ -53,7 +53,7 @@
   <meta itemprop="description" content="Monitoring Oracle database performance using AAS">
   <meta itemprop="datePublished" content="2026-04-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-04-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="508">
+  <meta itemprop="wordCount" content="544">
   <meta itemprop="keywords" content="AAS,Oracle,Performance,Database">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Monitoring Oracle database performance using AAS">
@@ -177,6 +177,7 @@ If it's a &quot;Local&quot; slowdown: Drill down into the specific SQL ID or ses
 </table>
 <p>For example, if your database has an <strong>AAS of 0.08</strong> and <strong>2 CPUs</strong>, it is only using <strong>4% of its capacity</strong>.</p>
 <p>👉 Your database is extremely quiet, and any slowness users feel is likely occurring in the <strong>application or network</strong>, not the database.</p>
+<p>A caveat worth mentioning is that while high AAS often correlates with CPU saturation under real workloads, lightweight continuously active sessions—especially internal Oracle tasks—can produce elevated AAS values even when actual OS CPU utilization remains low.</p>
 <h2 id="cpu-vs-wait-sessions">CPU vs. Wait Sessions</h2>
 <p>AAS is usually broken down into two parts:</p>
 <ul>
