@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADB-Dedicated</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/adb-dedicated/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/adb-dedicated/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Archival</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/data-archival/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/data-archival/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DBMS_CLOUD</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/dbms_cloud/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/dbms_cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hybrid Partitioning</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/hybrid-partitioning/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/hybrid-partitioning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OCI</title>
+      <link>https://markstechnotes.github.io/MyBlog/tags/oci/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/tags/oci/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://markstechnotes.github.io/MyBlog/tags/ai/</link>
@@ -69,13 +111,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/atp/</link>
       <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/atp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Autonomous Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</link>
-      <pubDate>Mon, 06 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</guid>
       <description></description>
     </item>
     <item>
@@ -314,13 +349,6 @@
       <link>https://markstechnotes.github.io/MyBlog/tags/marketplace/</link>
       <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/tags/marketplace/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>OCI</title>
-      <link>https://markstechnotes.github.io/MyBlog/tags/oci/</link>
-      <pubDate>Sun, 09 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/tags/oci/</guid>
       <description></description>
     </item>
     <item>

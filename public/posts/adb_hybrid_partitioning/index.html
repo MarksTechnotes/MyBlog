@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables | Mark’s Tech Notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Use Hybrid Partitioned Tables and OCI Object Storage to build a cost-effective archival strategy for long-term data retention in Autonomous Database.">
+    <meta name="generator" content="Hugo 0.152.2">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    
+<link rel="stylesheet" href="/MyBlog/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css" >
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/">
+    
+
+    <meta property="og:url" content="https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/">
+  <meta property="og:site_name" content="Mark’s Tech Notes">
+  <meta property="og:title" content="Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables">
+  <meta property="og:description" content="Use Hybrid Partitioned Tables and OCI Object Storage to build a cost-effective archival strategy for long-term data retention in Autonomous Database.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-28T00:00:00+00:00">
+    <meta property="article:tag" content="Autonomous Database">
+    <meta property="article:tag" content="ADB-Dedicated">
+    <meta property="article:tag" content="Hybrid Partitioning">
+    <meta property="article:tag" content="Data Archival">
+    <meta property="article:tag" content="OCI">
+    <meta property="article:tag" content="DBMS_CLOUD">
+
+  <meta itemprop="name" content="Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables">
+  <meta itemprop="description" content="Use Hybrid Partitioned Tables and OCI Object Storage to build a cost-effective archival strategy for long-term data retention in Autonomous Database.">
+  <meta itemprop="datePublished" content="2026-05-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-05-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="707">
+  <meta itemprop="keywords" content="Autonomous Database,ADB-Dedicated,Hybrid Partitioning,Data Archival,OCI,DBMS_CLOUD">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables">
+  <meta name="twitter:description" content="Use Hybrid Partitioned Tables and OCI Object Storage to build a cost-effective archival strategy for long-term data retention in Autonomous Database.">
+
+      
+    
+	
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '$', right: '$', display: false}
+            ]
+        });"></script>
+
+  </head><body class="ma0 avenir bg-near-white production">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/MyBlog/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        Mark’s Tech Notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  
+  <article class="flex-l mw8 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-28T00:00:00Z">May 28, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables">Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.</p>
+<p>This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.</p>
+<hr>
+<h2 id="1-using-hybrid-partitioning-to-reduce-storage-costs">1. Using Hybrid Partitioning to Reduce Storage Costs</h2>
+<p>A Hybrid Partitioned Table contains both:</p>
+<ul>
+<li><strong>Internal partitions</strong> stored inside Autonomous Database storage.</li>
+<li><strong>External partitions</strong> stored outside the database, typically in OCI Object Storage.</li>
+</ul>
+<p>A common lifecycle pattern is:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Data Age</th>
+          <th>Storage Location</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Recent operational data</td>
+          <td>Internal partitions</td>
+      </tr>
+      <tr>
+          <td>Historical read-mostly data</td>
+          <td>External partitions in Object Storage</td>
+      </tr>
+  </tbody>
+</table>
+<p>Benefits include:</p>
+<ul>
+<li>Reduced Autonomous Database storage consumption</li>
+<li>Transparent SQL access across all partitions</li>
+<li>Partition pruning for efficient query performance</li>
+<li>Lower total cost of ownership for long-term data retention</li>
+<li>Simplified archival strategy</li>
+</ul>
+<p>The database optimizer automatically accesses only the relevant partitions during query execution.</p>
+<hr>
+<h2 id="2-creating-hybrid-partitioned-tables-in-autonomous-database">2. Creating Hybrid Partitioned Tables in Autonomous Database</h2>
+<p>Autonomous Database provides the <code>DBMS_CLOUD.CREATE_HYBRID_PART_TABLE</code> procedure to create Hybrid Partitioned Tables backed by cloud object storage.</p>
+<h3 id="example">Example</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>  DBMS_CLOUD.CREATE_HYBRID_PART_TABLE(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">table_name</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;SALES_HPT&#39;</span>,
+</span></span><span style="display:flex;"><span>    credential_name <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;OBJ_STORE_CRED&#39;</span>,
+</span></span><span style="display:flex;"><span>    format <span style="color:#f92672">=&gt;</span> json_object(
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;delimiter&#39;</span> value <span style="color:#e6db74">&#39;,&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#39;recorddelimiter&#39;</span> value <span style="color:#e6db74">&#39;newline&#39;</span>
+</span></span><span style="display:flex;"><span>    ),
+</span></span><span style="display:flex;"><span>    column_list <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      sale_id      NUMBER,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      sale_date    DATE,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      amount       NUMBER
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;</span>,
+</span></span><span style="display:flex;"><span>    partitioning_clause <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      PARTITION BY RANGE (sale_date)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        PARTITION p2023 VALUES LESS THAN (DATE &#39;&#39;2024-01-01&#39;&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          EXTERNAL LOCATION (
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#39;&#39;https://objectstorage.region.oraclecloud.com/archive/sales_2023.csv&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          ),
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        PARTITION p2024 VALUES LESS THAN (DATE &#39;&#39;2025-01-01&#39;&#39;),
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        PARTITION pmax VALUES LESS THAN (MAXVALUE)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      )&#39;</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="example-external-csv-file">Example External CSV File</h3>
+<p>The external partition in the example could reference a CSV file stored in OCI Object Storage with the following contents:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-csv" data-lang="csv"><span style="display:flex;"><span><span style="color:#e6db74">1001</span>,<span style="color:#e6db74">2023-01-15</span>,<span style="color:#e6db74">1250.50</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1002</span>,<span style="color:#e6db74">2023-02-01</span>,<span style="color:#e6db74">987.25</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1003</span>,<span style="color:#e6db74">2023-03-12</span>,<span style="color:#e6db74">1500.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1004</span>,<span style="color:#e6db74">2023-04-30</span>,<span style="color:#e6db74">725.75</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1005</span>,<span style="color:#e6db74">2023-06-18</span>,<span style="color:#e6db74">2200.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1006</span>,<span style="color:#e6db74">2023-08-05</span>,<span style="color:#e6db74">1100.25</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1007</span>,<span style="color:#e6db74">2023-10-22</span>,<span style="color:#e6db74">875.00</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">1008</span>,<span style="color:#e6db74">2023-12-31</span>,<span style="color:#e6db74">1999.99</span>
+</span></span></code></pre></div><p>The file maps to the following columns:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Data Type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>sale_id</td>
+          <td>NUMBER</td>
+      </tr>
+      <tr>
+          <td>sale_date</td>
+          <td>DATE</td>
+      </tr>
+      <tr>
+          <td>amount</td>
+          <td>NUMBER</td>
+      </tr>
+  </tbody>
+</table>
+<p>Because the format specifies a comma delimiter and newline record delimiter, each row in the file represents a single record and no header row is required.</p>
+<p>In this example:</p>
+<ul>
+<li><code>p2023</code> is an external partition stored in OCI Object Storage.</li>
+<li><code>p2024</code> and <code>pmax</code> remain internal database partitions.</li>
+<li>Queries against the table automatically access the appropriate partition.</li>
+</ul>
+<hr>
+<h2 id="3-backup-and-standby-strategy">3. Backup and Standby Strategy</h2>
+<p>Hybrid Partitioned Tables require two protection strategies because the data resides in two different locations.</p>
+<h3 id="internal-partitions">Internal Partitions</h3>
+<p>Internal partitions are protected by standard Autonomous Database capabilities:</p>
+<ul>
+<li>Automatic Autonomous Database backups</li>
+<li>Point-in-time recovery (PITR)</li>
+<li>Autonomous Data Guard (when configured)</li>
+<li>Database restore operations</li>
+</ul>
+<h3 id="external-partitions">External Partitions</h3>
+<p>External partitions are not stored inside database data files.</p>
+<p>Protection is provided by the storage platform hosting the external files, typically OCI Object Storage:</p>
+<ul>
+<li>Object Storage durability</li>
+<li>Object Storage versioning</li>
+<li>Cross-region replication (optional)</li>
+<li>Retention and lifecycle policies</li>
+</ul>
+<h3 id="important-consideration">Important Consideration</h3>
+<p>Autonomous Database backups and standby databases protect:</p>
+<ul>
+<li>Table metadata</li>
+<li>Internal partitions</li>
+<li>Partition definitions</li>
+</ul>
+<p>They do <strong>not</strong> back up or replicate the external data files themselves.</p>
+<p>If external files are lost, they must be recovered through the Object Storage protection strategy rather than through database recovery.</p>
+<hr>
+<h2 id="4-restrictions-on-external-partitions">4. Restrictions on External Partitions</h2>
+<p>External partitions are intended for historical and read-only data.</p>
+<p>Key restrictions include:</p>
+<h3 id="read-only-access">Read-Only Access</h3>
+<p>External partitions do not support:</p>
+<ul>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+<li>MERGE</li>
+</ul>
+<p>Data must be modified outside the database and republished as external files.</p>
+<h3 id="no-transactional-processing">No Transactional Processing</h3>
+<p>External partitions do not participate in:</p>
+<ul>
+<li>Row locking</li>
+<li>Undo generation</li>
+<li>Redo generation</li>
+<li>ACID transactional updates</li>
+</ul>
+<h3 id="archive-oriented-use-cases">Archive-Oriented Use Cases</h3>
+<p>External partitions are best suited for:</p>
+<ul>
+<li>Historical reporting</li>
+<li>Compliance retention</li>
+<li>Audit access</li>
+<li>Long-term archival storage</li>
+</ul>
+<p>They are generally not suitable for:</p>
+<ul>
+<li>Active OLTP workloads</li>
+<li>Frequently updated historical records</li>
+<li>Operational transaction processing</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Hybrid Partitioned Tables provide an elegant archival architecture for Autonomous Database. By keeping active data in internal partitions and moving historical data to OCI Object Storage, organizations can significantly reduce storage costs while preserving transparent SQL access to retained data.</p>
+<p>For long-term retention use cases such as utility billing, metering, compliance, and regulatory reporting, Hybrid Partitioned Tables offer a practical balance between performance, accessibility, and cost efficiency.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p>Oracle Autonomous Database – Query Hybrid Partitioned Data
+<a href="https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/query-hybrid-partition.html">https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/query-hybrid-partition.html</a></p>
+</li>
+<li>
+<p>Oracle Autonomous Database Dedicated – DBMS_CLOUD Documentation
+<a href="https://docs.oracle.com/en/cloud/paas/autonomous-database/dedicated/adbdm/">https://docs.oracle.com/en/cloud/paas/autonomous-database/dedicated/adbdm/</a></p>
+</li>
+<li>
+<p>Oracle Database 19c – Managing Hybrid Partitioned Tables
+<a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/manage_hypt.html">https://docs.oracle.com/en/database/oracle/oracle-database/19/vldbg/manage_hypt.html</a></p>
+</li>
+<li>
+<p>Database Heartbeat – Save Storage Cost with Hybrid Partitioned Tables in Oracle Autonomous Database
+<a href="https://database-heartbeat.com/2021/03/23/save-storage-cost-with-hybrid-partitioned-tables-in-oracle-autonomous-database/">https://database-heartbeat.com/2021/03/23/save-storage-cost-with-hybrid-partitioned-tables-in-oracle-autonomous-database/</a></p>
+</li>
+</ol>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/autonomous-database/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Autonomous Database</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/adb-dedicated/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">ADB-Dedicated</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/hybrid-partitioning/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Hybrid Partitioning</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/data-archival/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">Data Archival</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/oci/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">OCI</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/MyBlog/tags/dbms_cloud/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">DBMS_CLOUD</a>
+   </li>
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/backup-protection-in-autonomous-database/">Backup Immutability in Autonomous Database vs ARS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/">The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/what-is-your-database-size/">Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/archive-logs-and-backup-size/">Why Backup Storage Can Exceed Database Size (Even with 48‑Hour Retention)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp-to-adw-replication-with-goldengate-cloud-service/">Real-Time Replication: ATP to ADW with OCI GoldenGate</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/why-use-zdm-to-migrate-large-databases/">Why use ZDM or DMS to migrate large databases from ADB-S to ADB-D without the drama</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/the-database-middleman---dbfs/">The Database Middleman: Why You Shouldn&#39;t Bridge Cloud Storage via DBFS</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/atp_connection_notes/">Demystifying ATP Connectivity - Connect to ATP using Basic/EZConnect, TNS and/or JDBC</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_19c_vector_search_part_3/">Combine 19c Relational Data with 26ai Vector Data for Similarity &#43; Relational Search Using Materialized Views</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/hybrid_26ai_vector_search_part_2/">Combine Vector Similarity and Relational Keyword Search on Autonomous Database 26ai Using Python</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/storing-generating-vector-embeddings-atps-26ai_part_1/">Generate and Store Vector Embeddings in Autonomous Database 26ai</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/speeding-up-data-pump-imports-adb/">Tips to Speed Up Data Pump Imports into Autonomous Database (ADB)</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/oem13c-marketplace-deployment-notes/">Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/dbca-gui-setup-on-oci-linux-vm/">Running DBCA in GUI Mode on an OCI Linux VM</a>
+        </li>
+	    
+	     <li  class="mb2">
+          <a href="/MyBlog/posts/adw-peer-switchover/">Is Peer Database Role Switchover (ADW Serverless → ADW Dedicated) supported?</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://markstechnotes.github.io/MyBlog/" >
+    &copy;  Mark’s Tech Notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
