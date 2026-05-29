@@ -6,8 +6,15 @@
     <description>Recent content in OCI on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/tags/oci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/</link>
+      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/</guid>
+      <description>&lt;h1 id=&#34;implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables&#34;&gt;Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.&lt;/p&gt;&#xA;&lt;p&gt;This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Deploying OEM 13c Marketplace Image on OCI — Field Notes from a Quick Deployment</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/oem13c-marketplace-deployment-notes/</link>
