@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Choosing the right Data Lifecycle Strategy for Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/posts/hcc-or-hybrid-partitioning/</link>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/posts/hcc-or-hybrid-partitioning/</guid>
+      <description>&lt;h1 id=&#34;hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking&#34;&gt;HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking&lt;/h1&gt;&#xA;&lt;p&gt;I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.&lt;/p&gt;&#xA;&lt;p&gt;My initial assumption was straightforward:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Move older data into Object Storage using Hybrid Partitioning and save money.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;As I dug deeper, I realized the conversation needed more nuance.&lt;/p&gt;&#xA;&lt;p&gt;Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&amp;rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables</title>
       <link>https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/</link>

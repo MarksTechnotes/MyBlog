@@ -2,19 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/hcc-or-hybrid-partitioning/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/data-lifecycle/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/hybrid-columnar-compression/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/hybrid-partitioning/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/categories/storage-costs/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
+    <lastmod>2026-06-29T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/adb-dedicated/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/architecture/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/autonomous-database/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/categories/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/data-archival/</loc>
@@ -23,22 +47,10 @@
     <loc>https://markstechnotes.github.io/MyBlog/tags/dbms_cloud/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/hybrid-partitioning/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/posts/adb_hybrid_partitioning/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/tags/oci/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/posts/</loc>
-    <lastmod>2026-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://markstechnotes.github.io/MyBlog/tags/</loc>
     <lastmod>2026-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://markstechnotes.github.io/MyBlog/categories/ai/</loc>

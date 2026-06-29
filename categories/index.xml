@@ -6,20 +6,27 @@
     <description>Recent content in Categories on Mark’s Tech Notes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://markstechnotes.github.io/MyBlog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autonomous Database</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</link>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Storage Costs</title>
+      <link>https://markstechnotes.github.io/MyBlog/categories/storage-costs/</link>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://markstechnotes.github.io/MyBlog/categories/storage-costs/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Architecture</title>
       <link>https://markstechnotes.github.io/MyBlog/categories/architecture/</link>
       <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
       <guid>https://markstechnotes.github.io/MyBlog/categories/architecture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Autonomous Database</title>
-      <link>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</link>
-      <pubDate>Thu, 28 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://markstechnotes.github.io/MyBlog/categories/autonomous-database/</guid>
       <description></description>
     </item>
     <item>

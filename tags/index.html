@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Tags">
-  <meta itemprop="datePublished" content="2026-05-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-05-28T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-06-29T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-06-29T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
 
@@ -111,8 +111,8 @@
     <section class="ph4">
       
         <h2 class="f1">
-          <a href="/MyBlog/tags/adb-dedicated/" class="link blue hover-black">
-            Tag: ADB-Dedicated
+          <a href="/MyBlog/tags/autonomous-database/" class="link blue hover-black">
+            Tag: Autonomous Database
           </a>
         </h2>
         
@@ -120,27 +120,24 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="link black dim">
-        Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables
+      <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="link black dim">
+        Choosing the right Data Lifecycle Strategy for Autonomous Database
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables">Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.</p>
-<p>This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.</p>
+      <h1 id="hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking">HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking</h1>
+<p>I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.</p>
+<p>My initial assumption was straightforward:</p>
+<blockquote>
+<p>Move older data into Object Storage using Hybrid Partitioning and save money.</p>
+</blockquote>
+<p>As I dug deeper, I realized the conversation needed more nuance.</p>
+<p>Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:</p>
     </div>
-    <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/tags/autonomous-database/" class="link blue hover-black">
-            Tag: Autonomous Database
-          </a>
-        </h2>
         
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
   <div class="mb3 pa4 gray overflow-hidden bg-white">
@@ -464,6 +461,141 @@ disruption.</p>
         
       
         <h2 class="f1">
+          <a href="/MyBlog/tags/data-lifecycle/" class="link blue hover-black">
+            Tag: Data Lifecycle
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="link black dim">
+        Choosing the right Data Lifecycle Strategy for Autonomous Database
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking">HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking</h1>
+<p>I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.</p>
+<p>My initial assumption was straightforward:</p>
+<blockquote>
+<p>Move older data into Object Storage using Hybrid Partitioning and save money.</p>
+</blockquote>
+<p>As I dug deeper, I realized the conversation needed more nuance.</p>
+<p>Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:</p>
+    </div>
+    <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/hybrid-columnar-compression/" class="link blue hover-black">
+            Tag: Hybrid Columnar Compression
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="link black dim">
+        Choosing the right Data Lifecycle Strategy for Autonomous Database
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking">HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking</h1>
+<p>I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.</p>
+<p>My initial assumption was straightforward:</p>
+<blockquote>
+<p>Move older data into Object Storage using Hybrid Partitioning and save money.</p>
+</blockquote>
+<p>As I dug deeper, I realized the conversation needed more nuance.</p>
+<p>Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:</p>
+    </div>
+    <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/hybrid-partitioning/" class="link blue hover-black">
+            Tag: Hybrid Partitioning
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="link black dim">
+        Choosing the right Data Lifecycle Strategy for Autonomous Database
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking">HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking</h1>
+<p>I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.</p>
+<p>My initial assumption was straightforward:</p>
+<blockquote>
+<p>Move older data into Object Storage using Hybrid Partitioning and save money.</p>
+</blockquote>
+<p>As I dug deeper, I realized the conversation needed more nuance.</p>
+<p>Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:</p>
+    </div>
+    <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="link black dim">
+        Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables">Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.</p>
+<p>This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.</p>
+    </div>
+    <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
+          <a href="/MyBlog/tags/adb-dedicated/" class="link blue hover-black">
+            Tag: ADB-Dedicated
+          </a>
+        </h2>
+        
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="link black dim">
+        Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables">Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.</p>
+<p>This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.</p>
+    </div>
+    <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        
+      
+        <h2 class="f1">
           <a href="/MyBlog/tags/data-archival/" class="link blue hover-black">
             Tag: Data Archival
           </a>
@@ -492,32 +624,6 @@ disruption.</p>
         <h2 class="f1">
           <a href="/MyBlog/tags/dbms_cloud/" class="link blue hover-black">
             Tag: DBMS_CLOUD
-          </a>
-        </h2>
-        
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="link black dim">
-        Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h1 id="implementing-data-archival-in-autonomous-database-using-hybrid-partitioned-tables">Implementing Data Archival in Autonomous Database using Hybrid Partitioned Tables</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Organizations often need to retain historical data for compliance, reporting, and audit purposes while controlling database storage costs. In Autonomous Database (ADB), Hybrid Partitioned Tables provide an effective approach for keeping recent data in database storage while offloading older, infrequently accessed data to lower-cost object storage.</p>
-<p>This architecture allows applications and reporting tools to continue querying a single logical table while reducing the amount of expensive database storage consumed by historical data.</p>
-    </div>
-    <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        
-      
-        <h2 class="f1">
-          <a href="/MyBlog/tags/hybrid-partitioning/" class="link blue hover-black">
-            Tag: Hybrid Partitioning
           </a>
         </h2>
         

@@ -47,8 +47,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Mark’s Tech Notes">
-  <meta itemprop="datePublished" content="2026-05-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-05-28T00:00:00+00:00">
+  <meta itemprop="datePublished" content="2026-06-29T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-06-29T00:00:00+00:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mark’s Tech Notes">
 
@@ -126,6 +126,36 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="color-inherit dim link">
+            Choosing the right Data Lifecycle Strategy for Autonomous Database
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          <h1 id="hcc-or-hybrid-partitioning-a-customer-conversation-that-changed-my-thinking">HCC or Hybrid Partitioning? A Customer Conversation That Changed My Thinking</h1>
+<p>I was recently involved in a discussion with a customer who was looking for ways to reduce the cost of storing years of historical data in Autonomous Database.</p>
+<p>My initial assumption was straightforward:</p>
+<blockquote>
+<p>Move older data into Object Storage using Hybrid Partitioning and save money.</p>
+</blockquote>
+<p>As I dug deeper, I realized the conversation needed more nuance.</p>
+<p>Autonomous Database Serverless storage is very competitively priced, so moving data to Object Storage doesn&rsquo;t necessarily translate into significant storage cost savings by itself. Instead, the real question became:</p>
+        </div>
+        <a href="/MyBlog/posts/hcc-or-hybrid-partitioning/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="w-100 mb4 relative">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
+    <div class="flex-column flex-row-ns flex">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/MyBlog/posts/adb_hybrid_partitioning/" class="color-inherit dim link">
             Implementing Data Archival in Autonomous Database Using Hybrid Partitioned Tables
             </a>
@@ -184,38 +214,18 @@ Total storage includes: Original data + vectors + vector indexes</p>
 
           </div>
         
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="color-inherit dim link">
-            Monitoring Oracle database performance using AAS
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="a-guide-to-average-active-sessions-aas">A Guide to Average Active Sessions (AAS)</h1>
-<p>Every DBA has lived through the vague &lsquo;database is slow&rsquo; complaint. The challenge isn&rsquo;t a lack of data—we are flooded with metrics like CPU, Memory, and Storage usage or Total Sessions—but finding the signal in the noise.</p>
-<p>Before you look at the metrics: <strong>Define the Scope</strong></p>
-<p>A common pitfall when receiving a &ldquo;database is slow&rdquo; complaint is diving into the metrics too early. The first question should always be: Is everything slow, or is it just one specific process?</p>
-        </div>
-        <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
         <section class="w-100">
           <h1 class="f3">More</h1>
           
+          
+            <h2 class="f5 fw4 mb4 dib mr3">
+              <a href="/MyBlog/posts/monitoring-oracle-database-performance-using-aas/" class="link black dim">
+                Monitoring Oracle database performance using AAS
+              </a>
+            </h2>
           
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/real-life-dba-scenarious-using-aas/" class="link black dim">
@@ -232,12 +242,6 @@ Total storage includes: Original data + vectors + vector indexes</p>
             <h2 class="f5 fw4 mb4 dib mr3">
               <a href="/MyBlog/posts/the-death-by-10-million-rows-problem/" class="link black dim">
                 The &#39;Death by 10 Million Rows&#39; Problem: Why Big Transactions Fail
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/MyBlog/posts/what-is-your-database-size/" class="link black dim">
-                Why “Database Size” Can Mean Different Things in ADW (Segments vs. Datafiles)
               </a>
             </h2>
           
